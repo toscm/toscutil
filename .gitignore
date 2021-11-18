@@ -1,0 +1,15 @@
+*Rproj*
+.vscode/
+.Rhistory
+.Rproj.user
+/man/
+tests/testthat/_snaps
+tests/testthat_outputs
+*_files/
+*_cache/
+RMD/figure
+*.html
+archive
+assets
+RMD/figs/
+RMD/libs/
