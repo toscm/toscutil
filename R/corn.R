@@ -11,12 +11,11 @@
 #' corn(matrix(1:10000, 100))
 #' @export
 corn <- function(x, n=2L) {
-    if(is.vector(x)) return(x)
-    stopifnot("matrix" %in% class(x) || "data.frame" %in% class(x))
-    rs <- nrow(x)
-    cs <- ncol(x)
-    if (all(rs > 4, cs > 4))
-        x[c(1:n, (rs-n+1):rs), c(1:n, (cs-n+1):cs)]
-    else
-        x
+  if(is.vector(x)) return(x)
+  stopifnot("matrix" %in% class(x) || "data.frame" %in% class(x))
+  rs <- nrow(x)
+  cs <- ncol(x)
+  ridx <- if (n > rs/2) 1:rs else c(1:n, (rs-n+1):rs)
+  cidx <- if (n > cs/2) 1:cs else c(1:n, (cs-n+1):cs)
+  x[ridx, cidx]
 }
