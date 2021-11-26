@@ -1,13 +1,13 @@
-#' getprd
-#'
-#' @description get project root directory
-#'
+#' @title getpd
+#' @description get project directory
+#' @param root.files if any those files is found in a parent folder, that folder
+#' is returned
 #' @return project root directory as string
 #' @export
-getprd <- function() {
+getpd <- function(root.files=c(".git", "DESCRIPTION", "NAMESPACE")) {
   owd <- ""
   wd <- normalizePath(getwd(), winslash = "/")
-  while (basename(wd) != "geclavis" && wd != owd) {
+  while (!any(dir(wd) %in% root.files) && wd != owd) {
     owd <- wd
     wd <- dirname(wd)
   }
@@ -16,3 +16,4 @@ getprd <- function() {
   }
   wd
 }
+
