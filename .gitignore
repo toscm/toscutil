@@ -13,3 +13,4 @@ archive
 assets
 RMD/figs/
 RMD/libs/
+*.code-workspace

@@ -16,6 +16,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   - `Fixed` for bug fixes
   - `Security` in case of vulnerabilities
 
+## [0.0.0.9004] - 2021-11-27
+
+- `Added`: `now` function
+
 ## [0.0.0.9003] - 2021-11-26
 
 - `Changed`: `getfd` now throws an error if no sourced file can be found
