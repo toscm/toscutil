@@ -16,6 +16,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   - `Fixed` for bug fixes
   - `Security` in case of vulnerabilities
 
+## [0.0.0.9006] - 2021-12-01
+
+- `Removed`: `where` function (instead `envnames::find_obj` can be used)
+
 ## [0.0.0.9005] - 2021-12-01
 
 - `Added`: `named` function
