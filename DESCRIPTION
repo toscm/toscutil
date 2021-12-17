@@ -1,6 +1,6 @@
 Package: toscutil
 Title: Utility functions by ToSc
-Version: 1.1.0
+Version: 1.2.0
 Authors@R:
     person(given = "Tobias",
            family = "Schmidt",
