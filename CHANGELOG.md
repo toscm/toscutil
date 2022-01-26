@@ -16,6 +16,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   - `Fixed` for bug fixes
   - `Security` in case of vulnerabilities
 
+## [1.4.0] - 2021-12-01
+
+- `Added`: function `sys.exit(status)`
+
 ## [1.3.0] - 2021-12-01
 
 - `Fixed`: function `getfd`. `getfd` now returns the correct file directory also for scripts started through `Rscript`
