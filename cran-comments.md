@@ -1,6 +1,6 @@
 # R CMD check results
 
-No errors. No warnings. No notes.
+0 errors. 0 warnings. 1 note (New submission).
 
 # Downstream dependencies
 

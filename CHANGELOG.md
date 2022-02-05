@@ -19,6 +19,15 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+## [2.0.1] - 2022-02-05
+
+- `Fixed`: Removed `man` folder from .gitignore
+- `Fixed`: Changed License entry in `DESCRIPTION` to *MIT + file
+  LICENSE* to prevent R CMD check note
+- `Fixed`: Made repo public to prevent invalid URL note in R CMD check
+- `Fixed`: Converted title in `DESCRIPTION` to *title case* to prevent R CMD
+  check note
+
 ## [2.0.0] - 2022-02-05
 
 - `Removed`: `cache` function, because of downstream dependencies which caused
