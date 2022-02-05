@@ -15,6 +15,15 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   - `Removed` for now removed features
   - `Fixed` for bug fixes
   - `Security` in case of vulnerabilities
+  - `Infrastructure` for updates of files not related to the package itself,
+    e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
+    the patch version.
+
+## [1.4.1] - 2022-02-05
+
+- `Fixed`: filename of ./R/named.R (file extensions was missing)
+- `Infrastructure`: migrated from gitlab to github
+- `Infrastructure`: added github action for R CMD check.
 
 ## [1.4.0] - 2021-12-01
 
