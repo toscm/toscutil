@@ -1,9 +1,11 @@
 ^toscutil\.Rproj$
-^\.Rproj\.user$
 ^LICENSE\.md$
 ^cran-comments.md$
 ^submit_to_cran.R$
 ^CHANGELOG.md$
+^\.Rproj\.user$
 ^\.github$
-^revdep$
+^\.git$
 ^check$
+^revdep$
+^.*\.tar\.gz$

@@ -29,6 +29,7 @@ rcmdcheck::rcmdcheck( # Run `R CMD check` for this package
     check_dir="check"
 )
 devtools::revdep() # Run `R CMD check` for all dependencies
+devtools::spell_check() # Check spelling of package
 devtools::release() # Builds, tests and submits the package to CRAN.
 # Manual submission can be done at: https://cran.r-project.org/submit.html
 ```
