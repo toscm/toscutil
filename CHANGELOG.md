@@ -19,6 +19,16 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+## [2.0.0] - 2022-02-05
+
+- `Removed`: `cache` function, because of downstream dependencies which caused
+  problems with R CMD check
+- `Fixed`: Documentation of `cat0`, `catn`, `cat0n`
+- `Fixed`: Documentation of `ifthen`
+- `Fixed`: Documentation of `rm_all`
+- `Changed`: `predict.numeric` to use `paste` instead of `glue::glue` to remove
+  the dependency on package `glue`
+
 ## [1.4.1] - 2022-02-05
 
 - `Fixed`: filename of ./R/named.R (file extensions was missing)

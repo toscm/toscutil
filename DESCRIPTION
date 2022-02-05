@@ -1,11 +1,11 @@
 Package: toscutil
 Title: Utility functions by ToSc
-Version: 1.4.1
+Version: 2.0.0
 Authors@R:
     person(given = "Tobias",
            family = "Schmidt",
            role = c("aut", "cre"),
-           email = "tobias2.schmidt@ukr.de")
+           email = "tobias.schmidt331@gmail.com")
 Description: Useful functions for everyday programming by Tobias Schmidt (ToSc).
 License: file LICENSE
 Encoding: UTF-8

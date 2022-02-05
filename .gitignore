@@ -15,3 +15,4 @@ RMD/figs/
 RMD/libs/
 *.code-workspace
 *.tar.gz
+revdep
