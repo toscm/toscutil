@@ -12,14 +12,22 @@ x \%none\% y
 
 \item{y}{object to return if \code{is.none(x)}}
 }
+\value{
+Returns \code{y} if \code{is.none(x)} else \code{x}
+}
 \description{
-Like rlang's \%||\% but also checks for empty lists and empty strings
+Like rlang's \verb{\%||\%} but also checks for empty lists and empty
+strings (for details see
+\emph{https://rdrr.io/cran/rlang/man/op-null-default.html}).
 }
 \examples{
-is.none(FALSE) # TRUE
-is.none(0) # TRUE
-is.none(NA) # TRUE
-is.none(list()) # TRUE
-is.none("") # TRUEs
-is.none(1) # FALSE
+FALSE \%none\% 2 # returns 2
+0 \%none\% 2 # returns 2
+NA \%none\% 2 # returns 2
+list() \%none\% 2 # returns 2
+"" \%none\% 2 # returns 2
+1 \%none\% 2 # returns 1
+}
+\seealso{
+\code{\link[=is.none]{is.none()}}
 }

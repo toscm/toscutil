@@ -1,5 +1,6 @@
 #' @export
-#' @title sys.exit
+#' @name sys.exit
+#' @title Terminate a non-interactive R Session
 #' @description Similar to [Python's
 #' sys.exit](https://docs.python.org/3/library/sys.html?highlight=exit#sys.exit).
 #' If used interactively, code execution is stopped with an error message,
@@ -7,6 +8,7 @@
 #' Rscript), code execution is stopped silently and the process exits with the
 #' provided status code.
 #' @param status exitcode for R process
+#' @return No return value, called for side effects
 #' @examples \dontrun{
 #' if (!file.exists("some.file")) {
 #'   cat("Error: some.file does not exist.\n", file=stderr())

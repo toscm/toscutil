@@ -2,13 +2,22 @@
 % Please edit documentation in R/now.R
 \name{now}
 \alias{now}
-\title{now}
+\title{Get Current Date and Time as string}
 \usage{
 now()
 }
+\value{
+\code{now} returns current system time as string of the form "YYYY-MM-DD
+hh:mm:ss" (strictly speaking, the format as given to \code{format()} is
+\verb{\%Y-\%m-\%d, \%H:\%M:\%S}, for details see \verb{[format.POSIXct()]}).
+}
 \description{
-return current system time as string of the form YYYY-MM-DD hh:mm:ss
+\code{now} returns current system time as string of the form
+"YYYY-MM-DD hh:mm:ss".
 }
 \examples{
 now() # "2021-11-27, 19:19:31"
+}
+\seealso{
+\code{\link[=Sys.time]{Sys.time()}}, \code{\link[=format.POSIXct]{format.POSIXct()}}
 }

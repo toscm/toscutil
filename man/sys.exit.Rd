@@ -2,12 +2,15 @@
 % Please edit documentation in R/sys.exit.R
 \name{sys.exit}
 \alias{sys.exit}
-\title{sys.exit}
+\title{Terminate a non-interactive R Session}
 \usage{
 sys.exit(status = 0)
 }
 \arguments{
 \item{status}{exitcode for R process}
+}
+\value{
+No return value, called for side effects
 }
 \description{
 Similar to \href{https://docs.python.org/3/library/sys.html?highlight=exit#sys.exit}{Python's sys.exit}.

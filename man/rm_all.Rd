@@ -6,6 +6,9 @@
 \usage{
 rm_all()
 }
+\value{
+No return value, called for side effects
+}
 \description{
 Same as rm(list=ls())
 }

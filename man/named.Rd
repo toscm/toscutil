@@ -2,16 +2,19 @@
 % Please edit documentation in R/named.R
 \name{named}
 \alias{named}
-\title{Auto-named list}
+\title{Automatically named List}
 \usage{
 named(...)
 }
 \arguments{
 \item{...}{List elements}
 }
+\value{
+Object of type \code{list} with names attribute set
+}
 \description{
-Like normal \code{list()}, except that unnamed elements are auto
-named to their symbol
+Like normal \code{list()}, except that unnamed elements are
+automatically named according to their symbol
 }
 \examples{
 a <- 1:10

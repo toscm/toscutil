@@ -2,17 +2,18 @@
 % Please edit documentation in R/getpd.R
 \name{getpd}
 \alias{getpd}
-\title{getpd}
+\title{Get Project Directory}
 \usage{
 getpd(root.files = c(".git", "DESCRIPTION", "NAMESPACE"))
 }
 \arguments{
-\item{root.files}{if any those files is found in a parent folder, that folder
-is returned}
+\item{root.files}{if any of these files is found in a parent folder, the
+path to that folder is returned}
 }
 \value{
-project root directory as string
+\code{getpd} returns the project root directory as string
 }
 \description{
-get project directory
+Find the project root directory by traversing the current
+working directory filepath upwards until a given set of files is found.
 }

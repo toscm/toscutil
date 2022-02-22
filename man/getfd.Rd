@@ -2,10 +2,11 @@
 % Please edit documentation in R/getfd.R
 \name{getfd}
 \alias{getfd}
-\title{getfd}
+\title{Get File Directory}
 \usage{
 getfd(
-  on.error = stop("No file sourced. Maybe you're in an interactive shell?", call. = F),
+  on.error = stop("No file sourced. Maybe you're in an interactive shell?", call. =
+    FALSE),
   winslash = "/"
 )
 }

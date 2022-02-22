@@ -1,12 +1,15 @@
 Package: toscutil
-Title: Utility Functions by ToSc
-Version: 2.0.2
+Title: Utility Functions by Tobias Schmidt (ToSc)
+Version: 2.1.0
 Authors@R:
     person(given = "Tobias",
            family = "Schmidt",
            role = c("aut", "cre"),
            email = "tobias.schmidt331@gmail.com")
-Description: Useful functions for everyday programming by Tobias Schmidt (ToSc).
+Description: Base R sometimes requires verbose statements for simple,
+    often recurring tasks, such as printing text without trailing
+    space, ending with newline. This package aims at providing
+    shorthands for such tasks.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
