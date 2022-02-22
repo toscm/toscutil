@@ -2,7 +2,7 @@
 % Please edit documentation in R/is.none.R
 \name{is.none}
 \alias{is.none}
-\title{is.none}
+\title{Like \href{https://docs.python.org/3/library/functions.html#bool}{pythons \code{bool}}}
 \usage{
 is.none(x)
 }
@@ -10,7 +10,8 @@ is.none(x)
 \item{x}{object to test}
 }
 \value{
-TRUE or FALSE
+TRUE if \code{x} is FALSE, 0, NULL, NA, an empty list or an empty
+string. Else FALSE.
 }
 \description{
 TRUE for FALSE, 0, NULL, NA, empty lists and empty string

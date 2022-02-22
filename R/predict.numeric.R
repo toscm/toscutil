@@ -1,4 +1,19 @@
-predict.numeric <- function(b, X, fm=NULL) {
+#' @export
+#' @name predict.numeric
+#' @title Predict Method for Numeric Vectors
+#' @description Interprets the provided numeric vector as linear model and uses
+#' it to generate prediction.
+#' @param object Named numeric vector of beta values. If an element is named
+#' "Intercept", that element is interpreted as model intercept.
+#' @param newdata Matrix with samples as rows and features as columns.
+#' @param ... further arguments passed to or from other methods
+#' @return Named numeric vector of predicted scores
+#' @examples X <- matrix(1:4, 2, 2, dimnames=list(c("s1", "s2"), c("a", "b")))
+#' b <- c(Intercept=3, a=2, b=1)
+#' predict(b, X)
+predict.numeric <- function(object, newdata, ...) {
+    b <- object
+    X <- newdata
     # Convert b to named vector b2
     if (class(b) == "matrix" || class(b) == "array") {
         if (ncol(b) == 1) {
@@ -26,7 +41,7 @@ predict.numeric <- function(b, X, fm=NULL) {
         stop(paste("b3 must be numeric but is ", typeof(b3)))
     }
 
-    # Caclulate scores
+    # Calculate scores
     tryCatch(
         expr = {
             scores <- as.numeric(as.matrix(X[, names(b3)]) %*% b3) + intercept

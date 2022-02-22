@@ -1,9 +1,11 @@
-#' @title getpd
-#' @description get project directory
-#' @param root.files if any those files is found in a parent folder, that folder
-#' is returned
-#' @return project root directory as string
 #' @export
+#' @name getpd
+#' @title Get Project Directory
+#' @description Find the project root directory by traversing the current
+#' working directory filepath upwards until a given set of files is found.
+#' @param root.files if any of these files is found in a parent folder, the
+#' path to that folder is returned
+#' @return `getpd` returns the project root directory as string
 getpd <- function(root.files=c(".git", "DESCRIPTION", "NAMESPACE")) {
   owd <- ""
   wd <- normalizePath(getwd(), winslash = "/")

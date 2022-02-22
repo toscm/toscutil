@@ -2,12 +2,16 @@
 % Please edit documentation in R/ifthen.R
 \name{ifthen}
 \alias{ifthen}
-\title{Sum of vector elements}
+\title{Shortcut for multiple else if statements}
 \usage{
 ifthen(...)
 }
 \arguments{
 \item{...}{pairs of checks and corresponding return values}
+}
+\value{
+\code{ifelse} returns the first value for which the corresponding
+statement evaluates to TRUE
 }
 \description{
 \code{ifthen(a, b, c, d, e, f, ...)} == \code{if (a) b else if (c) d else if (e) f}

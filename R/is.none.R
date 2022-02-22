@@ -1,10 +1,11 @@
-#' is.none
-#'
-#' TRUE for FALSE, 0, NULL, NA, empty lists and empty string
-#'
+#' @export
+#' @name is.none
+#' @title Like [pythons
+#' `bool`](https://docs.python.org/3/library/functions.html#bool)
+#' @description TRUE for FALSE, 0, NULL, NA, empty lists and empty string
 #' @param x object to test
-#'
-#' @return TRUE or FALSE
+#' @return TRUE if `x` is FALSE, 0, NULL, NA, an empty list or an empty
+#' string. Else FALSE.
 #' @examples
 #' is.none(FALSE) # TRUE
 #' is.none(0) # TRUE
@@ -12,7 +13,6 @@
 #' is.none(list()) # TRUE
 #' is.none("") # TRUE
 #' is.none(1) # FALSE
-#' @export
 is.none <- function(x) {
   # use || instead of any for lazy evaluation
   if (

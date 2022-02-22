@@ -2,7 +2,7 @@
 % Please edit documentation in R/corn.R
 \name{corn}
 \alias{corn}
-\title{corn - return corners of matrix like objects}
+\title{Return Corners of Matrix like Objects}
 \usage{
 corn(x, n = 2L)
 }
@@ -15,8 +15,8 @@ corn(x, n = 2L)
 \code{x[c(1:n, N-n:N), c(1:n, N-n:N)]}
 }
 \description{
-Like head and tail, but returns \code{n} rows/cols from each side of \code{x} (i.e.
-the corners of \code{x})
+Like head and tail, but returns \code{n} rows/cols from each side of
+\code{x} (i.e. the corners of \code{x})
 }
 \examples{
 corn(matrix(1:10000, 100))

@@ -1,4 +1,6 @@
-#' @title getfd
+#' @export
+#' @name getfd
+#' @title Get File Directory
 #' @description Return full path to current file directory
 #' @param on.error Expression to use if the current file directory cannot be
 #' determined. In that case, `normalizePath(<on.error>, winslash)` is returned.
@@ -8,11 +10,10 @@
 #' @return Current file directory as string
 #' @examples \dontrun{getfd()}
 #' getfd(on.error=getwd())
-#' @export
 getfd <- function(
     on.error=stop(
         "No file sourced. Maybe you're in an interactive shell?",
-        call.=F
+        call.=FALSE
     ),
     winslash="/"
 ) {

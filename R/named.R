@@ -1,8 +1,10 @@
 #' @export
-#' @title Auto-named list
-#' @description Like normal `list()`, except that unnamed elements are auto
-#' named to their symbol
+#' @name named
+#' @title Automatically named List
+#' @description Like normal `list()`, except that unnamed elements are
+#' automatically named according to their symbol
 #' @param ... List elements
+#' @return Object of type `list` with names attribute set
 #' @examples
 #' a <- 1:10
 #' b <- "helloworld"
