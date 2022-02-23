@@ -19,6 +19,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+## [2.2.0] - 2022-02-23
+
+- `Added`: Added function `home`
+
 ## [2.1.0] - 2022-02-22
 
 - `Infrastructure`: Added more details about package functionality and implemented methods in field Description of file DESCRIPTION
