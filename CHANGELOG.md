@@ -19,6 +19,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+## [2.3.0] - 2022-03-08
+
+- `Added`: Added functions `catsn`, `catnn`, `catf` and `catfn`
+
 ## [2.2.0] - 2022-02-23
 
 - `Added`: Added function `home`
