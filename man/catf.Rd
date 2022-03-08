@@ -32,6 +32,8 @@ catfn(
 
 \item{...}{passed on to \link[base]{sprintf}}
 
+\item{end}{passed on to \link[imlui]{cat2}}
+
 \item{file}{passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})}
 
 \item{sep}{passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})}
