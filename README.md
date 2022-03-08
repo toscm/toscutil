@@ -1,5 +1,6 @@
 <!-- badges: start -->
 [![R build status](https://github.com/toscm/toscutil/workflows/R-CMD-check/badge.svg)](https://github.com/toscm/toscutil/actions)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/toscutil)](https://cran.r-project.org/package=toscutil)
 <!-- badges: end -->
 
 # toscutil
