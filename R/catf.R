@@ -2,14 +2,14 @@
 #' @name catf
 #' @title Format and Print
 #' @description Same as `cat2(sprintf(fmt, ...))`
-#' @param fmt passed on to \link[base]{sprintf}
-#' @param ... passed on to \link[base]{sprintf}
-#' @param end passed on to \link[imlui]{cat2}
-#' @param file passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})
-#' @param sep passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})
-#' @param fill passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})
-#' @param labels passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})
-#' @param append passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})
+#' @param fmt passed on to [base::sprintf()]
+#' @param ... passed on to [base::sprintf()]
+#' @param end passed on to [cat2()]
+#' @param file passed on to [cat2()] (which passes it on to [base::cat()])
+#' @param sep passed on to [cat2()] (which passes it on to [base::cat()])
+#' @param fill passed on to [cat2()] (which passes it on to [base::cat()])
+#' @param labels passed on to [cat2()] (which passes it on to [base::cat()])
+#' @param append passed on to [cat2()] (which passes it on to [base::cat()])
 #' @return No return value, called for side effects
 #' @examples catf("A%dB%sC", 2, "asdf") # prints "A2BasdfC"
 #' @rdname catf
