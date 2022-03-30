@@ -19,6 +19,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+## [2.4.0] - 2022-03-08
+
+- `Added`: Added functions `config_dir`, `data_dir`, `norm_path`, `config_file`, `xdg_data_home`, `xdg_config_home`,
+
 ## [2.3.0] - 2022-03-08
 
 - `Added`: Added functions `catsn`, `catnn`, `catf` and `catfn`

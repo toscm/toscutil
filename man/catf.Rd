@@ -28,21 +28,21 @@ catfn(
 )
 }
 \arguments{
-\item{fmt}{passed on to \link[base]{sprintf}}
+\item{fmt}{passed on to \code{\link[base:sprintf]{base::sprintf()}}}
 
-\item{...}{passed on to \link[base]{sprintf}}
+\item{...}{passed on to \code{\link[base:sprintf]{base::sprintf()}}}
 
-\item{end}{passed on to \link[imlui]{cat2}}
+\item{end}{passed on to \code{\link[=cat2]{cat2()}}}
 
-\item{file}{passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})}
+\item{file}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
 
-\item{sep}{passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})}
+\item{sep}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
 
-\item{fill}{passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})}
+\item{fill}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
 
-\item{labels}{passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})}
+\item{labels}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
 
-\item{append}{passed on to \link[imlui]{cat2} (which passes it on to \link[base]{cat})}
+\item{append}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
 }
 \value{
 No return value, called for side effects
