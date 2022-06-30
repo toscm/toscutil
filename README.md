@@ -1,6 +1,6 @@
 <!-- badges: start -->
 [![R CMD check](https://github.com/toscm/toscutil/workflows/R-CMD-check/badge.svg)](https://github.com/toscm/toscutil/actions)
-[![Codecov test coverage](https://codecov.io/gh/toscm/toscutil/branch/main/graph/badge.svg)](https://app.codecov.io/gh/toscm/toscutil?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/toscm/toscutil/branch/master/graph/badge.svg)](https://app.codecov.io/gh/toscm/toscutil?branch=master)
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version/toscutil)](https://cran.r-project.org/package=toscutil)
 <!-- badges: end -->
 
