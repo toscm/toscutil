@@ -19,6 +19,15 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+## [2.5.0] - 2022-06-30
+
+- `Added`: Added functions `caller`, `function_locals`, `locals`, `now_ms` and `stub`
+- `Changed`: Changed default values for function `cat2`
+- `Changed`: Changed return value for function `now`. Timezone is not returned as well, i.e. instead of "2022-12-24 11:13:57" something like "2022-12-24 11:13:57 CEST" is returned now.
+- `Changed`: Added depenendies to core packages "methods" and "utils" and to 3rd party package "rlang"
+- `Fixed`: Made function `predict.numeric` more robust (check for classes "matrix" and "array" is now done using function `inherits`).
+- `Deprecated`: Deprecated functions `cat0`, `catn`, `cat0n`, `catsn` and `catnn`
+
 ## [2.4.0] - 2022-03-08
 
 - `Added`: Added functions `config_dir`, `data_dir`, `norm_path`, `config_file`, `xdg_data_home`, `xdg_config_home`,
