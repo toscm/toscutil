@@ -8,16 +8,17 @@ now()
 }
 \value{
 \code{now} returns current system time as string of the form "YYYY-MM-DD
-hh:mm:ss" (strictly speaking, the format as given to \code{format()} is
-\verb{\%Y-\%m-\%d, \%H:\%M:\%S}, for details see \verb{[format.POSIXct()]}).
+hh:mm:ss TZ", where TZ means "timezone" (strictly speaking, the format as
+given to \code{format()} is \verb{\%Y-\%m-\%d \%H:\%M:\%S}, for details see
+\verb{[format.POSIXct()]}).
 }
 \description{
 \code{now} returns current system time as string of the form
-"YYYY-MM-DD hh:mm:ss".
+"YYYY-MM-DD hh:mm:ss TZ", where TZ means "timezone".
 }
 \examples{
-now() # "2021-11-27, 19:19:31"
+now() # "2021-11-27 19:19:31 CEST"
 }
 \seealso{
-\code{\link[=Sys.time]{Sys.time()}}, \code{\link[=format.POSIXct]{format.POSIXct()}}
+\code{\link[=now_ms]{now_ms()}}, \code{\link[=Sys.time]{Sys.time()}}, \code{\link[=format.POSIXct]{format.POSIXct()}}
 }

@@ -1,11 +1,12 @@
 <!-- badges: start -->
-[![R build status](https://github.com/toscm/toscutil/workflows/R-CMD-check/badge.svg)](https://github.com/toscm/toscutil/actions)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/toscutil)](https://cran.r-project.org/package=toscutil)
+[![R CMD check](https://github.com/toscm/toscutil/workflows/R-CMD-check/badge.svg)](https://github.com/toscm/toscutil/actions)
+[![Codecov test coverage](https://codecov.io/gh/toscm/toscutil/branch/main/graph/badge.svg)](https://app.codecov.io/gh/toscm/toscutil?branch=main)
+[![CRAN Status Badge](https://www.r-pkg.org/badges/version/toscutil)](https://cran.r-project.org/package=toscutil)
 <!-- badges: end -->
 
 # toscutil
 
-Useful functions for everyday programming by Tobias Schmidt (ToSc).
+Useful functions for everyday programming.
 
 ## Installation
 

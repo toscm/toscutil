@@ -6,7 +6,9 @@
 \usage{
 config_dir(
   app_name,
-  cl_arg = {     commandArgs()[grep("--config-dir", commandArgs()) + 1] },
+  cl_arg = {
+     commandArgs()[grep("--config-dir", commandArgs()) + 1]
+ },
   env_var = Sys.getenv(toupper(paste0(app_name, "_config_dir()"))),
   create = FALSE,
   sep = "/"

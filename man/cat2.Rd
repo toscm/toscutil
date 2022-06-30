@@ -9,7 +9,7 @@
 \alias{catnn}
 \title{Concatenate and Print}
 \usage{
-cat2(..., sep, end)
+cat2(..., sep = " ", end = "\\n")
 
 cat0(..., sep = "", end = "")
 
@@ -33,7 +33,11 @@ No return value, called for side effects
 }
 \description{
 Same as \code{cat} but with an additional argument \code{end},
-which gets printed after all other elements.
+which gets printed after all other elements. Inspired by pythons \code{print}
+command.
+
+\strong{Deprecation note}: all cat aliases, i.e., everything except cat2 are
+deprecated and should not be used any more!
 }
 \examples{
 cat0("hello", "world") # prints "helloworld" (without newline)

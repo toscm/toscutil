@@ -15,7 +15,7 @@ predict.numeric <- function(object, newdata, ...) {
     b <- object
     X <- newdata
     # Convert b to named vector b2
-    if (class(b) == "matrix" || class(b) == "array") {
+    if (inherits(b, "matrix") || inherits(b, "array")) {
         if (ncol(b) == 1) {
             b2 <- b[,1] # preserves colnames as names
         } else if (nrow(b) == 1) {
