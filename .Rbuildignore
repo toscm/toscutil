@@ -11,3 +11,4 @@
 ^README.md$
 ^revdep$
 ^submit_to_cran.R$
+^dist$
