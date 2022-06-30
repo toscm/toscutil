@@ -25,6 +25,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - `Changed`: Changed default values for function `cat2`
 - `Changed`: Changed return value for function `now`. Timezone is not returned as well, i.e. instead of "2022-12-24 11:13:57" something like "2022-12-24 11:13:57 CEST" is returned now.
 - `Changed`: Added depenendies to core packages "methods" and "utils" and to 3rd party package "rlang"
+- `Changed`: Package Title from "Utility Functions by Tobias Schmidt (ToSc)" to "Utility Functions"
 - `Fixed`: Made function `predict.numeric` more robust (check for classes "matrix" and "array" is now done using function `inherits`).
 - `Deprecated`: Deprecated functions `cat0`, `catn`, `cat0n`, `catsn` and `catnn`
 
