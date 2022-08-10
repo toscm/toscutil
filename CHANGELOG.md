@@ -19,6 +19,20 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+## [2.5.1] - 2022-08-10
+
+- `Fixed`: `is.none` now also handles atomic vectors of length 0, e.g. `character()`, `numeric()` and `logical()`
+
+## [2.5.0] - 2022-06-30
+
+- `Added`: Added functions `caller`, `function_locals`, `locals`, `now_ms` and `stub`
+- `Changed`: Changed default values for function `cat2`
+- `Changed`: Changed return value for function `now`. Timezone is not returned as well, i.e. instead of "2022-12-24 11:13:57" something like "2022-12-24 11:13:57 CEST" is returned now.
+- `Changed`: Added depenendies to core packages "methods" and "utils" and to 3rd party package "rlang"
+- `Changed`: Package Title from "Utility Functions by Tobias Schmidt (ToSc)" to "Utility Functions"
+- `Fixed`: Made function `predict.numeric` more robust (check for classes "matrix" and "array" is now done using function `inherits`).
+- `Deprecated`: Deprecated functions `cat0`, `catn`, `cat0n`, `catsn` and `catnn`
+
 ## [2.5.0] - 2022-06-30
 
 - `Added`: Added functions `caller`, `function_locals`, `locals`, `now_ms` and `stub`
