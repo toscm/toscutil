@@ -2,7 +2,7 @@
 [![R CMD check](https://github.com/toscm/toscutil/workflows/R-CMD-check/badge.svg)](https://github.com/toscm/toscutil/actions)
 [![Codecov test coverage](https://codecov.io/gh/toscm/toscutil/branch/master/graph/badge.svg)](https://app.codecov.io/gh/toscm/toscutil?branch=master)
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version/toscutil)](https://cran.r-project.org/package=toscutil)
-[![CRAN Downloads Badge](https://cranlogs.r-pkg.org/badges/grand-total/toscutil)
+[![CRAN Downloads Badge](https://cranlogs.r-pkg.org/badges/grand-total/toscutil)](https://cranlogs.r-pkg.org/badges/grand-total/toscutil)
 <!-- badges: end -->
 
 # toscutil
