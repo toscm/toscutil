@@ -19,8 +19,11 @@ TRUE for FALSE, 0, NULL, NA, empty lists and empty string
 \examples{
 is.none(FALSE) # TRUE
 is.none(0) # TRUE
+is.none(1) # FALSE
 is.none(NA) # TRUE
 is.none(list()) # TRUE
 is.none("") # TRUE
-is.none(1) # FALSE
+is.none(character()) # TRUE
+is.none(numeric()) # TRUE
+is.none(logical()) # TRUE
 }

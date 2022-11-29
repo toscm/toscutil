@@ -19,6 +19,11 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+## [2.6.0] - 2022-28-11
+
+- `Added`: Added function `help2`
+- `Infrastructure`: Added function reference to README.md
+
 ## [2.5.1] - 2022-08-10
 
 - `Fixed`: `is.none` now also handles atomic vectors of length 0, e.g. `character()`, `numeric()` and `logical()`

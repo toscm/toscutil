@@ -4,7 +4,7 @@
 #' @description Same as `cat` but with an additional argument `end`,
 #' which gets printed after all other elements. Inspired by pythons `print`
 #' command.
-#' 
+#'
 #' **Deprecation note**: all cat aliases, i.e., everything except cat2 are
 #' deprecated and should not be used any more!
 #' @param ... objects passed on to \link[base]{cat}

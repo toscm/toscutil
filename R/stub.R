@@ -15,7 +15,7 @@
 stub <- function(func, ..., envir = parent.frame()) {
   default_args <- as.list(formals(func))
   args <- list(...)
-  stubbed_args <- modifyList(default_args, args)
+  stubbed_args <- utils::modifyList(default_args, args)
   do.call(rlang::env_bind, args=c(envir, stubbed_args))
   return(stubbed_args)
 }
