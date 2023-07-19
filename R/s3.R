@@ -2,15 +2,17 @@
 #' @name predict.numeric
 #' @title Predict Method for Numeric Vectors
 #' @description Interprets the provided numeric vector as linear model and uses
-#' it to generate prediction.
+#' it to generate predictions. If an element of the numeric vector has the name
+#' `"Intercept"` this element is treated as the intercept of the linear model.
 #' @param object Named numeric vector of beta values. If an element is named
 #' "Intercept", that element is interpreted as model intercept.
 #' @param newdata Matrix with samples as rows and features as columns.
 #' @param ... further arguments passed to or from other methods
 #' @return Named numeric vector of predicted scores
-#' @examples X <- matrix(1:4, 2, 2, dimnames=list(c("s1", "s2"), c("a", "b")))
-#' b <- c(Intercept=3, a=2, b=1)
+#' @examples X <- matrix(1:4, 2, 2, dimnames = list(c("s1", "s2"), c("a", "b")))
+#' b <- c(Intercept = 3, a = 2, b = 1)
 #' predict(b, X)
+#' @keywords S3
 predict.numeric <- function(object, newdata, ...) {
     b <- object
     X <- newdata
