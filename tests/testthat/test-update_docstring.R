@@ -15,10 +15,5 @@ test_that("update_docstring works", {
       "#' ... should be unnamed, and dispatch is on the first argument.",
       sep = "\n"
     )
-    message("\nUPDATED DOCSTRING:")
-    message(updated_docstring)
-    message("\nEXPECTED DOCSTRING:")
-    message(expected_docstring)
-    message("")
     testthat::expect_equal(expected_docstring, updated_docstring)
 })

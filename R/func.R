@@ -136,7 +136,18 @@ get_formals <- function(uri, content, func) {
   # functions from other packages. However, in this case, we don't really have
   # a choice, unless we want to redefine approx. 20 functions from
   # languageserver inside this package.
-  formals <- pobj$formals[[func]]
+  formals <- if ("formals" %in% names(pobj)) {
+    pobj$formals[[func]]
+  } else if ("functions" %in% names(pobj)) {
+    formals(pobj$functions[[func]])
+  } else {
+    stop(paste(
+      "Could not find function definition.",
+      "This might be caused by an update of the languageserver package.",
+      "Please create an issue at https://github.com/toscm/toscutil/issues.",
+      sep = "\n"
+    ))
+  }
   return(formals)
 }
 
