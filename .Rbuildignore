@@ -1,3 +1,4 @@
+^_pkgdown\.yml$
 ^.*\.Rproj\.*$
 ^.*\.tar\.gz$
 ^\.git$
@@ -7,8 +8,10 @@
 ^check$
 ^cran-comments.md$
 ^CRAN-SUBMISSION$
+^dist$
+^docs$
 ^LICENSE\.md$
+^pkgdown$
 ^README.md$
 ^revdep$
 ^submit_to_cran.R$
-^dist$
