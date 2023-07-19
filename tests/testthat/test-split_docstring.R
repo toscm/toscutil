@@ -18,13 +18,6 @@ test_that("update_docstring works", {
       export = "#' @export\n",
       details = "#' @details This is a generic function: methods can be defined for it directly\n#' or via the Summary group generic. For this to work properly, the arguments\n#' ... should be unnamed, and dispatch is on the first argument."
     )
-    message("\nHEAD:")
-    message(dfs$head)
-    message("\nPARAM:")
-    message(dfs$param)
-    message("\nTAIL:")
-    message(dfs$tail)
-    message("")
     testthat::expect_equal(dfs$head, head_expected)
     testthat::expect_equal(dfs$param, param_expected)
     testthat::expect_equal(dfs$tail, tail_expected)
