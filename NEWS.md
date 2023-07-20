@@ -17,6 +17,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+# toscutil v2.7.1
+
+- `Fixed`: Fixed `split_docstring()`. Docstrings ending with a keyword, e.g. `@export` are now returned correctly without additional whitespace.
+
 # toscutil v2.7.0
 
 - `Added`: Added [pkgdown](https://pkgdown.r-lib.org/index.html) website
@@ -70,7 +74,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 # toscutil v2.0.2
 
-`Fixed`: Improved .Rbuildignore
+`Fixed`: Improved `.Rbuildignore`
 
 # toscutil v2.0.1
 

@@ -28,3 +28,15 @@ f4 <- function(a,
 ) {
   cat(a, b, x)
 }
+
+
+#' @title The Title
+#' @description some description
+#' @param a Aaaaaa
+#' @param b BbbBbb
+#' @param z ZzZzZz
+#' @details Some details
+#' @export
+f5 <- function(a, b, x = 1) {
+  cat("f3")
+}

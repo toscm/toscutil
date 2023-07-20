@@ -1,4 +1,4 @@
-test_that("update_docstring works", {
+test_that("split_docstring works for f2", {
     uri <- system.file("testfiles/funcs.R", package = "toscutil")
     content <- readLines(uri)
     docstring <- get_docstring(content, "f2")
@@ -16,8 +16,25 @@ test_that("update_docstring works", {
     )
     tail_expected <- c(
       export = "#' @export\n",
-      details = "#' @details This is a generic function: methods can be defined for it directly\n#' or via the Summary group generic. For this to work properly, the arguments\n#' ... should be unnamed, and dispatch is on the first argument."
+      details = paste0(
+        "#' @details This is a generic function: methods can be defined for it directly\n",
+        "#' or via the Summary group generic. For this to work properly, the arguments\n",
+        "#' ... should be unnamed, and dispatch is on the first argument.\n"
+      )
     )
+    testthat::expect_equal(dfs$head, head_expected)
+    testthat::expect_equal(dfs$param, param_expected)
+    testthat::expect_equal(dfs$tail, tail_expected)
+})
+
+test_that("split_docstring works for f5", {
+    uri <- system.file("testfiles/funcs.R", package = "toscutil")
+    content <- readLines(uri)
+    docstring <- get_docstring(content, "f5")
+    dfs <- split_docstring(docstring)
+    head_expected <- c(header = "", title = "#' @title The Title\n", description = "#' @description some description\n")
+    param_expected <- c(a = "#' @param a Aaaaaa\n", b = "#' @param b BbbBbb\n", z = "#' @param z ZzZzZz\n")
+    tail_expected <- c(details = "#' @details Some details\n", export = "#' @export\n")
     testthat::expect_equal(dfs$head, head_expected)
     testthat::expect_equal(dfs$param, param_expected)
     testthat::expect_equal(dfs$tail, tail_expected)

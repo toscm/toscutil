@@ -17,8 +17,12 @@ Github
 gitignore
 gitlab
 hh
+io
 md
 NES
+occurence
+param
+Param
 pkgdown
 priori
 Rbuildignore
@@ -32,7 +36,9 @@ ss
 stdout
 sys
 ToSc
+toscm
 TZ
+uri
 USERPROFILE
 XDG
 YYYY

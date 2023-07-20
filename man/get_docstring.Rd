@@ -11,7 +11,7 @@ get_docstring(content, func, collapse = TRUE, template = DOCSTRING_TEMPLATE)
 
 \item{func}{Name of function to get docstring for.}
 
-\item{collapse}{Whether to collapse all docstring lins a single string.}
+\item{collapse}{Whether to collapse all docstring into a single string.}
 
 \item{template}{String to return in case no docstring could be found.}
 }

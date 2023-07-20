@@ -80,7 +80,7 @@ function_locals <- function(without = c(), strip_function_args = TRUE) {
 #' documentation string (docstring).
 #' @param content R code as string.
 #' @param func Name of function to get docstring for.
-#' @param collapse Whether to collapse all docstring lins a single string.
+#' @param collapse Whether to collapse all docstring into a single string.
 #' @param template String to return in case no docstring could be found.
 #' @return A character vector of length 1 containing either the docstring or the
 #' empty string (in case no documentation could be detected).
@@ -107,6 +107,7 @@ get_docstring <- function(content,
     docstring <- content[start_line:(func_line - 1)]
     if (collapse) {
       docstring <- paste(docstring, collapse = "\n")
+      docstring <- paste0(docstring, "\n")
     }
   }
   return(docstring)
@@ -189,7 +190,7 @@ split_docstring <- function(docstring) {
   # c("", "Sum of Elements", "... Summands", "")
   # Adding a leading word is not necessary, as this strsplit handles this
   # correctly by default.
-  pattern <- "#'\\s+@\\w+\\s+"
+  pattern <- "#'\\s+@\\w+"
   word <- "REMOVEME"
   docstring <- paste(docstring, word)
   substrings <- strsplit(docstring, pattern, perl = TRUE)[[1]]
@@ -213,7 +214,7 @@ split_docstring <- function(docstring) {
   # #' @export          --> tail
   # #' @param c DescC   --> param
   # #' @details blablaa --> tail
-  param_names <- sapply(strsplit(substrings, "\\s"), function(words) words[1])
+  param_names <- sapply(strsplit(substrings, "\\s+"), function(words) words[2])
   param_names[tag_names != "param"] <- NA
   ids <- seq_along(tags)
   ids_params <- which(tag_names == "param")
