@@ -1,0 +1,28 @@
+url: https://toscm.github.io/toscutil/
+template:
+  bootstrap: 5
+reference:
+  - title: Base Extensions
+    desc:  Extended versions of base R functions
+    contents: [has_keyword("base")]
+  - title: Condition Checking
+    desc:  Function for condition checking
+    contents: [has_keyword("check")]
+  - title: Function Writing
+    desc:  Functions for writing functions
+    contents: [has_keyword("func")]
+  - title: Live Programming
+    desc:  Functions for experimenting in interactive (live) R sessions
+    contents: [has_keyword("live")]
+  - title: Path Finding
+    desc:  Functions returning important paths
+    contents: [has_keyword("path")]
+  - title: S3 Methods
+    desc:  S3 methods
+    contents: [has_keyword("S3")]
+  - title: Time Related
+    desc:  Function returning datetime
+    contents: [has_keyword("time")]
+  - title: Deprecated
+    desc:  Deprecated functions that should no longer be used
+    contents: [has_keyword("depr")]
