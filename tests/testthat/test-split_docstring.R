@@ -27,6 +27,23 @@ test_that("split_docstring works for f2", {
     testthat::expect_equal(dfs$tail, tail_expected)
 })
 
+test_that("split_docstring works for f4", {
+    uri <- system.file("testfiles/funcs.R", package = "toscutil")
+    content <- readLines(uri)
+    docstring <- get_docstring(content, "f4")
+    dfs <- split_docstring(docstring)
+    head_expected <- c(
+      header = "",
+      title = "#' @title TODO (e.g. 'Sum of Vector Elements')\n",
+      description = "#' @description TODO (e.g. 'sum returns the sum of all the values present in its arguments.'\n"
+    )
+    param_expected <- structure(character(0), names = character(0))
+    tail_expected <- structure(character(0), names = character(0))
+    testthat::expect_equal(dfs$head, head_expected)
+    testthat::expect_equal(dfs$param, param_expected)
+    testthat::expect_equal(dfs$tail, tail_expected)
+})
+
 test_that("split_docstring works for f5", {
     uri <- system.file("testfiles/funcs.R", package = "toscutil")
     content <- readLines(uri)

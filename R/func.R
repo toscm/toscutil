@@ -176,7 +176,7 @@ locals <- function(without = c(), env = parent.frame()) {
 #' @return List with 3 elements: head, param and tail.
 #' @examples
 #' uri <- system.file("testfiles/funcs.R", package = "toscutil")
-#' func <- "f2"
+#' func <- "f4"
 #' content <- readLines(uri)
 #' docstring <- get_docstring(content, func)
 #' split_docstring(docstring)
@@ -218,7 +218,7 @@ split_docstring <- function(docstring) {
   param_names[tag_names != "param"] <- NA
   ids <- seq_along(tags)
   ids_params <- which(tag_names == "param")
-  ids_head <- ids[ids < min(ids_params)]
+  ids_head <- ids[ids < min(ids_params, length(tags) + 1)]
   ids_tail <- ids[!ids %in% c(ids_head, ids_params)]
   head <- paste0(tags[ids_head], substrings[ids_head])
   param <- paste0(tags[ids_params], substrings[ids_params])
@@ -282,7 +282,7 @@ sys.exit <- function(status = 0) {
 #' @return A character vector of length 1 containing the updated docstring.
 #' @examples
 #' uri <- system.file("testfiles/funcs.R", package = "toscutil")
-#' func <- "f2"
+#' func <- "f4"
 #' update_docstring(uri, func)
 #' @keywords func
 update_docstring <- function(uri, func, content = NULL) {
@@ -314,8 +314,6 @@ update_docstring <- function(uri, func, content = NULL) {
 #' @format A single string, i.e. a character vector of length 1.
 #' @keywords func
 #' @examples DOCSTRING_TEMPLATE
-DOCSTRING_TEMPLATE <- paste(
-  "#' @title TODO (e.g. 'Sum of Vector Elements')",
-  "#' @description TODO (e.g. 'sum returns the sum of all the values present in its arguments.'",
-  sep = "\n"
-)
+DOCSTRING_TEMPLATE <- paste0(
+  "#' @title TODO (e.g. 'Sum of Vector Elements')\n",
+  "#' @description TODO (e.g. 'sum returns the sum of all the values present in its arguments.'\n")

@@ -21,13 +21,14 @@ f2 <- function(a, b, x = 1, ...) {
   cat("f3")
 }
 
-f4 <- function(a,
-               b,
-               x = {function(z) {x^2} (3)},
-               ...
-) {
-  cat(a, b, x)
-}
+# Strangely formatted function definition
+f4    = function(a,
+             b,
+      x = {function(z) {x^2} (3)},
+   ...
+) { cat(a, b, x)
+    }
+
 
 
 #' @title The Title

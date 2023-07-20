@@ -14,6 +14,15 @@ test_that("update_docstring works", {
       "#' or via the Summary group generic. For this to work properly, the arguments\n",
       "#' ... should be unnamed, and dispatch is on the first argument.\n"
     )
+    updated_docstring_f4 <- update_docstring(uri, "f4")
+    expected_docstring_f4 <- paste0(
+      "#' @title .*\n",
+      "#' @description .*\n",
+      "#' @param a TODO\n",
+      "#' @param b TODO\n",
+      "#' @param x TODO\n",
+      "#' @param ... TODO\n"
+    )
     updated_docstring_f5 <- update_docstring(uri, "f5")
     expected_docstring_f5 <- paste0(
       "#' @title The Title\n",
@@ -24,6 +33,7 @@ test_that("update_docstring works", {
       "#' @details Some details\n",
       "#' @export\n"
     )
-    testthat::expect_equal(expected_docstring_f2, updated_docstring_f2)
-    testthat::expect_equal(expected_docstring_f5, updated_docstring_f5)
+    testthat::expect_equal(updated_docstring_f2, expected_docstring_f2)
+    testthat::expect_match(updated_docstring_f4, expected_docstring_f4, perl = TRUE)
+    testthat::expect_equal(updated_docstring_f5, expected_docstring_f5)
 })
