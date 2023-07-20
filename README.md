@@ -26,7 +26,7 @@ devtools::install_github("toscm/toscutil")
 
 ## Usage
 
-To use any function or data object, first [install](#installation) the package and then just enter any object's fully qualified name into a running R session, e.g. `toscutil::now_ms()`. You can find a curated list of existing functions at <toscm.github.io/toscutil/>. Alternatively, you can load the package first, using command `library("toscutil")` and then access any symbol directly by its name, e.g. `now_ms()`.
+To use any function or data object, first [install](#installation) the package and then just enter any object's fully qualified name into a running R session, e.g. `toscutil::now_ms()`. You can find a curated list of existing functions at [toscm.github.io/toscutil/](https://toscm.github.io/toscutil/). Alternatively, you can load the package first, using command `library("toscutil")` and then access any symbol directly by its name, e.g. `now_ms()`.
 
 ## Contribute
 
@@ -34,12 +34,12 @@ Things you can update, are:
 
 1. Function code in folder [R](R)
 2. Function documentation in folder [R](R)
-3. Package documentation in folder [vignettes]
+3. Package documentation in folder `vignettes`
 4. Test cases in folder [tests](tests)
 5. Dependencies in file [DESCRIPTION](DESCRIPTION)
 6. Authors in file [DESCRIPTION](DESCRIPTION)
 
-Whenever you update any of those things, you should run the below commands to check that everything is still working  as expected
+Whenever you update any of those things, you should run the below commands to check that everything is still working as expected
 
 ```R
 devtools::test() # Execute tests from tests folder
