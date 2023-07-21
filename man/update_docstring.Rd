@@ -28,7 +28,7 @@ parameters are added to the docstring.
 }
 \examples{
 uri <- system.file("testfiles/funcs.R", package = "toscutil")
-func <- "f2"
+func <- "f4"
 update_docstring(uri, func)
 }
 \keyword{func}

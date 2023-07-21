@@ -18,7 +18,7 @@ Split a docstring into a head, param and tail part.
 }
 \examples{
 uri <- system.file("testfiles/funcs.R", package = "toscutil")
-func <- "f2"
+func <- "f4"
 content <- readLines(uri)
 docstring <- get_docstring(content, func)
 split_docstring(docstring)
