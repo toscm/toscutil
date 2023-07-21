@@ -54,10 +54,9 @@ After doing these steps, you can push your changes to Github and then use the fo
 ```R
 rcmdcheck::rcmdcheck() # Slower, but more realistic test than devtools::check()
 devtools::spell_check() # Check spelling. Add false positives to inst/WORDLIST
-devtools::release() # Submits the package to CRAN
+devtools::submit_cran() # Submits the package to CRAN
 revdepcheck::revdep_check(num_workers = 8) # Reverse dependency check
 # See https://r-pkgs.org/release.html#sec-release-revdep-checks for details
-devtools::submit_cran()
 ```
 
 Above steps are based on: <https://r-pkgs.org/release.html>
