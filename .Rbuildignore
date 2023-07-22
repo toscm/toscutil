@@ -4,7 +4,7 @@
 ^\.git$
 ^\.github$
 ^\.vscode$
-^CHANGELOG.md$
+^NEWS.md$
 ^check$
 ^cran-comments.md$
 ^CRAN-SUBMISSION$

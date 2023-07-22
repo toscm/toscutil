@@ -17,6 +17,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+# toscutil v2.7.2
+
+- `Fixed`: Added `NEWS.md` to [.Rbuildignore](.Rbuildignore)
+
 # toscutil v2.7.1
 
 - `Fixed`: Fixed `split_docstring()`. Docstrings ending with a keyword, e.g. `@export` are now returned correctly without additional whitespace.
