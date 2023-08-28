@@ -4,7 +4,15 @@
 \alias{cat2}
 \title{Concatenate and Print}
 \usage{
-cat2(..., sep = " ", end = "\\n")
+cat2(
+  ...,
+  sep = " ",
+  end = "\\n",
+  file = "",
+  append = FALSE,
+  fill = FALSE,
+  labels = NULL
+)
 }
 \arguments{
 \item{...}{objects passed on to \link[base]{cat}}
@@ -12,6 +20,14 @@ cat2(..., sep = " ", end = "\\n")
 \item{sep}{a character vector of strings to append after each element}
 
 \item{end}{a string to print after all other elements}
+
+\item{file}{passed on to \code{\link[base:cat]{base::cat()}}}
+
+\item{append}{passed on to \code{\link[base:cat]{base::cat()}}}
+
+\item{fill}{passed on to \code{\link[base:cat]{base::cat()}}}
+
+\item{labels}{passed on to \code{\link[base:cat]{base::cat()}}}
 }
 \value{
 No return value, called for side effects

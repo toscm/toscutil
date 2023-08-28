@@ -17,6 +17,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
     the patch version.
 
+# toscutil v2.7.3
+
+- `Fixed`: when using `cat2` to print to files the `end` kept printing to the console. This behaviour is fixed now and `end` also goes to the file.
+
 # toscutil v2.7.2
 
 - `Fixed`: Added `NEWS.md` to [.Rbuildignore](.Rbuildignore)

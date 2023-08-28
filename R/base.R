@@ -30,23 +30,26 @@ capture.output2 <- function(..., collapse = "\n", trim = FALSE) {
 
 
 #' @export
-#' @name cat2
 #' @title Concatenate and Print
+#' @keywords base
 #' @description Same as `cat` but with an additional argument `end`,
 #' which gets printed after all other elements. Inspired by pythons `print`
 #' command.
 #' @param ... objects passed on to \link[base]{cat}
 #' @param sep a character vector of strings to append after each element
 #' @param end a string to print after all other elements
+#' @param file passed on to [base::cat()]
+#' @param append passed on to [base::cat()]
+#' @param fill passed on to [base::cat()]
+#' @param labels passed on to [base::cat()]
 #' @return No return value, called for side effects
 #' @examples
 #' x <- 1
 #' cat("x:", x, "\n") # prints 'Number: 1 \n' (with a space between 1 and \n)
 #' cat2("x:", x) # prints 'Number: 1\n'  (without space)
-#' @keywords base
-cat2 <- function(..., sep = " ", end = "\n") {
-  cat(..., sep = sep)
-  cat(end)
+cat2 <- function(..., sep = " ", end = "\n", file = "", append = FALSE, fill = FALSE, labels = NULL) {
+  cat(..., file = file, sep = sep, end = end, append = append, fill = fill, labels = labels)
+  cat(end, file = file, sep = sep, end = end, append = append, fill = fill, labels = labels)
 }
 
 
