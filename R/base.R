@@ -48,8 +48,8 @@ capture.output2 <- function(..., collapse = "\n", trim = FALSE) {
 #' cat("x:", x, "\n") # prints 'Number: 1 \n' (with a space between 1 and \n)
 #' cat2("x:", x) # prints 'Number: 1\n'  (without space)
 cat2 <- function(..., sep = " ", end = "\n", file = "", append = FALSE, fill = FALSE, labels = NULL) {
-  cat(..., file = file, sep = sep, end = end, append = append, fill = fill, labels = labels)
-  cat(end, file = file, sep = sep, end = end, append = append, fill = fill, labels = labels)
+  cat(..., file = file, sep = sep, append = append, fill = fill, labels = labels)
+  cat(end, file = file, sep = sep, append = append, fill = fill, labels = labels)
 }
 
 
