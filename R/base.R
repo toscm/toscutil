@@ -130,7 +130,7 @@ help2 <- function(topic,
   if (missing(topic)) {
     symbols <- ls(paste0("package:", package))
     helptxts <- sapply(symbols, help2, format = format)
-    names(helptxts) <- symbols
+    nams(helptxts) <- symbols
     return(helptxts)
   }
   helpfile <- tryCatch(.getHelpFile(utils::help(topic)), error = \(e) NULL)
@@ -175,8 +175,8 @@ help2 <- function(topic,
 named <- function(...){
     .elems <- list(...)
     .symbols <- as.character(substitute(list(...)))[-1]
-    .idx <- names(.elems) == ""
-    names(.elems)[.idx] <- .symbols[.idx]
+    .idx <- nams(.elems) == ""
+    nams(.elems)[.idx] <- .symbols[.idx]
     .elems
 }
 
@@ -247,7 +247,7 @@ fetchRdDB <- function(filebase, key = NULL) {
       fetch(key)
     } else {
       res <- lapply(vars, fetch)
-      names(res) <- vars
+      nams(res) <- vars
       res
     }
   }

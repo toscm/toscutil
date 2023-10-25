@@ -9,10 +9,11 @@
 #' TZ", where XX means "milliseconds" and TZ means "timezone".
 #' @keywords time
 #' @seealso [now()], [Sys.time()], [format.POSIXct()]
-now_ms <- function() {
+#' @param usetz Whether to include timezone in output.
+now_ms <- function(usetz = TRUE) {
   opts <- options(digits.secs = 2)
   on.exit(options(opts))
-  format(Sys.time(), '%Y-%m-%d %H:%M:%OS', usetz = TRUE)
+  format(Sys.time(), '%Y-%m-%d %H:%M:%OS', usetz = usetz)
 }
 
 
