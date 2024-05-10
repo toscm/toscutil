@@ -13,12 +13,7 @@ sys.exit(status = 0)
 No return value, called for side effects
 }
 \description{
-Similar to python's
-\href{https://docs.python.org/3/library/sys.html?highlight=exit#sys.exit}{sys.exit}.
-If used interactively, code execution is stopped with an error message,
-giving the provided status code. If used non-interactively (e.g. through
-Rscript), code execution is stopped silently and the process exits with the
-provided status code.
+Similar to python's \href{https://docs.python.org/3/library/sys.html?highlight=exit#sys.exit}{sys.exit}. If used interactively, code execution is stopped with an error message, giving the provided status code. If used non-interactively (e.g. through Rscript), code execution is stopped silently and the process exits with the provided status code.
 }
 \examples{
 \dontrun{

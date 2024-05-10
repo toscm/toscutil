@@ -4,7 +4,10 @@
 \alias{now_ms}
 \title{Get Current Date and Time as string}
 \usage{
-now_ms()
+now_ms(usetz = TRUE)
+}
+\arguments{
+\item{usetz}{Whether to include timezone in output.}
 }
 \value{
 Current system time as string of the form "YYYY-MM-DD hh:mm:ss.XX

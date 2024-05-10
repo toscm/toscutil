@@ -14,10 +14,10 @@ trace_env <- as.environment(list(
 #' @return No return value, called for side effects
 #' @details Some function define their own [on.exit()] handlers with option `add = FALSE`. For those functions, exit tracing is impossible (as described in [trace()]). For now those functions have to be detected and ignored manually by the user using argument `funign`.
 #' @examples \dontrun{
-#' trace_package("graphics", funign = "plot.default") # 1)
+#' # Trace all function from the graphics package, except for `plot.default`
+#' # as it defines its own on.exit() handler, i.e. exit tracing is impossible.
+#' trace_package("graphics", funign = "plot.default")
 #' plot(1:10)
-#' # 1) we ignore plot.default as it defines its own on.exit() handler without
-#' add = TRUE, i.e. it's exit is untraceable
 #' }
 trace_package <- function(pkg,
                           file = stdout(),

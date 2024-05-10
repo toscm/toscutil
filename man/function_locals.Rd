@@ -9,16 +9,13 @@ function_locals(without = c(), strip_function_args = TRUE)
 \arguments{
 \item{without}{character vector of symbols to exclude}
 
-\item{strip_function_args}{Whether to exclude symbols with the same name as
-the function arguments}
+\item{strip_function_args}{Whether to exclude symbols with the same name as the function arguments}
 }
 \value{
 The function environment as list
 }
 \description{
-Returns the function environment as list. Raises an error when
-called outside a function. By default, objects specified as arguments are
-removed from the environment.
+Returns the function environment as list. Raises an error when called outside a function. By default, objects specified as arguments are removed from the environment.
 }
 \details{
 The order of the symbols in the returned list is arbitrary.
