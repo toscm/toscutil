@@ -32,8 +32,8 @@ predict.numeric <- function(object, newdata, ...) {
     }
 
     # Extract intercept
-    if ("Intercept" %in% nams(b2)) {
-        b3 <- b2[nams(b2) != "Intercept"]
+    if ("Intercept" %in% names(b2)) {
+        b3 <- b2[names(b2) != "Intercept"]
         intercept <- b2["Intercept"]
     } else {
         b3 <- b2
@@ -46,17 +46,17 @@ predict.numeric <- function(object, newdata, ...) {
     # Calculate scores
     tryCatch(
         expr = {
-            scores <- as.numeric(as.matrix(X[, nams(b3)]) %*% b3) + intercept
+            scores <- as.numeric(as.matrix(X[, names(b3)]) %*% b3) + intercept
         },
         error = function(cond) {
             errmsg <- paste(
                 "names(b3) must be in colnames(X), but the following are not: ",
-                nams(b3)[!(nams(b3) %in% colnames(X))]
+                names(b3)[!(names(b3) %in% colnames(X))]
             )
             stop(errmsg)
         }
     )
-    nams(scores) <- rownames(X)
+    names(scores) <- rownames(X)
 
     return(scores)
 }

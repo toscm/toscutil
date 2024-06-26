@@ -5,16 +5,23 @@
 \title{Get specified Environment as List}
 \usage{
 locals(without = c(), env = parent.frame())
+
+locals(without = c(), env = parent.frame())
 }
 \arguments{
 \item{without}{Character vector. Symbols from current env to exclude.}
 
-\item{env}{Environment to use. Defaults to the environment from which \code{locals} is called.}
+\item{env}{Environment to use. Defaults to the environment from which
+\code{locals} is called.}
 }
 \value{
 Specified environment as list (without the mentioned symbols).
+
+Specified environment as list (without the mentioned symbols).
 }
 \description{
+Return all symbols in the specified environment as list.
+
 Return all symbols in the specified environment as list.
 }
 \keyword{func}

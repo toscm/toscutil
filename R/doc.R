@@ -19,7 +19,7 @@
 #' @keywords func
 update_docstring <- function(uri, func, content = NULL) {
   content <- readLines(uri)
-  param_names <- nams(get_formals(uri, content, func))
+  param_names <- names(get_formals(uri, content, func))
   docstring <- get_docstring(content, func, collapse = TRUE)
   dfs <- split_docstring(docstring)
   # list(head = c(header = "",
@@ -31,7 +31,7 @@ update_docstring <- function(uri, func, content = NULL) {
   #      tail = c(details = "#' @details Bla Bla\n",
   #               export = "#' @export"))
   for (param_name in param_names) {
-    if (!(param_name %in% nams(dfs$param))) {
+    if (!(param_name %in% names(dfs$param))) {
       dfs$param[[param_name]] <- paste("#' @param", param_name, "TODO\n")
     }
   }
@@ -135,9 +135,9 @@ split_docstring <- function(docstring) {
   head <- paste0(tags[ids_head], substrings[ids_head])
   param <- paste0(tags[ids_params], substrings[ids_params])
   tail <- paste0(tags[ids_tail], substrings[ids_tail])
-  nams(head) <- tag_names[ids_head]
-  nams(param) <- param_names[ids_params]
-  nams(tail) <- tag_names[ids_tail]
+  names(head) <- tag_names[ids_head]
+  names(param) <- param_names[ids_params]
+  names(tail) <- tag_names[ids_tail]
   list(head = head, param = param, tail = tail)
 }
 
@@ -164,9 +164,9 @@ get_formals <- function(uri, content, func) {
   # functions from other packages. However, in this case, we don't really have
   # a choice, unless we want to redefine approx. 20 functions from
   # languageserver inside this package.
-  formals <- if ("formals" %in% nams(pobj)) {
+  formals <- if ("formals" %in% names(pobj)) {
     pobj$formals[[func]]
-  } else if ("functions" %in% nams(pobj)) {
+  } else if ("functions" %in% names(pobj)) {
     formals(pobj$functions[[func]])
   } else {
     stop(paste(

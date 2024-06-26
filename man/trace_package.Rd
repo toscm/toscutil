@@ -22,9 +22,15 @@ trace_package(
 
 \item{max}{Maximum depth of callstack to print.}
 
-\item{ign}{Character vector of function names to ignore.}
+\item{funign}{Functions to ignore.}
 
-\item{ops}{Whether to trace operators defined by the package.}
+\item{opsign}{Whether to ignore operators.}
+
+\item{dotign}{Whether to ignore functions starting with a dot.}
+
+\item{silent}{Whether to suppress messages.}
+
+\item{exitmsg}{Message to print on function exits.}
 }
 \value{
 No return value, called for side effects
@@ -39,7 +45,10 @@ Some function define their own \code{\link[=on.exit]{on.exit()}} handlers with o
 \dontrun{
 # Trace all function from the graphics package, except for `plot.default`
 # as it defines its own on.exit() handler, i.e. exit tracing is impossible.
-trace_package("graphics", funign = "plot.default")
-plot(1:10)
+local({
+  trace_package("graphics", funign = "plot.default")
+  on.exit(untrace_package("graphics"), add = TRUE)
+  plot(1:10)
+})
 }
 }

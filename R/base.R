@@ -120,38 +120,22 @@ dput2 <- function(..., collapse = " ", trim = TRUE) {
 #' htm <- help2("sum", "html")
 #' txt <- help2(topic = "sum", format = "text")
 #' cat2(txt)
-#' @details This function was copied in part from:
-#' <https://www.r-bloggers.com/2013/06/printing-r-help-files-in-the-console-or-in-knitr-documents/>
 #' @keywords base
-help2 <- function(topic,
-                  format = c("text", "html", "latex"),
-                  package = NULL) {
-  format <- match.arg(format)
-  if (missing(topic)) {
-    symbols <- ls(paste0("package:", package))
-    helptxts <- sapply(symbols, help2, format = format)
-    nams(helptxts) <- symbols
-    return(helptxts)
-  }
-  helpfile <- tryCatch(.getHelpFile(utils::help(topic)), error = \(e) NULL)
-  if (is.null(helpfile)) {
-    return("No help file found")
-  } else {
-    return(
-      paste(
-        utils::capture.output(
-          switch(format,
-            text = tools::Rd2txt(helpfile),
-            html = tools::Rd2HTML(helpfile),
-            latex = tools::Rd2latex(helpfile)
-          )
-        ),
-        collapse = "\n"
-      )
-    )
-  }
+help2 <- function(topic, format = "text", package = NULL) {
+    rd <- sprintf("%s.Rd", topic)
+    man_rd <- sprintf("man/%s", rd)
+    if (is.null(package)) package <- strsplit(find(topic), ":")[[1]][2]
+    rd_path <- system.file(man_rd, package = package, mustWork = FALSE) # exists when `package` is currently loaded via `devtools::load_all()`
+    if (!file.exists(rd_path)) {
+        rd_path <- tools::Rd_db(package)[[rd]] # generate the help file from the installed package
+    }
+    helptext <- capture.output(switch(format,
+        text = tools::Rd2txt(rd_path),
+        html = tools::Rd2HTML(rd_path),
+        latex = tools::Rd2latex(rd_path)
+    ))
+    return(paste(helptext, collapse = "\n"))
 }
-
 
 #' @export
 #' @name named
@@ -175,8 +159,8 @@ help2 <- function(topic,
 named <- function(...){
     .elems <- list(...)
     .symbols <- as.character(substitute(list(...)))[-1]
-    .idx <- nams(.elems) == ""
-    nams(.elems)[.idx] <- .symbols[.idx]
+    .idx <- names(.elems) == ""
+    names(.elems)[.idx] <- .symbols[.idx]
     .elems
 }
 
@@ -195,66 +179,4 @@ named <- function(...){
 #' norm_path("a\\b", "c") # return <current-working-dir>/a/b/c
 norm_path <- function(..., sep="/") {
 	normalizePath(file.path(...), winslash=sep, mustWork=FALSE)
-}
-
-
-##### Helpers ##################################################################
-
-# Original version copied from `utils:::.getHelpFile`, which can't be used
-# because it would cause the following R CMD check warning:
-# Unexported object imported by a ':::' call: 'utils:::.getHelpFile'. Used by
-# `help2`.
-.getHelpFile <- function(file) {
-  path <- dirname(file)
-  dirpath <- dirname(path)
-  if (!file.exists(dirpath)) {
-    stop(gettextf("invalid %s argument", sQuote("file")),
-      domain = NA
-    )
-  }
-  pkgname <- basename(dirpath)
-  RdDB <- file.path(path, pkgname)
-  if (!file.exists(paste0(RdDB, ".rdx"))) {
-    stop(gettextf(
-      "package %s exists but was not installed under R >= 2.10.0 so help cannot be accessed",
-      sQuote(pkgname)
-    ), domain = NA)
-  }
-  fetchRdDB(RdDB, basename(file))
-}
-
-# Original version copied from `tools:::fetchRdDB`. Used by `help2`.
-fetchRdDB <- function(filebase, key = NULL) {
-  fun <- function(db) {
-    vals <- db$vals
-    vars <- db$vars
-    datafile <- db$datafile
-    compressed <- db$compressed
-    envhook <- db$envhook
-    fetch <- function(key) {
-      lazyLoadDBfetch(
-        vals[key][[1L]],
-        datafile, compressed, envhook
-      )
-    }
-    if (length(key)) {
-      if (!key %in% vars) {
-        stop(gettextf(
-          "No help on %s found in RdDB %s",
-          sQuote(key), sQuote(filebase)
-        ), domain = NA)
-      }
-      fetch(key)
-    } else {
-      res <- lapply(vars, fetch)
-      nams(res) <- vars
-      res
-    }
-  }
-  res <- lazyLoadDBexec(filebase, fun)
-  if (length(key)) {
-    res
-  } else {
-    invisible(res)
-  }
 }

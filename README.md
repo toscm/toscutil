@@ -9,13 +9,7 @@
 
 Useful functions for everyday programming.
 
-## Table of Contents <!-- omit in toc -->
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contribute](#contribute)
-
-## Installation
+# Installation
 
 ```R
 # From CRAN (stable version)
@@ -30,33 +24,5 @@ To use any function or data object, first [install](#installation) the package a
 
 ## Contribute
 
-Things you can update, are:
+For details on how to contribute to this package, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-1. Function code in folder [R](R)
-2. Function documentation in folder [R](R)
-3. Package documentation in folder `vignettes`
-4. Test cases in folder [tests](tests)
-5. Dependencies in file [DESCRIPTION](DESCRIPTION)
-6. Authors in file [DESCRIPTION](DESCRIPTION)
-
-Whenever you update any of those things, you should run the below commands to check that everything is still working as expected
-
-```R
-devtools::test() # Execute tests from tests folder
-devtools::check() # Check package formalities
-devtools::document() # Build files in man folder
-devtools::install() # Install as required by next command
-pkgdown::build_site() # Build website in docs folder
-```
-
-After doing these steps, you can push your changes to Github and then use the following commands to release the package to CRAN:
-
-```R
-rcmdcheck::rcmdcheck() # Slower, but more realistic test than devtools::check()
-devtools::spell_check() # Check spelling. Add false positives to inst/WORDLIST
-devtools::submit_cran() # Submits the package to CRAN
-revdepcheck::revdep_check(num_workers = 8) # Reverse dependency check
-# See https://r-pkgs.org/release.html#sec-release-revdep-checks for details
-```
-
-Above steps are based on: <https://r-pkgs.org/release.html>

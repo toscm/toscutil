@@ -7,7 +7,9 @@
 config_file(
   app_name,
   file_name,
-  cl_arg = {     commandArgs()[grep("--config-file", commandArgs()) + 1] },
+  cl_arg = {
+     commandArgs()[grep("--config-file", commandArgs()) + 1]
+ },
   env_var = "",
   sep = "/",
   copy_dir = norm_path(xdg_config_home(), app_name),

@@ -9,15 +9,21 @@ trace_env <- as.environment(list(
 #' @param pkg Package name to trace.
 #' @param file File to write to.
 #' @param max Maximum depth of callstack to print.
-#' @param ign Character vector of function names to ignore.
-#' @param ops Whether to trace operators defined by the package.
+#' @param funign Functions to ignore.
+#' @param opsign Whether to ignore operators.
+#' @param dotign Whether to ignore functions starting with a dot.
+#' @param silent Whether to suppress messages.
+#' @param exitmsg Message to print on function exits.
 #' @return No return value, called for side effects
 #' @details Some function define their own [on.exit()] handlers with option `add = FALSE`. For those functions, exit tracing is impossible (as described in [trace()]). For now those functions have to be detected and ignored manually by the user using argument `funign`.
 #' @examples \dontrun{
 #' # Trace all function from the graphics package, except for `plot.default`
 #' # as it defines its own on.exit() handler, i.e. exit tracing is impossible.
-#' trace_package("graphics", funign = "plot.default")
-#' plot(1:10)
+#' local({
+#'   trace_package("graphics", funign = "plot.default")
+#'   on.exit(untrace_package("graphics"), add = TRUE)
+#'   plot(1:10)
+#' })
 #' }
 trace_package <- function(pkg,
                           file = stdout(),
@@ -27,16 +33,10 @@ trace_package <- function(pkg,
                           dotign = TRUE,
                           silent = TRUE,
                           exitmsg = "exit") {
-  # if (!any(grepl("inovatikr", search()))) {
-  #   stop(sprintf("package '%s' is not attached.", pkg), call. = FALSE)
-  # }
-  # env <- rlang::pkg_env(pkg)
   ns <- asNamespace(pkg)
-  nams <- ls(paste0("package:", pkg), all.names = TRUE) # 1)
-  # Interesting: `names(ns)` is much longer than `ls("package:...")`. Not sure why, but for now I only use the names from `ls()` as `names(ns)` seems to contain a lot of super internal stuff.
-  is_func <- sapply(nams, function(nam) is.function(ns[[nam]]))
-  fullnams <-  sprintf("%s:::`%s`", pkg, nams)
-  funcs <- nams[is_func]
+  objnames <- ls(paste0("package:", pkg), all.names = TRUE) # Interesting: `names(ns)` is much longer than `ls("package:...")`. Not sure why, but for now I only use the names from `ls()` as `names(ns)` seems to contain a lot of super internal stuff.
+  is_func <- sapply(objnames, function(nam) is.function(ns[[nam]]))
+  funcs <- objnames[is_func]
   if (dotign) funcs <- funcs[grepl("^[^\\.]", funcs, perl = TRUE)]
   if (opsign) funcs <- funcs[!grepl("%.+%", funcs, perl = TRUE)]
   funcs <- setdiff(funcs, funign)
@@ -70,7 +70,7 @@ untrace_func <- function(func, ns, silent = TRUE) {
   }
 }
 
-trace_func <- function(func, ns, exitmsg = TRUE, silent = TRUE) {
+trace_func <- function(func, ns, exitmsg = "exit", silent = TRUE) {
   args <- list(func = func, exitmsg = exitmsg)
   entryexpr <- substitute(toscutil:::log_func_entry(deparse(sys.call(-4))))
   exitexpr <- substitute(toscutil:::log_func_exit(func, exitmsg = exitmsg), args)
@@ -92,7 +92,7 @@ log_func_entry <- function(func) {
   trace_env$lvl <- trace_env$lvl + 1
 }
 
-log_func_exit <- function(func, exitmsg = exitmsg) {
+log_func_exit <- function(func, exitmsg = "exit") {
   trace_env$lvl <- trace_env$lvl - 1
   indent <- paste(rep("| ", trace_env$lvl), collapse = "")
   if (!is.null(exitmsg)) {

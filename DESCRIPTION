@@ -1,6 +1,6 @@
 Package: toscutil
 Title: Utility Functions
-Version: 2.7.5
+Version: 2.8.0
 Authors@R:
     person(given = "Tobias",
            family = "Schmidt",
@@ -21,6 +21,6 @@ Imports:
     tools,
     languageserver
 Suggests:
-    testthat (>= 3.0.0),
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 URL: https://toscm.github.io/toscutil/
