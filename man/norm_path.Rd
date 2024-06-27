@@ -15,8 +15,7 @@ norm_path(..., sep = "/")
 Normalized path constructed from ...
 }
 \description{
-Shortcut for
-\code{normalizePath(file.path(...), winslash = sep, mustWork = FALSE)}
+Shortcut for \code{normalizePath(file.path(...), winslash = sep, mustWork = FALSE)}
 }
 \examples{
 norm_path("C:/Users/max", "a\\\\b", "c") # returns C:/Users/max/a/b/c

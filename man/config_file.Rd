@@ -7,9 +7,7 @@
 config_file(
   app_name,
   file_name,
-  cl_arg = {
-     commandArgs()[grep("--config-file", commandArgs()) + 1]
- },
+  cl_arg = commandArgs()[grep("--config-file", commandArgs()) + 1],
   env_var = "",
   sep = "/",
   copy_dir = norm_path(xdg_config_home(), app_name),
@@ -27,8 +25,7 @@ config_file(
 
 \item{sep}{Path separator to be used on Windows}
 
-\item{copy_dir}{Path to directory where \verb{$fallback_path} should be copied to
-in case it gets used.}
+\item{copy_dir}{Path to directory where \verb{$fallback_path} should be copied to in case it gets used.}
 
 \item{fallback_path}{Value to return as fallback (see details)}
 }
@@ -36,14 +33,10 @@ in case it gets used.}
 Normalized path to the configuration file of \verb{$app_name}.
 }
 \description{
-\code{config_file} returns the absolute, normalized path to the
-configuration file of a program/package/app based on an optional
-app-specific commandline argument, an optional app-specific environment
-variable and the \href{https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html}{XDG Base Directory Specification}
+\code{config_file} returns the absolute, normalized path to the configuration file of a program/package/app based on an optional app-specific commandline argument, an optional app-specific environment variable and the \href{https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html}{XDG Base Directory Specification}
 }
 \details{
-The following algorithm is used to determine the location of
-\verb{$file_name}:
+The following algorithm is used to determine the location of \verb{$file_name}:
 \enumerate{
 \item If \verb{$cl_arg} is a non-empty string, return it
 \item Else, if \verb{$env_var} is a non-empty string, return it

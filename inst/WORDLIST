@@ -1,4 +1,5 @@
 bool
+callstack
 CEST
 changelog
 Changelog
@@ -16,8 +17,11 @@ github
 Github
 gitignore
 gitlab
+grey
 hh
 io
+Linefeeds
+logf
 md
 NES
 occurence
@@ -32,12 +36,15 @@ rlang
 roxygen
 Rscript
 shorthands
+sprintf
 ss
 stdout
 sys
 ToSc
 toscm
 TZ
+untrace
+Untraces
 uri
 USERPROFILE
 XDG

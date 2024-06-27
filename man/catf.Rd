@@ -4,39 +4,26 @@
 \alias{catf}
 \title{Format and Print}
 \usage{
-catf(
-  fmt,
-  ...,
-  end = "",
-  file = "",
-  sep = " ",
-  fill = FALSE,
-  labels = NULL,
-  append = FALSE
-)
+catf(fmt, ..., file = "", append = FALSE, fill = FALSE, labels = NULL)
 }
 \arguments{
-\item{fmt}{passed on to \code{\link[base:sprintf]{base::sprintf()}}}
+\item{fmt}{A character vector of format strings, each of up to 8192 bytes.}
 
-\item{...}{passed on to \code{\link[base:sprintf]{base::sprintf()}}}
+\item{...}{Up to 100 values to be passed into \code{fmt}. Only logical, integer, real and character vectors are supported, but some coercion will be done: see the Details section of \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{end}{passed on to \code{\link[=cat2]{cat2()}}}
+\item{file}{A \link{connection}, or a character string naming the file to print to. If \code{""} (the default), \code{cat2} prints to the standard output connection, the console unless redirected by \link{sink}.}
 
-\item{file}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
+\item{append}{logical. Only used if the argument \code{file} is the name of file (and not a connection or \code{"|cmd"}). If \code{TRUE} output will be appended to \code{file}; otherwise, it will overwrite the contents of \code{file}.}
 
-\item{sep}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
+\item{fill}{a logical or (positive) numeric controlling how the output is broken into successive lines. If \code{FALSE} (default), only newlines created explicitly by \code{"\\n"} are printed. Otherwise, the output is broken into lines with print width equal to the option \code{width} if \code{fill} is \code{TRUE}, or the value of \code{fill} if this is numeric. Linefeeds are only inserted \emph{between} elements, strings wider than \code{fill} are not wrapped. Non-positive \code{fill} values are ignored, with a warning.}
 
-\item{fill}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
-
-\item{labels}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
-
-\item{append}{passed on to \code{\link[=cat2]{cat2()}} (which passes it on to \code{\link[base:cat]{base::cat()}})}
+\item{labels}{character vector of labels for the lines printed. Ignored if \code{fill} is \code{FALSE}.}
 }
 \value{
 No return value, called for side effects
 }
 \description{
-Same as \code{cat2(sprintf(fmt, ...))}
+Same as \code{cat(sprintf(fmt, ...))}
 }
 \examples{
 catf("A\%dB\%sC", 2, "asdf") # prints "A2BasdfC"

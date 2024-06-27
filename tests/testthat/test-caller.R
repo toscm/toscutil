@@ -17,7 +17,7 @@ test_that("caller works", {
   # caller(4): expect_equal
   # ...
   # caller(40): test_local()
-  
+
   f <- function() caller(100)
   expect_null(f())
 })

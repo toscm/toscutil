@@ -13,26 +13,21 @@ sys.exit(status = 0)
 No return value, called for side effects
 }
 \description{
-Similar to python's
-\href{https://docs.python.org/3/library/sys.html?highlight=exit#sys.exit}{sys.exit}.
-If used interactively, code execution is stopped with an error message,
-giving the provided status code. If used non-interactively (e.g. through
-Rscript), code execution is stopped silently and the process exits with the
-provided status code.
+Similar to python's \href{https://docs.python.org/3/library/sys.html?highlight=exit#sys.exit}{sys.exit}. If used interactively, code execution is stopped with an error message, giving the provided status code. If used non-interactively (e.g. through Rscript), code execution is stopped silently and the process exits with the provided status code.
 }
 \examples{
 \dontrun{
 if (!file.exists("some.file")) {
-  cat("Error: some.file does not exist.\n", file = stderr())
-  sys.exit(1)
+    cat("Error: some.file does not exist.\n", file = stderr())
+    sys.exit(1)
 } else if (Sys.getenv("IMPORTANT_ENV") == "") {
-  cat("Error: IMPORTANT_ENV not set.\n", file = stderr())
-  sys.exit(2)
+    cat("Error: IMPORTANT_ENV not set.\n", file = stderr())
+    sys.exit(2)
 } else {
-  cat("Everything good. Starting calculations...")
-  # ...
-  cat("Finished with success!")
-  sys.exit(0)
+    cat("Everything good. Starting calculations...")
+    # ...
+    cat("Finished with success!")
+    sys.exit(0)
 }
 }
 }

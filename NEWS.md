@@ -1,21 +1,13 @@
-All notable changes to this project will be documented in this file.
+# toscutil v2.8.0
 
-The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), i.e.:
-
-- There should be an entry for every single version.
-- The latest version comes first.
-- The release date of each version is displayed.
-- The same types of changes should be grouped.
-- The following keywords are used to denote different types of changes:
-  - `Added` for new features
-  - `Changed` for changes in existing functionality
-  - `Deprecated` for soon-to-be removed features
-  - `Removed` for now removed features
-  - `Fixed` for bug fixes
-  - `Security` in case of vulnerabilities
-  - `Infrastructure` for updates of files not related to the package itself,
-    e.g. .github/workflows/*, README.md, etc. Infrastructure updates increase
-    the patch version.
+- `Added`: added functions `check_pkg_docs()`, `find_description_file()`, `get_pkg_docs()`, `logf()`, `read_description_file()`, `trace_package()`, `untrace_package()`
+- `Added`: added list `fg` (foreground colors)
+- `Added`: arguments `color` and `ditis.sec` to functions `now()` and `now_ms()`. Also merged their documentation and implementation (`now_ms()` calls `now()` internally).
+- `Refactor`: `languageserver` is now an optional dependency instead of a required one. This makes the package more lightweight and easier to install.
+- `Refactor`: `catf` and `cat2` are implemented more efficiently now. In particular, both use only one call to `cat`, which makes them better useable in parallel executed code.
+- `Refactor`: `help2` now also works for functions loaded via `devtools`.
+- `Fixed`: function `named()`
+- `Fixed`: a bug in function `stub()`, which caused the function to fail, when later arguments used the value of previous argument as inputs.
 
 # toscutil v2.7.4
 
@@ -23,7 +15,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 # toscutil v2.7.3
 
-- `Fixed`: when using `cat2` to print to files the `end` kept printing to the console. This behaviour is fixed now and `end` also goes to the file.
+- `Fixed`: when using `cat2` to print to files the `end` kept printing to the console. This behavior is fixed now and `end` also goes to the file.
 
 # toscutil v2.7.2
 

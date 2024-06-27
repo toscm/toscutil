@@ -6,9 +6,7 @@
 \usage{
 config_dir(
   app_name,
-  cl_arg = {
-     commandArgs()[grep("--config-dir", commandArgs()) + 1]
- },
+  cl_arg = commandArgs()[grep("--config-dir", commandArgs()) + 1],
   env_var = Sys.getenv(toupper(paste0(app_name, "_config_dir()"))),
   create = FALSE,
   sep = "/"
@@ -29,14 +27,10 @@ config_dir(
 Normalized path to the configuration directory of \verb{$app_name}.
 }
 \description{
-\code{config_dir} returns the absolute, normalized path to the
-configuration directory of a program/package/app based on an optional
-app-specific commandline argument, an optional app-specific environment
-variable and the \href{https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html}{XDG Base Directory Specification}
+\code{config_dir} returns the absolute, normalized path to the configuration directory of a program/package/app based on an optional app-specific commandline argument, an optional app-specific environment variable and the \href{https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html}{XDG Base Directory Specification}
 }
 \details{
-The following algorithm is used to determine the location of the
-configuration directory for application \verb{$app_name}:
+The following algorithm is used to determine the location of the configuration directory for application \verb{$app_name}:
 \enumerate{
 \item If parameter \code{cl_arg} is a non-empty string, return it
 \item Else, if parameter \code{env_var} is a non-empty string, return it
@@ -48,8 +42,7 @@ configuration directory for application \verb{$app_name}:
 \item Else, return \verb{$WD/.config/\{app-name\}}
 }
 
-where \verb{$WD} equals the current working directory and the notation \verb{$VAR} is
-used to specify the value of a parameter or environment variable VAR.
+where \verb{$WD} equals the current working directory and the notation \verb{$VAR} is used to specify the value of a parameter or environment variable VAR.
 }
 \examples{
 config_dir("myApp")

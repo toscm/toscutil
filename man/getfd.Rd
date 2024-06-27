@@ -11,10 +11,7 @@ getfd(
 )
 }
 \arguments{
-\item{on.error}{Expression to use if the current file directory cannot be
-determined. In that case, \code{normalizePath(on.error, winslash)} is returned.
-Can also be an expression like \code{stop("message")} to stop execution
-(default).}
+\item{on.error}{Expression to use if the current file directory cannot be determined. In that case, \code{normalizePath(on.error, winslash)} is returned. Can also be an expression like \code{stop("message")} to stop execution (default).}
 
 \item{winslash}{Path separator to use for windows}
 }
@@ -25,9 +22,9 @@ Current file directory as string
 Return full path to current file directory
 }
 \examples{
+getfd(on.error = getwd())
 \dontrun{
 getfd()
 }
-getfd(on.error = getwd())
 }
 \keyword{path}

@@ -27,14 +27,10 @@ data_dir(
 Normalized path to the data directory of \verb{$app_name}.
 }
 \description{
-\code{data_dir} returns the absolute, normalized path to the
-data directory of a program/package/app based on an optional app-specific
-commandline argument, an optional app-specific environment variable and the
-\href{https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html}{XDG Base Directory Specification}
+\code{data_dir} returns the absolute, normalized path to the data directory of a program/package/app based on an optional app-specific commandline argument, an optional app-specific environment variable and the \href{https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html}{XDG Base Directory Specification}
 }
 \details{
-The following algorithm is used to determine the location of the
-data directory for application \verb{$app_name}:
+The following algorithm is used to determine the location of the data directory for application \verb{$app_name}:
 \enumerate{
 \item If parameter \verb{$cl_arg} is a non-empty string, return \code{cl_arg}
 \item Else, if parameter \verb{$env_var} is a non-empty string, return \verb{$env_var}

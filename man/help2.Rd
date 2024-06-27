@@ -4,25 +4,20 @@
 \alias{help2}
 \title{Return help for topic}
 \usage{
-help2(topic, format = c("text", "html", "latex"), package = NULL)
+help2(topic, format = "text", package = NULL)
 }
 \arguments{
-\item{topic}{character, the topic for which to return the help text. See
-argument \code{topic} of function \code{\link[=help]{help()}} for details.}
+\item{topic}{character, the topic for which to return the help text. See argument \code{topic} of function \code{\link[=help]{help()}} for details.}
 
 \item{format}{character, either \code{"text"}, \code{"html"} or \code{"latex"}}
 
-\item{package}{character, the package for which to return the help text.
-This argument will be ignored if topic is specified. Package must be
-attached to the search list first, e.g. by calling \code{library(package)}.}
+\item{package}{character, the package for which to return the help text. This argument will be ignored if topic is specified. Package must be attached to the search list first, e.g. by calling \code{library(package)}.}
+}
+\value{
+The help text for the specified topic in the specified format as string.
 }
 \description{
-This function returns the help text for the specified topic
-formatted either as plain text, html or latex.
-}
-\details{
-This function was copied in part from:
-\url{https://www.r-bloggers.com/2013/06/printing-r-help-files-in-the-console-or-in-knitr-documents/}
+Returns the help text for the specified topic formatted either as plain text, html or latex.
 }
 \examples{
 htm <- help2("sum", "html")

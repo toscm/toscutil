@@ -9,13 +9,22 @@ locals(without = c(), env = parent.frame())
 \arguments{
 \item{without}{Character vector. Symbols from current env to exclude.}
 
-\item{env}{Environment to use. Defaults to the environment from which
-\code{locals} is called.}
+\item{env}{Environment to use. Defaults to the environment from which \code{locals} is called.}
 }
 \value{
 Specified environment as list (without the mentioned symbols).
 }
 \description{
 Return all symbols in the specified environment as list.
+}
+\examples{
+f <- function() {
+     x <- 1
+     y <- 2
+     z <- 3
+     locals()
+}
+ret <- f()
+stopifnot(identical(ret, list(z = 3, y = 2, x = 1)))
 }
 \keyword{func}

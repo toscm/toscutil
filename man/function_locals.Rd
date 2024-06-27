@@ -16,18 +16,16 @@ the function arguments}
 The function environment as list
 }
 \description{
-Returns the function environment as list. Raises an error when
-called outside a function. By default, objects specified as arguments are
-removed from the environment.
+Returns the function environment as list. Raises an error when called outside a function. By default, objects specified as arguments are removed from the environment.
 }
 \details{
 The order of the symbols in the returned list is arbitrary.
 }
 \examples{
 f <- function(a = 1, b = 2) {
-  x <- 3
-  y <- 4
-  return(function_locals())
+    x <- 3
+    y <- 4
+    return(function_locals())
 }
 all.equal(setdiff(f(), list(x = 3, y = 4)), list())
 }

@@ -15,31 +15,32 @@ cat2(
 )
 }
 \arguments{
-\item{...}{objects passed on to \link[base]{cat}}
+\item{...}{R objects (see 'Details' for the types of objects allowed).}
 
-\item{sep}{a character vector of strings to append after each element}
+\item{sep}{a character vector of strings to append after each element.}
 
-\item{end}{a string to print after all other elements}
+\item{end}{a string to print after all other elements.}
 
-\item{file}{passed on to \code{\link[base:cat]{base::cat()}}}
+\item{file}{A \link{connection}, or a character string naming the file to print to. If \code{""} (the default), \code{cat2} prints to the standard output connection, the console unless redirected by \link{sink}.}
 
-\item{append}{passed on to \code{\link[base:cat]{base::cat()}}}
+\item{append}{logical. Only used if the argument \code{file} is the name of file (and not a connection or \code{"|cmd"}). If \code{TRUE} output will be appended to \code{file}; otherwise, it will overwrite the contents of \code{file}.}
 
-\item{fill}{passed on to \code{\link[base:cat]{base::cat()}}}
+\item{fill}{a logical or (positive) numeric controlling how the output is broken into successive lines. If \code{FALSE} (default), only newlines created explicitly by \code{"\\n"} are printed. Otherwise, the output is broken into lines with print width equal to the option \code{width} if \code{fill} is \code{TRUE}, or the value of \code{fill} if this is numeric. Linefeeds are only inserted \emph{between} elements, strings wider than \code{fill} are not wrapped. Non-positive \code{fill} values are ignored, with a warning.}
 
-\item{labels}{passed on to \code{\link[base:cat]{base::cat()}}}
+\item{labels}{character vector of labels for the lines printed. Ignored if \code{fill} is \code{FALSE}.}
 }
 \value{
 No return value, called for side effects
 }
 \description{
-Same as \code{cat} but with an additional argument \code{end},
-which gets printed after all other elements. Inspired by pythons \code{print}
-command.
+Same as \code{\link[base:cat]{base::cat()}} but with an additional argument \code{end}, which gets printed after all other elements. Inspired by pythons \code{print} command.
 }
 \examples{
 x <- 1
 cat("x:", x, "\n") # prints 'Number: 1 \n' (with a space between 1 and \n)
 cat2("x:", x) # prints 'Number: 1\n'  (without space)
+}
+\seealso{
+\code{\link[base:cat]{base::cat()}}
 }
 \keyword{base}

@@ -10,7 +10,6 @@ rm_all <- function() {
     rm(list=ls(envir=e), envir=e)
 }
 
-
 #' @export
 #' @name corn
 #' @title Return Corners of Matrix like Objects
@@ -50,8 +49,10 @@ corn <- function(x, n=2L) {
 #' @keywords live
 stub <- function(func, ..., envir = parent.frame()) {
   default_args <- as.list(formals(func))
-  args <- list(...)
-  stubbed_args <- utils::modifyList(default_args, args)
-  do.call(rlang::env_bind, args = c(envir, stubbed_args))
+  user_args <- list(...)
+  stubbed_args <- modifyList(default_args, user_args)
+  for (name in names(stubbed_args)) {
+    envir[[name]] <- stubbed_args[[name]] <- eval(stubbed_args[[name]])
+  }
   return(stubbed_args)
 }

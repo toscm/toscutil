@@ -2,23 +2,34 @@
 % Please edit documentation in R/time.R
 \name{now}
 \alias{now}
-\title{Get Current Date and Time as string}
+\alias{now_ms}
+\title{Get Current Date and Time as String}
 \usage{
-now()
+now(usetz = TRUE, color = NULL, digits.sec = 0)
+
+now_ms(usetz = TRUE, color = NULL, digits.sec = 2)
+}
+\arguments{
+\item{usetz}{Logical, indicating whether to include the timezone in the output.}
+
+\item{color}{Optional color to use for the timestamp. This parameter is only effective if the output is directed to a terminal that supports color, which is checked via \code{isatty(stdout())}.}
+
+\item{digits.sec}{Integer, the number of digits to include for seconds. Default is 0.}
 }
 \value{
-\code{now} returns current system time as string of the form \verb{YYYY-MM-DD hh:mm:ss TZ}, where TZ means "timezone" (strictly speaking, the format as
-given to \code{format()} is \verb{\%Y-\%m-\%d \%H:\%M:\%S}, for details see
-\verb{[format.POSIXct()]}).
+For \code{now}, the current system time as a string in the format \verb{YYYY-MM-DD hh:mm:ss TZ}.
+For \code{now_ms}, the format is \verb{YYYY-MM-DD hh:mm:ss.XX TZ}, where XX represents milliseconds.
 }
 \description{
-\code{now} returns current system time as string of the form
-\verb{YYYY-MM-DD hh:mm:ss TZ}, where TZ means "timezone".
+Returns the current system time as a string in the format \verb{YYYY-MM-DD hh:mm:ss[.XX][ TZ]}. Square brackets indicate optional parts of the string, 'XX' stands for milliseconds and 'TZ' for 'Timezone'.
 }
 \examples{
-now() # "2021-11-27 19:19:31 CEST"
+now()                   # "2021-11-27 19:19:31 CEST"
+now_ms()                # "2022-06-30 07:14:26.82 CEST"
+now(usetz = FALSE)      # "2022-06-30 07:14:26.82"
+now(color = fg$GREY)    # "\033[1;30m2024-06-27 14:41:20 CEST\033[0m"
 }
 \seealso{
-\code{\link[=now_ms]{now_ms()}}, \code{\link[=Sys.time]{Sys.time()}}, \code{\link[=format.POSIXct]{format.POSIXct()}}
+\code{\link[=Sys.time]{Sys.time()}}, \code{\link[=format.POSIXct]{format.POSIXct()}}
 }
 \keyword{time}
