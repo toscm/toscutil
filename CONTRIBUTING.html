@@ -92,6 +92,8 @@
 <span></span>
 <span><span class="co"># Check reverse dependencies. For details see:</span></span>
 <span><span class="co"># https://r-pkgs.org/release.html#sec-release-revdep-checks</span></span>
+<span><span class="co"># If revdepcheck is broken, follow the instructions at</span></span>
+<span><span class="co"># https://cran.r-project.org/web/packages/policies.html</span></span>
 <span><span class="fu">revdepcheck</span><span class="fu">::</span><span class="fu">revdep_check</span><span class="op">(</span>num_workers <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Send your package to CRAN's builder services. You should receive an e-mail</span></span>
@@ -102,9 +104,8 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check_win.html" class="external-link">check_win_release</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check_win.html" class="external-link">check_win_devel</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check_mac_release.html" class="external-link">check_mac_release</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">rhub</span><span class="fu">::</span><span class="fu">rhub_check</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Use the following command to submit the package to CRAN of submit via the web</span></span>
+<span><span class="co"># Use the following command to submit the package to CRAN or submit via the web</span></span>
 <span><span class="co"># interface available at https://cran.r-project.org/submit.html.</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/submit_cran.html" class="external-link">submit_cran</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
