@@ -51,6 +51,8 @@ devtools::check(remote = TRUE, manual = TRUE, run_dont_test = TRUE)
 
 # Check reverse dependencies. For details see:
 # https://r-pkgs.org/release.html#sec-release-revdep-checks
+# If revdepcheck is broken, follow the instructions at
+# https://cran.r-project.org/web/packages/policies.html
 revdepcheck::revdep_check(num_workers = 8)
 
 # Send your package to CRAN's builder services. You should receive an e-mail
@@ -61,9 +63,8 @@ devtools::check_win_oldrelease()
 devtools::check_win_release()
 devtools::check_win_devel()
 devtools::check_mac_release()
-rhub::rhub_check()
 
-# Use the following command to submit the package to CRAN of submit via the web
+# Use the following command to submit the package to CRAN or submit via the web
 # interface available at https://cran.r-project.org/submit.html.
 devtools::submit_cran()
 ```

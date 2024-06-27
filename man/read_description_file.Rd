@@ -19,7 +19,8 @@ Reads the DESCRIPTION file of an R package and converts it into a list where eac
 # Read DECRIPTION file from a specific path
 graphics_pkg_dir <- system.file(package = "graphics")
 graphics_pkg_descfile <- find_description_file(graphics_pkg_dir)
-read_description_file(graphics_pkg_descfile)
+desc_list <- read_description_file(graphics_pkg_descfile)
+str(desc_list)
 
 \dontrun{
 # Below example will only work if executed from a package directory

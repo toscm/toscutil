@@ -22,6 +22,6 @@ Lists all documented functions in a package together with some of their document
 \examples{
 df <- get_pkg_docs("tools")
 nchars <- as.data.frame(apply(df, 2, function(col) sapply(col, nchar)))
-print(nchars)
+head(nchars)
 }
 \keyword{doc}

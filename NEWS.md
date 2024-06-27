@@ -4,7 +4,7 @@
 - `Added`: added list `fg` (foreground colors)
 - `Added`: arguments `color` and `ditis.sec` to functions `now()` and `now_ms()`. Also merged their documentation and implementation (`now_ms()` calls `now()` internally).
 - `Refactor`: `languageserver` is now an optional dependency instead of a required one. This makes the package more lightweight and easier to install.
-- `Refactor`: `catf` and `cat2` are implemented more efficiently now. In particular, both use only one call to `cat`, which makes them better useable in parallel executed code.
+- `Refactor`: `catf` and `cat2` are implemented more efficiently now. In particular, both use only one call to `cat`, which makes them better usable in parallel executed code.
 - `Refactor`: `help2` now also works for functions loaded via `devtools`.
 - `Fixed`: function `named()`
 - `Fixed`: a bug in function `stub()`, which caused the function to fail, when later arguments used the value of previous argument as inputs.
