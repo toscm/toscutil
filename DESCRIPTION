@@ -10,6 +10,7 @@ Description: Base R sometimes requires verbose statements for simple,
     often recurring tasks, such as printing text without trailing
     space, ending with newline. This package aims at providing
     shorthands for such tasks.
+URL: https://github.com/toscm/toscutil/, https://toscm.github.io/toscutil/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
