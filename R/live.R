@@ -10,7 +10,6 @@ rm_all <- function() {
     rm(list=ls(envir=e), envir=e)
 }
 
-
 #' @export
 #' @name corn
 #' @title Return Corners of Matrix like Objects

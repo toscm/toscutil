@@ -11,21 +11,17 @@ dput2(..., collapse = " ", trim = TRUE)
 
 \item{collapse}{Character to use for collapsing the lines.}
 
-\item{trim}{If \code{TRUE}, leading and trailing whitespace from each line is
-cleared before the lines are collapsed and/or returned.}
+\item{trim}{If \code{TRUE}, leading and trailing whitespace from each line is cleared before the lines are collapsed and/or returned.}
 }
 \value{
-If \code{collapse == '\\n'}, a character vector of length 1. Else, a
-character vector of length \code{n}, where \code{n} corresponds to the number of lines
-outputted by classic \code{\link[=dput]{dput()}}.
+If \code{collapse == '\\n'}, a character vector of length 1. Else, a character vector of length \code{n}, where \code{n} corresponds to the number of lines outputted by classic \code{\link[=dput]{dput()}}.
 }
 \description{
-Like classic \code{\link[=dput]{dput()}}, but instead of writing to stdout, the
-text representation is returned as string.
+Like classic \code{\link[=dput]{dput()}}, but instead of writing to stdout, the text representation is returned as string.
 }
 \examples{
 # Classic dput prints directly to stdout
-x <- iris[1,]
+x <- iris[1, ]
 dput(x)
 
 # Traditional formatting using dput2

@@ -9,24 +9,18 @@ capture.output2(..., collapse = "\\n", trim = FALSE)
 \arguments{
 \item{...}{Arguments passed on to \code{\link[=capture.output]{capture.output()}}.}
 
-\item{collapse}{If \code{TRUE}, lines are collapsed into a single string. If
-\code{FALSE}, lines are returned as is. If any character, lines are collapsed
-using that character.}
+\item{collapse}{If \code{TRUE}, lines are collapsed into a single string. If \code{FALSE}, lines are returned as is. If any character, lines are collapsed using that character.}
 
-\item{trim}{If \code{TRUE}, leading and trailing whitespace from each line is
-removed before the lines are collapsed and/or returned.}
+\item{trim}{If \code{TRUE}, leading and trailing whitespace from each line is removed before the lines are collapsed and/or returned.}
 }
 \value{
-If \code{collapse} is \code{TRUE} or \code{"\\n"}, a character vector of length 1.
-Else, a character vector of length \code{n}, where \code{n} corresponds to the number
-of lines outputted by the expression passed to \code{\link[=capture.output]{capture.output()}}.
+If \code{collapse} is \code{TRUE} or \code{"\\n"}, a character vector of length 1. Else, a character vector of length \code{n}, where \code{n} corresponds to the number of lines outputted by the expression passed to \code{\link[=capture.output]{capture.output()}}.
 }
 \description{
-Like classic \code{\link[=capture.output]{capture.output()}}, but with additional arguments
-\code{collapse} and \code{trim}.
+Like classic \code{\link[=capture.output]{capture.output()}}, but with additional arguments \code{collapse} and \code{trim}.
 }
 \examples{
-x <- capture.output2(str(list(a=1, b=2, c=1:3)))
+x <- capture.output2(str(list(a = 1, b = 2, c = 1:3)))
 cat2(x)
 }
 \seealso{

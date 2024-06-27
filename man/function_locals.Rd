@@ -5,8 +5,6 @@
 \title{Get Function Environment as List}
 \usage{
 function_locals(without = c(), strip_function_args = TRUE)
-
-function_locals(without = c(), strip_function_args = TRUE)
 }
 \arguments{
 \item{without}{character vector of symbols to exclude}
@@ -16,32 +14,18 @@ the function arguments}
 }
 \value{
 The function environment as list
-
-The function environment as list
 }
 \description{
 Returns the function environment as list. Raises an error when called outside a function. By default, objects specified as arguments are removed from the environment.
-
-Returns the function environment as list. Raises an error when
-called outside a function. By default, objects specified as arguments are
-removed from the environment.
 }
 \details{
-The order of the symbols in the returned list is arbitrary.
-
 The order of the symbols in the returned list is arbitrary.
 }
 \examples{
 f <- function(a = 1, b = 2) {
-  x <- 3
-  y <- 4
-  return(function_locals())
-}
-all.equal(setdiff(f(), list(x = 3, y = 4)), list())
-f <- function(a = 1, b = 2) {
-  x <- 3
-  y <- 4
-  return(function_locals())
+    x <- 3
+    y <- 4
+    return(function_locals())
 }
 all.equal(setdiff(f(), list(x = 3, y = 4)), list())
 }

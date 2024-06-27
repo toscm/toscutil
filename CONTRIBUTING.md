@@ -24,8 +24,9 @@ devtools::document() # Build files in man folder
 devtools::spell_check() # Check spelling (add false positives to inst/WORDLIST)
 urlchecker::url_check() # Check URLs
 devtools::test() # Execute tests from tests folder
-devtools::check() # Check package formalities
 devtools::install() # Install as required by next command
+toscutil::check_pkg_docs() # Check function documentation for missing tags
+devtools::check() # Check package formalities
 pkgdown::build_site() # Build website in docs folder
 ```
 

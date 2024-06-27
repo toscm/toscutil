@@ -7,16 +7,13 @@
 home(winslash = "/")
 }
 \arguments{
-\item{winslash}{path separator to be used on Windows (passed on to
-\code{normalizePath})}
+\item{winslash}{path separator to be used on Windows (passed on to \code{normalizePath})}
 }
 \value{
-normalized value of environment variable USERPROFILE,
-if defined, else value of HOME.
+normalized value of environment variable USERPROFILE, if defined, else value of HOME.
 }
 \description{
-Returns normalized value of environment variable USERPROFILE,
-if defined, else value of HOME.
+Returns normalized value of environment variable USERPROFILE, if defined, else value of HOME.
 }
 \examples{
 home()

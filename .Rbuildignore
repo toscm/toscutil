@@ -4,13 +4,14 @@
 ^\.git$
 ^\.github$
 ^\.vscode$
-^NEWS.md$
 ^check$
+^CONTRIBUTING\.md$
 ^cran-comments.md$
 ^CRAN-SUBMISSION$
 ^dist$
 ^docs$
 ^LICENSE\.md$
+^NEWS.md$
 ^pkgdown$
 ^README.md$
 ^revdep$

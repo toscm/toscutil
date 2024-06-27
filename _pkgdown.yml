@@ -11,6 +11,9 @@ reference:
   - title: Function Writing
     desc:  Functions for writing functions
     contents: [has_keyword("func")]
+  - title: Documentation
+    desc:  Functions for reading, checking and writing documentation
+    contents: [has_keyword("doc")]
   - title: Live Programming
     desc:  Functions for experimenting in interactive (live) R sessions
     contents: [has_keyword("live")]

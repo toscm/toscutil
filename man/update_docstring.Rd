@@ -31,4 +31,4 @@ uri <- system.file("testfiles/funcs.R", package = "toscutil")
 func <- "f4"
 update_docstring(uri, func)
 }
-\keyword{func}
+\keyword{doc}

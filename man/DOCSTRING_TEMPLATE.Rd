@@ -14,6 +14,6 @@ DOCSTRING_TEMPLATE
 A minimal docstring template
 }
 \examples{
-DOCSTRING_TEMPLATE
+cat(DOCSTRING_TEMPLATE)
 }
-\keyword{func}
+\keyword{doc}

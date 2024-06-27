@@ -36,7 +36,7 @@ trace_package(
 No return value, called for side effects
 }
 \description{
-This function traces all function calls from a package and writes them to \code{file} with timestamps and callstack depth.
+Traces all function calls from a package and writes them to \code{file} with timestamps and callstack depth. Should always be used in combination with \code{\link[=untrace_package]{untrace_package()}} to untrace the package after use. For example \verb{trace_package("graphics"); on.exit(untrace_package("graphics")}. See examples for more details.
 }
 \details{
 Some function define their own \code{\link[=on.exit]{on.exit()}} handlers with option \code{add = FALSE}. For those functions, exit tracing is impossible (as described in \code{\link[=trace]{trace()}}). For now those functions have to be detected and ignored manually by the user using argument \code{funign}.
@@ -46,9 +46,13 @@ Some function define their own \code{\link[=on.exit]{on.exit()}} handlers with o
 # Trace all function from the graphics package, except for `plot.default`
 # as it defines its own on.exit() handler, i.e. exit tracing is impossible.
 local({
-  trace_package("graphics", funign = "plot.default")
-  on.exit(untrace_package("graphics"), add = TRUE)
-  plot(1:10)
+    trace_package("graphics", funign = "plot.default")
+    on.exit(untrace_package("graphics"), add = TRUE)
+    plot(1:10)
 })
 }
 }
+\seealso{
+\code{\link[=untrace_package]{untrace_package()}}
+}
+\keyword{live}

@@ -17,7 +17,9 @@ statement evaluates to TRUE
 \code{ifthen(a, b, c, d, e, f, ...)} == \code{if (a) b else if (c) d else if (e) f}
 }
 \examples{
-x <- 2; y <- 2; z <- 1
-ifthen(x == 0 , "foo", y == 0, "bar", z == 1, "this string gets returned")
+x <- 2
+y <- 2
+z <- 1
+ifthen(x == 0, "foo", y == 0, "bar", z == 1, "this string gets returned")
 }
 \keyword{check}
