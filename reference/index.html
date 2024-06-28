@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">toscutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.7.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.8.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,13 @@
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/toscm/toscutil/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -68,6 +74,11 @@
           <code><a href="dput2.html">dput2()</a></code> 
         </dt>
         <dd>Return ASCII representation of an R object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="fg.html">fg</a></code> 
+        </dt>
+        <dd>Foreground Color Codes</dd>
       </dl><dl><dt>
           
           <code><a href="help2.html">help2()</a></code> 
@@ -122,11 +133,6 @@
 
       <dl><dt>
           
-          <code><a href="DOCSTRING_TEMPLATE.html">DOCSTRING_TEMPLATE</a></code> 
-        </dt>
-        <dd>Docstring Template</dd>
-      </dl><dl><dt>
-          
           <code><a href="caller.html">caller()</a></code> 
         </dt>
         <dd>Get Name of Calling Function</dd>
@@ -135,6 +141,42 @@
           <code><a href="function_locals.html">function_locals()</a></code> 
         </dt>
         <dd>Get Function Environment as List</dd>
+      </dl><dl><dt>
+          
+          <code><a href="locals.html">locals()</a></code> 
+        </dt>
+        <dd>Get specified Environment as List</dd>
+      </dl><dl><dt>
+          
+          <code><a href="sys.exit.html">sys.exit()</a></code> 
+        </dt>
+        <dd>Terminate a non-interactive R Session</dd>
+      </dl></div><div class="section level2">
+      <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a></h2>
+      
+      <div class="section-desc"><p>Functions for reading, checking and writing documentation</p></div>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="DOCSTRING_TEMPLATE.html">DOCSTRING_TEMPLATE</a></code> 
+        </dt>
+        <dd>Docstring Template</dd>
+      </dl><dl><dt>
+          
+          <code><a href="check_pkg_docs.html">check_pkg_docs()</a></code> 
+        </dt>
+        <dd>Check Documented Functions in a Package</dd>
+      </dl><dl><dt>
+          
+          <code><a href="find_description_file.html">find_description_file()</a></code> 
+        </dt>
+        <dd>Find DESCRIPTION File</dd>
       </dl><dl><dt>
           
           <code><a href="get_docstring.html">get_docstring()</a></code> 
@@ -147,19 +189,19 @@
         <dd>Get formals of a Function</dd>
       </dl><dl><dt>
           
-          <code><a href="locals.html">locals()</a></code> 
+          <code><a href="get_pkg_docs.html">get_pkg_docs()</a></code> 
         </dt>
-        <dd>Get specified Environment as List</dd>
+        <dd>Get Documented Functions in a Package</dd>
+      </dl><dl><dt>
+          
+          <code><a href="read_description_file.html">read_description_file()</a></code> 
+        </dt>
+        <dd>Read DESCRIPTION File into a List</dd>
       </dl><dl><dt>
           
           <code><a href="split_docstring.html">split_docstring()</a></code> 
         </dt>
         <dd>Split a docstring into a Head, Param and Tail Part</dd>
-      </dl><dl><dt>
-          
-          <code><a href="sys.exit.html">sys.exit()</a></code> 
-        </dt>
-        <dd>Terminate a non-interactive R Session</dd>
       </dl><dl><dt>
           
           <code><a href="update_docstring.html">update_docstring()</a></code> 
@@ -191,6 +233,16 @@
           <code><a href="stub.html">stub()</a></code> 
         </dt>
         <dd>Stub Function Arguments</dd>
+      </dl><dl><dt>
+          
+          <code><a href="trace_package.html">trace_package()</a></code> 
+        </dt>
+        <dd>Traces function calls from a package</dd>
+      </dl><dl><dt>
+          
+          <code><a href="untrace_package.html">untrace_package()</a></code> 
+        </dt>
+        <dd>Untraces function calls from a package</dd>
       </dl></div><div class="section level2">
       <h2 id="path-finding">Path Finding<a class="anchor" aria-label="anchor" href="#path-finding"></a></h2>
       
@@ -271,14 +323,9 @@
 
       <dl><dt>
           
-          <code><a href="now.html">now()</a></code> 
+          <code><a href="now.html">now()</a></code> <code><a href="now.html">now_ms()</a></code> 
         </dt>
-        <dd>Get Current Date and Time as string</dd>
-      </dl><dl><dt>
-          
-          <code><a href="now_ms.html">now_ms()</a></code> 
-        </dt>
-        <dd>Get Current Date and Time as string</dd>
+        <dd>Get Current Date and Time as String</dd>
       </dl></div><div class="section level2">
       <h2 id="deprecated">Deprecated<a class="anchor" aria-label="anchor" href="#deprecated"></a></h2>
       
