@@ -4,9 +4,6 @@
     <loc>https://toscm.github.io/toscutil/404.html</loc>
   </url>
   <url>
-    <loc>https://toscm.github.io/toscutil/CONTRIBUTING.html</loc>
-  </url>
-  <url>
     <loc>https://toscm.github.io/toscutil/LICENSE-text.html</loc>
   </url>
   <url>
@@ -52,9 +49,6 @@
     <loc>https://toscm.github.io/toscutil/reference/catsn.html</loc>
   </url>
   <url>
-    <loc>https://toscm.github.io/toscutil/reference/check_pkg_docs.html</loc>
-  </url>
-  <url>
     <loc>https://toscm.github.io/toscutil/reference/config_dir.html</loc>
   </url>
   <url>
@@ -70,12 +64,6 @@
     <loc>https://toscm.github.io/toscutil/reference/dput2.html</loc>
   </url>
   <url>
-    <loc>https://toscm.github.io/toscutil/reference/fg.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/find_description_file.html</loc>
-  </url>
-  <url>
     <loc>https://toscm.github.io/toscutil/reference/function_locals.html</loc>
   </url>
   <url>
@@ -83,9 +71,6 @@
   </url>
   <url>
     <loc>https://toscm.github.io/toscutil/reference/get_formals.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/get_pkg_docs.html</loc>
   </url>
   <url>
     <loc>https://toscm.github.io/toscutil/reference/getfd.html</loc>
@@ -112,9 +97,6 @@
     <loc>https://toscm.github.io/toscutil/reference/locals.html</loc>
   </url>
   <url>
-    <loc>https://toscm.github.io/toscutil/reference/logf.html</loc>
-  </url>
-  <url>
     <loc>https://toscm.github.io/toscutil/reference/named.html</loc>
   </url>
   <url>
@@ -124,13 +106,13 @@
     <loc>https://toscm.github.io/toscutil/reference/now.html</loc>
   </url>
   <url>
+    <loc>https://toscm.github.io/toscutil/reference/now_ms.html</loc>
+  </url>
+  <url>
     <loc>https://toscm.github.io/toscutil/reference/op-null-default.html</loc>
   </url>
   <url>
     <loc>https://toscm.github.io/toscutil/reference/predict.numeric.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/read_description_file.html</loc>
   </url>
   <url>
     <loc>https://toscm.github.io/toscutil/reference/rm_all.html</loc>
@@ -143,12 +125,6 @@
   </url>
   <url>
     <loc>https://toscm.github.io/toscutil/reference/sys.exit.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/trace_package.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/untrace_package.html</loc>
   </url>
   <url>
     <loc>https://toscm.github.io/toscutil/reference/update_docstring.html</loc>
