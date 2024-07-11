@@ -1,162 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://toscm.github.io/toscutil/404.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/index.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/DOCSTRING_TEMPLATE.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/caller.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/capture.output2.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/cat0.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/cat0n.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/cat2.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/catf.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/catfn.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/catn.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/catnn.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/catsn.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/check_pkg_docs.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/config_dir.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/config_file.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/corn.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/data_dir.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/dput2.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/fg.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/find_description_file.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/function_locals.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/get_docstring.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/get_formals.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/get_pkg_docs.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/getfd.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/getpd.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/help2.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/home.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/ifthen.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/is.none.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/locals.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/logf.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/named.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/norm_path.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/now.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/op-null-default.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/predict.numeric.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/read_description_file.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/rm_all.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/split_docstring.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/stub.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/sys.exit.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/trace_package.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/untrace_package.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/update_docstring.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/xdg_config_home.html</loc>
-  </url>
-  <url>
-    <loc>https://toscm.github.io/toscutil/reference/xdg_data_home.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://toscm.github.io/toscutil/404.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/CONTRIBUTING.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/LICENSE-text.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/authors.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/index.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/news/index.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/DOCSTRING_TEMPLATE.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/caller.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/capture.output2.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/cat0.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/cat0n.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/cat2.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/catf.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/catfn.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/catn.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/catnn.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/catsn.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/check_pkg_docs.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/config_dir.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/config_file.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/corn.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/data_dir.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/dput2.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/fg.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/find_description_file.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/function_locals.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/get_docstring.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/get_formals.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/get_pkg_docs.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/getfd.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/getpd.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/help2.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/home.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/ifthen.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/index.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/is.none.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/locals.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/logf.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/named.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/norm_path.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/now.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/op-null-default.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/predict.numeric.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/read_description_file.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/rm_all.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/split_docstring.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/stub.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/sys.exit.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/trace_package.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/untrace_package.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/update_docstring.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/xdg_config_home.html</loc></url>
+<url><loc>https://toscm.github.io/toscutil/reference/xdg_data_home.html</loc></url>
 </urlset>
+
