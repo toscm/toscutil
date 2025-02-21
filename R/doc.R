@@ -7,14 +7,14 @@
 #' 2. Description is present and doesn't start with "This function".
 #' 3. Value is present.
 #' 4. Example is present.
-#' @param pkg The package name. If NULL, the package name is inferred from the DESCRIPTION file in the current directory or any parent directory. If no DESCRIPTION file is found, the function stops with an error message.
+#' @inheritParams get_pkg_docs
 #' @return Returns a dataframe with columns `title`, `description`, `value`, `examples` and rows corresponding to the documented functions in the package. Each cell contains a string describing the check result for the corresponding documentation element of that function.
 #' @examples
 #' df <- check_pkg_docs("tools")
 #' try(df <- check_pkg_docs())
 #' @keywords doc
-check_pkg_docs <- function(pkg = NULL) {
-    Y <- X <- get_pkg_docs(pkg)
+check_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
+    Y <- X <- get_pkg_docs(pkg, unload, reload)
     Y[, ] <- "ok"
     Y$class <- X$class
     Y$title[grepl("^Function", X$title, ignore.case = TRUE)] <- "Starts with 'Function'"
@@ -31,13 +31,14 @@ check_pkg_docs <- function(pkg = NULL) {
 #' @title Get Documented Functions in a Package
 #' @description Lists all documented functions in a package together with some of their documentation elements as raw text. Only works for installed packages.
 #' @param pkg The package name. If NULL, the package name is inferred from the DESCRIPTION file in the current directory or any parent directory. If no DESCRIPTION file is found, the function stops with an error message.
-#' @param unload Whether to unload a potential currently developed package using [devtools::unload()] before checking the documentation. Required when the package was loaded with [devtools::load_all()] as the documentation database only exists for installed packages.
+#' @param unload Whether to try to unload a potential currently developed package using [devtools::unload()] before checking the documentation. Required when the package was loaded with [devtools::load_all()] as the documentation database only exists for installed packages. If the unloading fails, the function silently continues, as the unloading is only necessary for checking the documentation of currently developed packages.
 #' @param reload Whether to reload the package using [devtools::load_all()] after checking the documentation.
 #' @return Returns a dataframe with columns `title`, `description`, `value`, `examples` and rows corresponding to the documented functions in the package.
 #' @examples
 #' df <- get_pkg_docs("tools")
 #' nchars <- as.data.frame(apply(df, 2, function(col) sapply(col, nchar)))
 #' head(nchars)
+#' try(df <- check_pkg_docs())
 #' @keywords doc
 get_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
     if (is.null(pkg)) {
@@ -46,13 +47,11 @@ get_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
             error = function(e) stop("Could not infern package name. Please provide it manually.")
         )
     }
+    devtools_available <- requireNamespace("devtools", quietly = TRUE)
+    devtools_loaded <- devtools_available && "devtools_shims" %in% search()
+    if (unload && devtools_loaded) try(devtools::unload(), silent = TRUE)
     db <- tools::Rd_db(pkg)
-    if (identical(db, structure(list(), names = character(0))) && isTRUE(unload) && "devtools_shims" %in% search()) {
-        if (!requireNamespace("devtools", quietly = TRUE)) stop("Unloading requires the 'devtools'. Please install first.")
-        devtools::unload()
-        db <- tools::Rd_db(pkg)
-        if (reload) devtools::load_all(quiet = TRUE)
-    }
+    if (reload && devtools_available) try(devtools::load_all(quiet = TRUE), silent = TRUE)
     rds <- names(db)
     tags <- c("title", "description", "value", "format", "examples")
     cols <- c("class", tags)

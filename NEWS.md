@@ -1,8 +1,12 @@
+# toscutil v2.8.1
+
+- `Fixed`: unloading of `devtools` in `get_pkg_docs()` (which caused `check_pkg_docs()` to fail if `devtools::load_all()` had been called before in the current session).
+
 # toscutil v2.8.0
 
 - `Added`: added functions `check_pkg_docs()`, `find_description_file()`, `get_pkg_docs()`, `logf()`, `read_description_file()`, `trace_package()`, `untrace_package()`
 - `Added`: added list `fg` (foreground colors)
-- `Added`: arguments `color` and `ditis.sec` to functions `now()` and `now_ms()`. Also merged their documentation and implementation (`now_ms()` calls `now()` internally).
+- `Added`: arguments `color` and `digits.sec` to functions `now()` and `now_ms()`. Also merged their documentation and implementation (`now_ms()` calls `now()` internally).
 - `Refactor`: `languageserver` is now an optional dependency instead of a required one. This makes the package more lightweight and easier to install.
 - `Refactor`: `catf` and `cat2` are implemented more efficiently now. In particular, both use only one call to `cat`, which makes them better usable in parallel executed code.
 - `Refactor`: `help2` now also works for functions loaded via `devtools`.
@@ -15,7 +19,7 @@
 
 # toscutil v2.7.3
 
-- `Fixed`: when using `cat2` to print to files the `end` kept printing to the console. This behavior is fixed now and `end` also goes to the file.
+- `Fixed`: when using `cat2` to print to files the `end` part kept getting printed to the console. This behavior is fixed now and `end` also goes to the file.
 
 # toscutil v2.7.2
 
