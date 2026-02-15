@@ -15,5 +15,7 @@ No return value, called for side effects
 ## Examples
 
 ``` r
-if (FALSE) rm_all() # \dontrun{}
+if (FALSE) { # \dontrun{
+rm_all()
+} # }
 ```

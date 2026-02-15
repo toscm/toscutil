@@ -14,6 +14,7 @@ description in NEWS.md
 
 ## Code Style
 
+- **Indentation**: Use 4 spaces for indentation (no tabs)
 - **Line length**: Maximum 80 characters per line
 - **Simplicity**: Code should be as simple and concise as possible
 - **Dependencies**: Use only packages shipped with a standard R
