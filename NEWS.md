@@ -1,3 +1,7 @@
+# toscutil v2.9.3
+
+- `Added`: testthat parallel config (multicore) via DESCRIPTION.
+
 # toscutil v2.9.2
 
 - `Changed`: `stub()` now returns invisibly,

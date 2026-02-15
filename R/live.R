@@ -67,12 +67,13 @@ stub <- function(func, ..., envir = parent.frame()) {
     default_args <- as.list(formals(func))
     user_args <- list(...)
     stubbed_args <- modifyList(default_args, user_args)
+
+    # Contruct stubs
     for (name in names(stubbed_args)) {
         if (identical(name, "...")) {
             # Stub variadic args as NULL, so `list(...)` produces an empty list.
             stubbed_args[name] <- list(NULL)
         } else if (identical(stubbed_args[[name]], quote(expr = ))) {
-            browser()
             # Try to get unspecified args from .GlobalEnv.
             # If that fails, raise an error.
             # Note: R uses `quote(expr=)` to represent missing values.
@@ -87,20 +88,24 @@ stub <- function(func, ..., envir = parent.frame()) {
             stubbed_args[[name]] <- eval(stubbed_args[[name]])
             envir[[name]] <- stubbed_args[[name]]
         }
+    }
+
+    # Assign stubs to environment
+    for (name in names(stubbed_args)) {
         if (is.null(stubbed_args[[name]])) {
-            # If the argument is NULL, assign it as NULL to the environment.
-            # This allows stubbing of NULL values, which would otherwise be
-            # ignored by `modifyList()`.
             assign(name, NULL, envir = envir)
         } else {
             envir[[name]] <- stubbed_args[[name]]
         }
     }
+
+    # Print summary of stubbed arguments, unless silenced via options.
     if (!isTRUE(getOption("toscutil.stub.silent", FALSE))) {
         env_name <- environmentName(envir)
-        if (!nzchar(env_name)) env_name <- "<anonymous>"
+        if (!nzchar(env_name)) env_name <- "anonymous environment"
         cat(sprintf("Created %d variables in %s:\n", length(stubbed_args), env_name))
         str(stubbed_args, 1, no.list = TRUE)
     }
+
     invisible(stubbed_args)
 }
