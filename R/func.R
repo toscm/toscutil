@@ -30,7 +30,17 @@ caller <- function(n = 1) {
     if (frame <= 0) {
         return(NULL)
     } else {
-        return(rlang::call_name(calls[[frame]]))
+        # Extract function name from call object
+        # This replaces rlang::call_name()
+        call_obj <- calls[[frame]]
+        if (is.call(call_obj)) {
+            # Get the first element of the call, which is the function
+            func <- call_obj[[1]]
+            # Convert to character - handles both symbols and namespaced calls
+            return(as.character(func))
+        } else {
+            return(NULL)
+        }
     }
 }
 
