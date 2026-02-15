@@ -36,23 +36,48 @@ corn <- function(x, n=2L) {
 #' @name stub
 #' @title Stub Function Arguments
 #' @description `stub()` assigns all arguments of a given function as symbols
-#' to the specified environment (usually the current environment)
+#' to the specified environment (usually the current environment). For arguments
+#' without default values, `stub()` will attempt to retrieve their values from
+#' `.GlobalEnv` if they exist there.
 #' @param func function for which the arguments should be stubbed
 #' @param ... non-default arguments of `func`
 #' @param envir environment to which symbols should be assigned
 #' @return list of symbols that are assigned to `envir`
 #' @details Stub is thought to be used for interactive testing and unit testing.
 #' It does not work for primitive functions.
+#' 
+#' When a function has required arguments without defaults, `stub()` will first
+#' check if those arguments exist in `.GlobalEnv` and use their values if found.
+#' This enables a common dev workflow: (1) Run example code that sets variables,
+#' (2) Call `stub(func)`, (3) Modify and execute parts of the function body.
 #' @examples
 #' f <- function(x, y = 2, z = 3) x + y + z
 #' args <- stub(f, x = 1) # assigns x = 1, y = 2 and z = 3 to current env
+#' 
+#' # stub() can also use values from GlobalEnv for missing args:
+#' g <- function(a, b = 10) a + b
+#' a <- 5  # Set in GlobalEnv
+#' stub(g)  # Uses a = 5 from GlobalEnv, assigns a = 5 and b = 10
 #' @keywords live
 stub <- function(func, ..., envir = parent.frame()) {
   default_args <- as.list(formals(func))
   user_args <- list(...)
   stubbed_args <- modifyList(default_args, user_args)
   for (name in names(stubbed_args)) {
-    envir[[name]] <- stubbed_args[[name]] <- eval(stubbed_args[[name]])
+    # Check if argument is missing (no default value)
+    # quote(expr=) is the R representation of a formal argument with no default
+    if (identical(stubbed_args[[name]], quote(expr=))) {
+      # Try to get from .GlobalEnv if it exists
+      if (exists(name, envir = .GlobalEnv)) {
+        stubbed_args[[name]] <- get(name, envir = .GlobalEnv)
+      } else {
+        # Provide a more informative error message
+        stop(sprintf("argument '%s' is missing, with no default and not found in .GlobalEnv", name))
+      }
+    } else {
+      stubbed_args[[name]] <- eval(stubbed_args[[name]])
+    }
+    envir[[name]] <- stubbed_args[[name]]
   }
   return(stubbed_args)
 }
