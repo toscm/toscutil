@@ -1,3 +1,8 @@
+# toscutil v2.8.2
+
+- `Added`: function `update_reference_in_readme()` to automatically generate and update the function reference section in README.md based on _pkgdown.yml categories.
+- `Changed`: extended `get_pkg_docs()` to include a `keyword` column in the returned dataframe.
+
 # toscutil v2.8.1
 
 - `Fixed`: unloading of `devtools` in `get_pkg_docs()` (which caused `check_pkg_docs()` to fail if `devtools::load_all()` had been called before in the current session).

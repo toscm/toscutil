@@ -4,7 +4,7 @@ test_that("check_pkg_docs works", {
     df <- get_pkg_docs(pkg = "tools", unload = FALSE, reload = FALSE)
     nchars <- as.data.frame(apply(df, 2, function(col) sapply(col, nchar)))
     expect_true(nrow(df) >= 40) # In 2024/06/27 `tools` had 50 functions , but let's test for 40 in case they remove some.
-    expect_true(ncol(df) == 6)
+    expect_true(ncol(df) == 7) # Updated from 6 to 7 to include keyword column
     expect_true(all(nchars$class > 0))
     expect_true(all(nchars$title > 0))
     expect_true(all(nchars$description > 0))

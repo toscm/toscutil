@@ -33,7 +33,7 @@ check_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
 #' @param pkg The package name. If NULL, the package name is inferred from the DESCRIPTION file in the current directory or any parent directory. If no DESCRIPTION file is found, the function stops with an error message.
 #' @param unload Whether to try to unload a potential currently developed package using [devtools::unload()] before checking the documentation. Required when the package was loaded with [devtools::load_all()] as the documentation database only exists for installed packages. If the unloading fails, the function silently continues, as the unloading is only necessary for checking the documentation of currently developed packages.
 #' @param reload Whether to reload the package using [devtools::load_all()] after checking the documentation.
-#' @return Returns a dataframe with columns `title`, `description`, `value`, `examples` and rows corresponding to the documented functions in the package.
+#' @return Returns a dataframe with columns `class`, `title`, `description`, `value`, `format`, `examples`, `keyword` and rows corresponding to the documented functions in the package.
 #' @examples
 #' df <- get_pkg_docs("tools")
 #' nchars <- as.data.frame(apply(df, 2, function(col) sapply(col, nchar)))
@@ -53,7 +53,7 @@ get_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
     db <- tools::Rd_db(pkg)
     if (reload && devtools_available) try(devtools::load_all(quiet = TRUE), silent = TRUE)
     rds <- names(db)
-    tags <- c("title", "description", "value", "format", "examples")
+    tags <- c("title", "description", "value", "format", "examples", "keyword")
     cols <- c("class", tags)
     syms <- sapply(rds, function(rd) strsplit(rd, "\\.")[[1]][1])
     ns <- asNamespace(pkg)
@@ -367,3 +367,143 @@ DOCSTRING_TEMPLATE <- paste0(
     "#' @title TODO (e.g. 'Sum of Vector Elements')\n",
     "#' @description TODO (e.g. 'sum returns the sum of all the values present in its arguments.'\n"
 )
+
+#' @export
+#' @title Update Function Reference in README
+#' @description Updates the function reference section in README.md by categorizing all exported functions according to the categories defined in _pkgdown.yml. The function reference is placed between HTML comments `<!-- BEGIN_FUNCTION_REFERENCE -->` and `<!-- END_FUNCTION_REFERENCE -->`.
+#' @param readme_path Path to the README.md file. Defaults to "README.md" in the current directory.
+#' @param pkgdown_path Path to the _pkgdown.yml file. Defaults to "_pkgdown.yml" in the current directory.
+#' @param pkg The package name. If NULL, the package name is inferred from the DESCRIPTION file.
+#' @return Invisibly returns TRUE if the update was successful.
+#' @examples
+#' \dontrun{
+#' # Update function reference in README.md
+#' update_reference_in_readme()
+#' }
+#' @keywords doc
+update_reference_in_readme <- function(readme_path = "README.md",
+                                      pkgdown_path = "_pkgdown.yml",
+                                      pkg = NULL) {
+    # Read package documentation
+    docs <- get_pkg_docs(pkg = pkg, unload = TRUE, reload = TRUE)
+    
+    # Read _pkgdown.yml to get category structure
+    if (!file.exists(pkgdown_path)) {
+        stop("Could not find _pkgdown.yml at path: ", pkgdown_path)
+    }
+    pkgdown_content <- readLines(pkgdown_path)
+    
+    # Parse _pkgdown.yml to extract categories
+    categories <- parse_pkgdown_categories(pkgdown_content)
+    
+    # Build the reference content
+    reference_lines <- "## Function Reference\n"
+    
+    for (category in categories) {
+        # Skip deprecated functions
+        if (category$keyword == "depr") next
+        
+        # Get functions for this category
+        funcs_in_category <- docs[grepl(category$keyword, docs$keyword), ]
+        
+        if (nrow(funcs_in_category) > 0) {
+            reference_lines <- paste0(reference_lines, "\n- ", category$desc, "\n")
+            
+            # Sort functions alphabetically
+            funcs_in_category <- funcs_in_category[order(rownames(funcs_in_category)), ]
+            
+            for (func_name in rownames(funcs_in_category)) {
+                title <- funcs_in_category[func_name, "title"]
+                reference_lines <- paste0(
+                    reference_lines,
+                    "    - `", func_name, "()`: ", title, "\n"
+                )
+            }
+        }
+    }
+    
+    # Read README.md
+    if (!file.exists(readme_path)) {
+        stop("Could not find README.md at path: ", readme_path)
+    }
+    readme_content <- readLines(readme_path)
+    
+    # Find the markers
+    start_marker <- "<!-- BEGIN_FUNCTION_REFERENCE -->"
+    end_marker <- "<!-- END_FUNCTION_REFERENCE -->"
+    
+    start_idx <- which(grepl(start_marker, readme_content, fixed = TRUE))
+    end_idx <- which(grepl(end_marker, readme_content, fixed = TRUE))
+    
+    if (length(start_idx) == 0 || length(end_idx) == 0) {
+        stop("Could not find markers in README.md. Please add ", start_marker, " and ", end_marker)
+    }
+    
+    # Replace content between markers
+    new_content <- c(
+        readme_content[1:start_idx],
+        reference_lines,
+        readme_content[end_idx:length(readme_content)]
+    )
+    
+    # Write back to file
+    writeLines(new_content, readme_path)
+    
+    message("Successfully updated function reference in ", readme_path)
+    invisible(TRUE)
+}
+
+#' @noRd
+#' @title Parse pkgdown categories
+#' @description Helper function to parse _pkgdown.yml and extract category information
+#' @param pkgdown_content Lines from _pkgdown.yml
+#' @return List of categories with title, desc, and keyword
+#' @keywords doc
+parse_pkgdown_categories <- function(pkgdown_content) {
+    categories <- list()
+    in_reference <- FALSE
+    current_category <- NULL
+    
+    for (line in pkgdown_content) {
+        # Check if we're in the reference section
+        if (grepl("^reference:", line)) {
+            in_reference <- TRUE
+            next
+        }
+        
+        if (!in_reference) next
+        
+        # Parse title
+        if (grepl("^\\s+- title:", line)) {
+            if (!is.null(current_category)) {
+                categories[[length(categories) + 1]] <- current_category
+            }
+            current_category <- list(
+                title = gsub("^\\s+- title:\\s*", "", line),
+                desc = "",
+                keyword = ""
+            )
+        }
+        
+        # Parse description
+        if (!is.null(current_category) && grepl("^\\s+desc:", line)) {
+            current_category$desc <- gsub("^\\s+desc:\\s*", "", line)
+        }
+        
+        # Parse keyword from contents
+        if (!is.null(current_category) && grepl("has_keyword", line)) {
+            keyword_match <- regmatches(line, regexpr('has_keyword\\("([^"]+)"\\)', line, perl = TRUE))
+            if (length(keyword_match) > 0) {
+                keyword <- gsub('.*has_keyword\\("([^"]+)"\\).*', "\\1", keyword_match)
+                current_category$keyword <- keyword
+            }
+        }
+    }
+    
+    # Add the last category
+    if (!is.null(current_category)) {
+        categories[[length(categories) + 1]] <- current_category
+    }
+    
+    categories
+}
