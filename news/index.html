@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">toscutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.8.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.9.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,11 @@
       <small>Source: <a href="https://github.com/toscm/toscutil/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.9.0" id="toscutil-v290">toscutil v2.9.0<a class="anchor" aria-label="anchor" href="#toscutil-v290"></a></h2>
+<ul><li>
+<code>Added</code>: <code><a href="../reference/stub.html">stub()</a></code> now automatically looks up missing arguments (those without defaults) in <code>.GlobalEnv</code> if they exist there. This enables a common interactive development workflow: run example code that sets variables, call <code>stub(func)</code>, then work with the function body interactively. Explicit arguments still take precedence over GlobalEnv values.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.8.1" id="toscutil-v281">toscutil v2.8.1<a class="anchor" aria-label="anchor" href="#toscutil-v281"></a></h2>
 <ul><li>
@@ -286,7 +291,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

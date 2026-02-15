@@ -1,0 +1,169 @@
+# toscutil
+
+Useful functions for everyday programming.
+
+# Installation
+
+``` r
+# From CRAN (stable version)
+install.packages("toscutil")
+# From Github (development version)
+devtools::install_github("toscm/toscutil")
+```
+
+## Usage
+
+To use any function or data object, first [install](#installation) the
+package and then just enter any object’s fully qualified name into a
+running R session,
+e.g. [`toscutil::now_ms()`](https://toscm.github.io/toscutil/reference/now.md).
+You can find a curated list of existing functions at
+[toscm.github.io/toscutil/reference](https://toscm.github.io/toscutil/reference/index.html).
+Alternatively, you can load the package first, using command
+[`library("toscutil")`](https://github.com/toscm/toscutil/) and then
+access any symbol directly by its name,
+e.g. [`now_ms()`](https://toscm.github.io/toscutil/reference/now.md).
+
+## Contribute
+
+For details on how to contribute to this package, please see
+[CONTRIBUTING.md](https://toscm.github.io/toscutil/CONTRIBUTING.md).
+
+# Package index
+
+## Base Extensions
+
+Extended versions of base R functions
+
+- [`capture.output2()`](https://toscm.github.io/toscutil/reference/capture.output2.md)
+  : Capture output from a command
+- [`cat2()`](https://toscm.github.io/toscutil/reference/cat2.md) :
+  Concatenate and Print
+- [`catf()`](https://toscm.github.io/toscutil/reference/catf.md) :
+  Format and Print
+- [`dput2()`](https://toscm.github.io/toscutil/reference/dput2.md) :
+  Return ASCII representation of an R object
+- [`fg`](https://toscm.github.io/toscutil/reference/fg.md) : Foreground
+  Color Codes
+- [`help2()`](https://toscm.github.io/toscutil/reference/help2.md) :
+  Return help for topic
+- [`named()`](https://toscm.github.io/toscutil/reference/named.md) :
+  Create automatically named List
+- [`norm_path()`](https://toscm.github.io/toscutil/reference/norm_path.md)
+  : Return Normalized Path
+
+## Condition Checking
+
+Function for condition checking
+
+- [`ifthen()`](https://toscm.github.io/toscutil/reference/ifthen.md) :
+  Shortcut for multiple if else statements
+- [`is.none()`](https://toscm.github.io/toscutil/reference/is.none.md) :
+  Truth checking as in Python
+- [`` `%none%` ``](https://toscm.github.io/toscutil/reference/op-null-default.md)
+  : Return Default if None
+
+## Function Writing
+
+Functions for writing functions
+
+- [`caller()`](https://toscm.github.io/toscutil/reference/caller.md) :
+  Get Name of Calling Function
+- [`function_locals()`](https://toscm.github.io/toscutil/reference/function_locals.md)
+  : Get Function Environment as List
+- [`locals()`](https://toscm.github.io/toscutil/reference/locals.md) :
+  Get specified Environment as List
+- [`sys.exit()`](https://toscm.github.io/toscutil/reference/sys.exit.md)
+  : Terminate a non-interactive R Session
+
+## Documentation
+
+Functions for reading, checking and writing documentation
+
+- [`DOCSTRING_TEMPLATE`](https://toscm.github.io/toscutil/reference/DOCSTRING_TEMPLATE.md)
+  : Docstring Template
+- [`check_pkg_docs()`](https://toscm.github.io/toscutil/reference/check_pkg_docs.md)
+  : Check Documented Functions in a Package
+- [`find_description_file()`](https://toscm.github.io/toscutil/reference/find_description_file.md)
+  : Find DESCRIPTION File
+- [`get_docstring()`](https://toscm.github.io/toscutil/reference/get_docstring.md)
+  : Get docstring for a Function
+- [`get_formals()`](https://toscm.github.io/toscutil/reference/get_formals.md)
+  : Get formals of a Function
+- [`get_pkg_docs()`](https://toscm.github.io/toscutil/reference/get_pkg_docs.md)
+  : Get Documented Functions in a Package
+- [`read_description_file()`](https://toscm.github.io/toscutil/reference/read_description_file.md)
+  : Read DESCRIPTION File into a List
+- [`split_docstring()`](https://toscm.github.io/toscutil/reference/split_docstring.md)
+  : Split a docstring into a Head, Param and Tail Part
+- [`update_docstring()`](https://toscm.github.io/toscutil/reference/update_docstring.md)
+  : Update docstring for a Function
+
+## Live Programming
+
+Functions for experimenting in interactive (live) R sessions
+
+- [`corn()`](https://toscm.github.io/toscutil/reference/corn.md) :
+  Return Corners of Matrix like Objects
+- [`rm_all()`](https://toscm.github.io/toscutil/reference/rm_all.md) :
+  Remove all objects from global environment
+- [`stub()`](https://toscm.github.io/toscutil/reference/stub.md) : Stub
+  Function Arguments
+- [`trace_package()`](https://toscm.github.io/toscutil/reference/trace_package.md)
+  : Traces function calls from a package
+- [`untrace_package()`](https://toscm.github.io/toscutil/reference/untrace_package.md)
+  : Untraces function calls from a package
+
+## Path Finding
+
+Functions returning important paths
+
+- [`config_dir()`](https://toscm.github.io/toscutil/reference/config_dir.md)
+  : Get Normalized Configuration Directory Path of a Program
+- [`config_file()`](https://toscm.github.io/toscutil/reference/config_file.md)
+  : Get Normalized Configuration File Path of a Program
+- [`data_dir()`](https://toscm.github.io/toscutil/reference/data_dir.md)
+  : Get Normalized Data Directory Path of a Program
+- [`getfd()`](https://toscm.github.io/toscutil/reference/getfd.md) : Get
+  File Directory
+- [`getpd()`](https://toscm.github.io/toscutil/reference/getpd.md) : Get
+  Project Directory
+- [`home()`](https://toscm.github.io/toscutil/reference/home.md) : Get
+  USERPROFILE or HOME
+- [`xdg_config_home()`](https://toscm.github.io/toscutil/reference/xdg_config_home.md)
+  : Get XDG_CONFIG_HOME
+- [`xdg_data_home()`](https://toscm.github.io/toscutil/reference/xdg_data_home.md)
+  : Get XDG_DATA_HOME
+
+## S3 Methods
+
+S3 methods
+
+- [`predict(`*`<numeric>`*`)`](https://toscm.github.io/toscutil/reference/predict.numeric.md)
+  : Predict Method for Numeric Vectors
+
+## Time Related
+
+Function returning datetime
+
+- [`now()`](https://toscm.github.io/toscutil/reference/now.md)
+  [`now_ms()`](https://toscm.github.io/toscutil/reference/now.md) : Get
+  Current Date and Time as String
+
+## Deprecated
+
+Deprecated functions that should no longer be used
+
+- [`cat0()`](https://toscm.github.io/toscutil/reference/cat0.md) :
+  Concatenate and Print
+- [`cat0n()`](https://toscm.github.io/toscutil/reference/cat0n.md) :
+  Concatenate and Print
+- [`catfn()`](https://toscm.github.io/toscutil/reference/catfn.md) :
+  Format and Print
+- [`catn()`](https://toscm.github.io/toscutil/reference/catn.md) :
+  Concatenate and Print
+- [`catnn()`](https://toscm.github.io/toscutil/reference/catnn.md) :
+  Concatenate and Print
+- [`catsn()`](https://toscm.github.io/toscutil/reference/catsn.md) :
+  Concatenate and Print
+
