@@ -44,6 +44,17 @@ test_that("equal handles edge cases", {
   expect_true(equal(NULL, NULL))
   expect_true(equal(list(), list()))
   expect_true(equal(character(0), character(0)))
+  expect_true(equal(NaN, NaN))
+  expect_true(equal(Inf, Inf))
+  expect_true(equal(-Inf, -Inf))
+  expect_false(equal(Inf, -Inf))
+})
+
+test_that("equal works with lists", {
+  expect_true(equal(list(a = 1, b = 2), list(a = 1, b = 2)))
+  expect_false(equal(list(a = 1, b = 2), list(a = 1, b = 3)))
+  expect_true(equal(list(1, 2, 3), list(1, 2, 3)))
+  expect_false(equal(list(1, 2, 3), list(1, 2, 4)))
 })
 
 test_that("%==% operator works with identical values", {
@@ -75,6 +86,10 @@ test_that("%==% operator handles edge cases", {
   expect_true(NULL %==% NULL)
   expect_true(list() %==% list())
   expect_true(character(0) %==% character(0))
+  expect_true(NaN %==% NaN)
+  expect_true(Inf %==% Inf)
+  expect_true(-Inf %==% -Inf)
+  expect_false(Inf %==% -Inf)
 })
 
 test_that("equal and %==% are consistent", {
