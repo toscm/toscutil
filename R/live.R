@@ -79,5 +79,6 @@ stub <- function(func, ..., envir = parent.frame()) {
     }
     envir[[name]] <- stubbed_args[[name]]
   }
-  return(stubbed_args)
+  str(stubbed_args, 1)
+  invisible(stubbed_args)
 }
