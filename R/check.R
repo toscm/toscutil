@@ -77,3 +77,38 @@ is.none <- function(x) {
 `%none%` <- function(x, y) {
     if (is.none(x)) y else x
 }
+
+
+#' @export
+#' @rdname equal
+#' @name equal
+#' @title Test Near Equality
+#' @description Tests whether two objects are nearly equal using [all.equal()].
+#' This provides a more readable alternative to `isTRUE(all.equal(x, y))`.
+#' The operator `%==%` is provided as a shorthand for `equal()`.
+#' @param x,y objects to compare
+#' @param ... additional arguments passed to [all.equal()]
+#' @return `TRUE` if `x` and `y` are nearly equal, `FALSE` otherwise
+#' @examples
+#' equal(1.0, 1.0) # TRUE
+#' equal(1.0, 1.000001) # TRUE (within tolerance)
+#' equal(1.0, 2.0) # FALSE
+#' 
+#' # Using the operator
+#' 1.0 %==% 1.0 # TRUE
+#' 1.0 %==% 1.000001 # TRUE
+#' c(1, 2, 3) %==% c(1, 2, 3) # TRUE
+#' 
+#' # Pass additional arguments
+#' equal(1.0, 1.1, tolerance = 0.2) # TRUE
+#' @seealso [all.equal()], [isTRUE()]
+#' @keywords check
+equal <- function(x, y, ...) {
+    isTRUE(all.equal(x, y, ...))
+}
+
+#' @export
+#' @rdname equal
+`%==%` <- function(x, y) {
+    isTRUE(all.equal(x, y))
+}
