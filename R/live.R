@@ -65,6 +65,7 @@ stub <- function(func, ..., envir = parent.frame()) {
   stubbed_args <- modifyList(default_args, user_args)
   for (name in names(stubbed_args)) {
     # Check if argument is missing (no default value)
+    # quote(expr=) is the R representation of a formal argument with no default
     if (identical(stubbed_args[[name]], quote(expr=))) {
       # Try to get from .GlobalEnv if it exists
       if (exists(name, envir = .GlobalEnv)) {
