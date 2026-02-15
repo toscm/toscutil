@@ -21,15 +21,3 @@ test_that("caller works", {
   f <- function() caller(100)
   expect_null(f())
 })
-
-test_that("caller handles namespaced calls", {
-  # Test that if a namespaced function is in the call stack,
-  # we return just the function name (matching rlang::call_name behavior)
-  # This is a theoretical test since our actual usage doesn't involve
-  # namespaced calls, but ensures robustness
-  
-  # We can't easily test this in practice without rlang,
-  # but we've verified the implementation handles it correctly
-  # by returning the last element of the character vector
-  expect_true(TRUE)
-})
