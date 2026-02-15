@@ -1,3 +1,8 @@
+# toscutil v2.8.2
+
+- `Fixed`: `logf()` now correctly uses the `file` and `append` arguments
+  when writing output.
+
 # toscutil v2.8.1
 
 - `Fixed`: unloading of `devtools` in `get_pkg_docs()` (which caused `check_pkg_docs()` to fail if `devtools::load_all()` had been called before in the current session).
