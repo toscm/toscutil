@@ -2,12 +2,14 @@
 #' @name rm_all
 #' @title Remove all objects from global environment
 #' @description Same as `rm(list=ls())`
-#' @examples \dontrun{rm_all()}
+#' @examples \dontrun{
+#' rm_all()
+#' }
 #' @return No return value, called for side effects
 #' @keywords live
 rm_all <- function() {
     e <- globalenv()
-    rm(list=ls(envir=e), envir=e)
+    rm(list = ls(envir = e), envir = e)
 }
 
 #' @export
@@ -21,14 +23,16 @@ rm_all <- function() {
 #' @examples
 #' corn(matrix(1:10000, 100))
 #' @keywords live
-corn <- function(x, n=2L) {
-  if(is.vector(x)) return(x)
-  stopifnot("matrix" %in% class(x) || "data.frame" %in% class(x))
-  rs <- nrow(x)
-  cs <- ncol(x)
-  ridx <- if (n > rs/2) 1:rs else c(1:n, (rs-n+1):rs)
-  cidx <- if (n > cs/2) 1:cs else c(1:n, (cs-n+1):cs)
-  x[ridx, cidx]
+corn <- function(x, n = 2L) {
+    if (is.vector(x)) {
+        return(x)
+    }
+    stopifnot("matrix" %in% class(x) || "data.frame" %in% class(x))
+    rs <- nrow(x)
+    cs <- ncol(x)
+    ridx <- if (n > rs / 2) 1:rs else c(1:n, (rs - n + 1):rs)
+    cidx <- if (n > cs / 2) 1:cs else c(1:n, (cs - n + 1):cs)
+    x[ridx, cidx]
 }
 
 
@@ -45,7 +49,7 @@ corn <- function(x, n=2L) {
 #' @return list of symbols that are assigned to `envir`
 #' @details Stub is thought to be used for interactive testing and unit testing.
 #' It does not work for primitive functions.
-#' 
+#'
 #' When a function has required arguments without defaults, `stub()` will first
 #' check if those arguments exist in `.GlobalEnv` and use their values if found.
 #' This enables a common dev workflow: (1) Run example code that sets variables,
@@ -53,31 +57,55 @@ corn <- function(x, n=2L) {
 #' @examples
 #' f <- function(x, y = 2, z = 3) x + y + z
 #' args <- stub(f, x = 1) # assigns x = 1, y = 2 and z = 3 to current env
-#' 
+#'
 #' # stub() can also use values from GlobalEnv for missing args:
 #' g <- function(a, b = 10) a + b
-#' a <- 5  # Set in GlobalEnv
-#' stub(g)  # Uses a = 5 from GlobalEnv, assigns a = 5 and b = 10
+#' a <- 5 # Set in GlobalEnv
+#' stub(g) # Uses a = 5 from GlobalEnv, assigns a = 5 and b = 10
 #' @keywords live
 stub <- function(func, ..., envir = parent.frame()) {
-  default_args <- as.list(formals(func))
-  user_args <- list(...)
-  stubbed_args <- modifyList(default_args, user_args)
-  for (name in names(stubbed_args)) {
-    # Check if argument is missing (no default value)
-    # quote(expr=) is the R representation of a formal argument with no default
-    if (identical(stubbed_args[[name]], quote(expr=))) {
-      # Try to get from .GlobalEnv if it exists
-      if (exists(name, envir = .GlobalEnv)) {
-        stubbed_args[[name]] <- get(name, envir = .GlobalEnv)
-      } else {
-        # Provide a more informative error message
-        stop(sprintf("argument '%s' is missing, with no default and not found in .GlobalEnv", name))
-      }
-    } else {
-      stubbed_args[[name]] <- eval(stubbed_args[[name]])
+    default_args <- as.list(formals(func))
+    user_args <- list(...)
+    stubbed_args <- modifyList(default_args, user_args)
+
+    # Contruct stubs
+    for (name in names(stubbed_args)) {
+        if (identical(name, "...")) {
+            # Stub variadic args as NULL, so `list(...)` produces an empty list.
+            stubbed_args[name] <- list(NULL)
+        } else if (identical(stubbed_args[[name]], quote(expr = ))) {
+            # Try to get unspecified args from .GlobalEnv.
+            # If that fails, raise an error.
+            # Note: R uses `quote(expr=)` to represent missing values.
+            if (exists(name, envir = .GlobalEnv)) {
+                stubbed_args[[name]] <- get(name, envir = .GlobalEnv)
+            } else {
+                stop(sprintf("argument '%s' is missing, with no default and not found in .GlobalEnv", name))
+            }
+        } else {
+            # Make sure other arguments (user-defined or function-defaults) are
+            # evaluated, so they can be used directly in the environment.ll
+            stubbed_args[[name]] <- eval(stubbed_args[[name]])
+            envir[[name]] <- stubbed_args[[name]]
+        }
     }
-    envir[[name]] <- stubbed_args[[name]]
-  }
-  return(stubbed_args)
+
+    # Assign stubs to environment
+    for (name in names(stubbed_args)) {
+        if (is.null(stubbed_args[[name]])) {
+            assign(name, NULL, envir = envir)
+        } else {
+            envir[[name]] <- stubbed_args[[name]]
+        }
+    }
+
+    # Print summary of stubbed arguments, unless silenced via options.
+    if (!isTRUE(getOption("toscutil.stub.silent", FALSE))) {
+        env_name <- environmentName(envir)
+        if (!nzchar(env_name)) env_name <- "anonymous environment"
+        cat(sprintf("Created %d variables in %s:\n", length(stubbed_args), env_name))
+        str(stubbed_args, 1, no.list = TRUE)
+    }
+
+    invisible(stubbed_args)
 }

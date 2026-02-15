@@ -1,3 +1,12 @@
+
+# toscutil v2.9.2
+
+- `Changed`:
+  - `stub()` now returns invisibly
+  - `stub()` intializes `...` as `NULL` if present
+  - `stub()` prints a compact summary of the stubbed arguments if not silenced via `options(toscutil.stub.silent = TRUE)`
+  - testthat now runs with multiple cores
+
 # toscutil v2.9.1
 
 - `Fixed`: `logf()` now correctly uses the `file` and `append` arguments

@@ -13,6 +13,8 @@ No return value, called for side effects
 Same as \code{rm(list=ls())}
 }
 \examples{
-\dontrun{rm_all()}
+\dontrun{
+rm_all()
+}
 }
 \keyword{live}
