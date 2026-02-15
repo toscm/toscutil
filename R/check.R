@@ -85,38 +85,34 @@ is.none <- function(x) {
 #' @title Test Near Equality
 #' @description Tests whether two objects are nearly equal using [all.equal()].
 #' This provides a more readable alternative to `isTRUE(all.equal(x, y))`.
-#' The operator `%==%` is provided as a shorthand for `equal()`.
+#' The operator `%==%` is provided as a shorthand for `equal()`, but note that
+#' the operator form does not accept additional arguments (use the function form
+#' to pass custom tolerance or other parameters).
 #' @param x,y objects to compare
-#' @param ... additional arguments passed to [all.equal()]
+#' @param ... additional arguments passed to [all.equal()], such as `tolerance`
+#' to control the comparison threshold. Uses [all.equal()]'s default tolerance
+#' (currently `sqrt(.Machine$double.eps)`) if not specified.
 #' @return `TRUE` if `x` and `y` are nearly equal, `FALSE` otherwise
 #' @examples
 #' equal(1.0, 1.0) # TRUE
 #' equal(1.0, 1.000001) # TRUE (within tolerance)
 #' equal(1.0, 2.0) # FALSE
 #' 
-#' # Using the operator
+#' # Using the operator (note: cannot pass custom arguments)
 #' 1.0 %==% 1.0 # TRUE
 #' 1.0 %==% 1.000001 # TRUE
 #' c(1, 2, 3) %==% c(1, 2, 3) # TRUE
 #' 
-#' # Pass additional arguments
+#' # Pass additional arguments (requires function form)
 #' equal(1.0, 1.1, tolerance = 0.2) # TRUE
 #' @seealso [all.equal()], [isTRUE()]
 #' @keywords check
 equal <- function(x, y, ...) {
-    # Use a slightly more relaxed default tolerance (1e-6) than all.equal's default (1.5e-8)
-    # to allow for more natural "nearly equal" comparisons
-    # Tolerance must be passed as a named argument to override the default
-    args <- list(...)
-    if (!"tolerance" %in% names(args)) {
-        args$tolerance <- 1e-6
-    }
-    isTRUE(do.call(all.equal, c(list(x, y), args)))
+    isTRUE(all.equal(x, y, ...))
 }
 
 #' @export
 #' @rdname equal
 `%==%` <- function(x, y) {
-    # Use equal() to avoid code duplication and ensure consistency
-    equal(x, y)
+    isTRUE(all.equal(x, y))
 }

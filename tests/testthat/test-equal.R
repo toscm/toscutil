@@ -9,7 +9,8 @@ test_that("equal works with identical values", {
 })
 
 test_that("equal works with nearly equal numeric values", {
-  expect_true(equal(1.0, 1.0000001))
+  # all.equal's default tolerance is sqrt(.Machine$double.eps) ~ 1.5e-8
+  expect_true(equal(1.0, 1.0 + 1e-9))
   expect_true(equal(1.0, 1 + .Machine$double.eps))
 })
 
@@ -19,6 +20,8 @@ test_that("equal returns FALSE for different values", {
   expect_false(equal("a", "b"))
   expect_false(equal(TRUE, FALSE))
   expect_false(equal(c(1, 2, 3), c(1, 2, 4)))
+  # Differences larger than tolerance
+  expect_false(equal(1.0, 1.0001))
 })
 
 test_that("equal handles different types correctly", {
@@ -28,14 +31,12 @@ test_that("equal handles different types correctly", {
 })
 
 test_that("equal passes ... to all.equal", {
-  # With default tolerance, these should be equal
-  expect_true(equal(1.0, 1.000001))
+  # With relaxed tolerance, these should be equal
+  expect_true(equal(1.0, 1.0001, tolerance = 0.001))
+  expect_true(equal(1.0, 1.1, tolerance = 0.2))
   
   # With strict tolerance, they should not be equal
-  expect_false(equal(1.0, 1.000001, tolerance = 1e-10))
-  
-  # With relaxed tolerance, these should be equal
-  expect_true(equal(1.0, 1.1, tolerance = 0.2))
+  expect_false(equal(1.0, 1.0 + 1e-9, tolerance = 1e-10))
 })
 
 test_that("equal handles edge cases", {
@@ -54,7 +55,8 @@ test_that("%==% operator works with identical values", {
 })
 
 test_that("%==% operator works with nearly equal numeric values", {
-  expect_true(1.0 %==% 1.0000001)
+  # all.equal's default tolerance is sqrt(.Machine$double.eps) ~ 1.5e-8
+  expect_true(1.0 %==% (1.0 + 1e-9))
   expect_true(1.0 %==% (1 + .Machine$double.eps))
 })
 
@@ -64,6 +66,8 @@ test_that("%==% operator returns FALSE for different values", {
   expect_false("a" %==% "b")
   expect_false(TRUE %==% FALSE)
   expect_false(c(1, 2, 3) %==% c(1, 2, 4))
+  # Differences larger than tolerance
+  expect_false(1.0 %==% 1.0001)
 })
 
 test_that("%==% operator handles edge cases", {
