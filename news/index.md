@@ -1,5 +1,14 @@
 # Changelog
 
+## toscutil v2.10.0
+
+- `Added`: added functions
+  [`equal()`](https://toscm.github.io/toscutil/reference/equal.md) and
+  operator `%==%` for more readable equality testing, particularly
+  useful for comparing objects with length greater than one (vectors,
+  lists, data frames, etc.). These provide a cleaner alternative to
+  `isTRUE(all.equal(x, y))`.
+
 ## toscutil v2.9.2
 
 - `Changed`:

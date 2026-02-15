@@ -67,7 +67,7 @@ a message.
 
 ``` r
 logf("Hello, %s!", "world")
-#> 2026-02-15 12:03:33.16 Hello, world!
+#> 2026-02-15 12:09:56.78 Hello, world!
 logf("Goodbye", prefix = function() "", sep1 = "", end = "!\n")
 #> Goodbye!
 local({
