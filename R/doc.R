@@ -64,7 +64,9 @@ get_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
     df$class <- sapply(syms, function(sym) mode(ns[[sym]]))
     for (i in seq_along(rds)) {
         for (tag in tags) {
-            df[i, tag] <- extract_help_section(db[[rds[i]]], tag)
+            result <- extract_help_section(db[[rds[i]]], tag)
+            # Collapse multiple values (e.g., multiple keywords) into a single string
+            df[i, tag] <- paste(result, collapse = ", ")
         }
     }
     df
