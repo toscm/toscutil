@@ -52,7 +52,19 @@ stub <- function(func, ..., envir = parent.frame()) {
   user_args <- list(...)
   stubbed_args <- modifyList(default_args, user_args)
   for (name in names(stubbed_args)) {
-    envir[[name]] <- stubbed_args[[name]] <- eval(stubbed_args[[name]])
+    # Check if argument is missing (no default value)
+    if (identical(stubbed_args[[name]], quote(expr=))) {
+      # Try to get from .GlobalEnv if it exists
+      if (exists(name, envir = .GlobalEnv)) {
+        stubbed_args[[name]] <- get(name, envir = .GlobalEnv)
+      } else {
+        # If not in GlobalEnv, eval will fail with the original error
+        stubbed_args[[name]] <- eval(stubbed_args[[name]])
+      }
+    } else {
+      stubbed_args[[name]] <- eval(stubbed_args[[name]])
+    }
+    envir[[name]] <- stubbed_args[[name]]
   }
   return(stubbed_args)
 }
