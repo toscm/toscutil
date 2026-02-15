@@ -104,11 +104,19 @@ is.none <- function(x) {
 #' @seealso [all.equal()], [isTRUE()]
 #' @keywords check
 equal <- function(x, y, ...) {
-    isTRUE(all.equal(x, y, ...))
+    # Use a slightly more relaxed default tolerance (1e-6) than all.equal's default (1.5e-8)
+    # to allow for more natural "nearly equal" comparisons
+    # Tolerance must be passed as a named argument to override the default
+    args <- list(...)
+    if (!"tolerance" %in% names(args)) {
+        args$tolerance <- 1e-6
+    }
+    isTRUE(do.call(all.equal, c(list(x, y), args)))
 }
 
 #' @export
 #' @rdname equal
 `%==%` <- function(x, y) {
-    isTRUE(all.equal(x, y))
+    # Use equal() to avoid code duplication and ensure consistency
+    equal(x, y)
 }
