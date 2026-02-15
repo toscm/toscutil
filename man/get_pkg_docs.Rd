@@ -9,12 +9,12 @@ get_pkg_docs(pkg = NULL, unload = TRUE, reload = TRUE)
 \arguments{
 \item{pkg}{The package name. If NULL, the package name is inferred from the DESCRIPTION file in the current directory or any parent directory. If no DESCRIPTION file is found, the function stops with an error message.}
 
-\item{unload}{Whether to try to unload a potential currently developed package using \code{\link[devtools:reexports]{devtools::unload()}} before checking the documentation. Required when the package was loaded with \code{\link[devtools:load_all]{devtools::load_all()}} as the documentation database only exists for installed packages. If the unloading fails, the function silently continues, as the unloading is only necessary for checking the documentation of currently developed packages.}
+\item{unload}{Whether to try to unload a potential currently developed package using \code{\link[devtools:unload]{devtools::unload()}} before checking the documentation. Required when the package was loaded with \code{\link[devtools:load_all]{devtools::load_all()}} as the documentation database only exists for installed packages. If the unloading fails, the function silently continues, as the unloading is only necessary for checking the documentation of currently developed packages.}
 
 \item{reload}{Whether to reload the package using \code{\link[devtools:load_all]{devtools::load_all()}} after checking the documentation.}
 }
 \value{
-Returns a dataframe with columns \code{title}, \code{description}, \code{value}, \code{examples} and rows corresponding to the documented functions in the package.
+Returns a dataframe with columns \code{class}, \code{title}, \code{description}, \code{value}, \code{format}, \code{examples}, \code{keyword} and rows corresponding to the documented functions in the package.
 }
 \description{
 Lists all documented functions in a package together with some of their documentation elements as raw text. Only works for installed packages.

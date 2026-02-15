@@ -55,7 +55,7 @@ get_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
     rds <- names(db)
     tags <- c("title", "description", "value", "format", "examples", "keyword")
     cols <- c("class", tags)
-    syms <- sapply(rds, function(rd) strsplit(rd, "\\.")[[1]][1])
+    syms <- sapply(rds, function(rd) sub("\\.Rd$", "", rd))
     ns <- asNamespace(pkg)
     rds <- rds[syms %in% ls(ns)]
     syms <- syms[syms %in% ls(ns)]
@@ -69,6 +69,8 @@ get_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
             df[i, tag] <- paste(result, collapse = ", ")
         }
     }
+    df
+}
     df
 }
 
