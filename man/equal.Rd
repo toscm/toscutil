@@ -12,27 +12,50 @@ x \%==\% y
 \arguments{
 \item{x, y}{objects to compare}
 
-\item{...}{additional arguments passed to \code{\link[=all.equal]{all.equal()}}}
+\item{...}{additional arguments passed to \code{\link[=all.equal]{all.equal()}}, such as \code{tolerance}
+to control the comparison threshold. Uses \code{\link[=all.equal]{all.equal()}}'s default tolerance
+(currently \code{sqrt(.Machine$double.eps)}) if not specified.}
 }
 \value{
 \code{TRUE} if \code{x} and \code{y} are nearly equal, \code{FALSE} otherwise
 }
 \description{
 Tests whether two objects are nearly equal using \code{\link[=all.equal]{all.equal()}}.
-This provides a more readable alternative to \code{isTRUE(all.equal(x, y))}.
-The operator \verb{\%==\%} is provided as a shorthand for \code{equal()}.
+This provides a more readable alternative to \code{isTRUE(all.equal(x, y))},
+particularly useful for comparing objects with length greater than one (vectors,
+lists, data frames, etc.) where standard equality operators may not behave as expected.
+The operator \verb{\%==\%} is provided as a shorthand for \code{equal()}, but note that
+the operator form does not accept additional arguments (use the function form
+to pass custom tolerance or other parameters).
 }
 \examples{
+# Basic numeric comparisons
 equal(1.0, 1.0) # TRUE
-equal(1.0, 1.000001) # TRUE (within tolerance)
+equal(1.0, 1.0 + 1e-9) # TRUE (within default tolerance)
 equal(1.0, 2.0) # FALSE
 
-# Using the operator
+# Comparing vectors
+equal(c(1, 2, 3), c(1, 2, 3)) # TRUE
+equal(c(1, 2, 3), c(1, 2, 4)) # FALSE
+
+# Using the operator (note: cannot pass custom arguments)
 1.0 \%==\% 1.0 # TRUE
-1.0 \%==\% 1.000001 # TRUE
+1.0 \%==\% (1.0 + 1e-9) # TRUE (within default tolerance)
 c(1, 2, 3) \%==\% c(1, 2, 3) # TRUE
 
-# Pass additional arguments
+# Comparing lists
+equal(list(a = 1, b = 2), list(a = 1, b = 2)) # TRUE
+equal(list(a = 1, b = 2), list(a = 1, b = 3)) # FALSE
+
+# Special values
+equal(NA, NA) # TRUE
+equal(NULL, NULL) # TRUE
+equal(NaN, NaN) # TRUE
+equal(Inf, Inf) # TRUE
+equal(-Inf, -Inf) # TRUE
+equal(Inf, -Inf) # FALSE
+
+# Pass additional arguments (requires function form)
 equal(1.0, 1.1, tolerance = 0.2) # TRUE
 }
 \seealso{
