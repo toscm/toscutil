@@ -1,3 +1,7 @@
+# toscutil v2.9.0
+
+- `Refactor`: Removed `rlang` dependency. The package now implements its own minimal replacements for the `rlang` functions that were previously used (`rlang::call_name()`). This makes the package more lightweight and reduces installation dependencies. All existing functionality is preserved and fully tested.
+
 # toscutil v2.8.1
 
 - `Fixed`: unloading of `devtools` in `get_pkg_docs()` (which caused `check_pkg_docs()` to fail if `devtools::load_all()` had been called before in the current session).
