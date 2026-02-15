@@ -58,8 +58,8 @@ stub <- function(func, ..., envir = parent.frame()) {
       if (exists(name, envir = .GlobalEnv)) {
         stubbed_args[[name]] <- get(name, envir = .GlobalEnv)
       } else {
-        # If not in GlobalEnv, eval will fail with the original error
-        stubbed_args[[name]] <- eval(stubbed_args[[name]])
+        # Provide a more informative error message
+        stop(sprintf("argument '%s' is missing, with no default and not found in .GlobalEnv", name))
       }
     } else {
       stubbed_args[[name]] <- eval(stubbed_args[[name]])

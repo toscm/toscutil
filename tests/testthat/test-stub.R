@@ -41,8 +41,16 @@ test_that("stub fails when missing arg not in GlobalEnv", {
   # Function with required arg that doesn't exist in GlobalEnv
   g <- function(z) z * 2
   
-  # Should fail with original error
-  expect_error(stub(g), "argument is missing, with no default")
+  # Should fail with informative error
+  expect_error(stub(g), "argument 'z' is missing, with no default and not found in \\.GlobalEnv")
+  
+  # Verify it doesn't use other variables in GlobalEnv
+  assign("x", 100, envir = .GlobalEnv)
+  h <- function(z) z * 2
+  expect_error(stub(h), "argument 'z' is missing, with no default and not found in \\.GlobalEnv")
+  
+  # Clean up
+  rm(x, envir = .GlobalEnv)
 })
 
 test_that("stub handles multiple missing args from GlobalEnv", {
