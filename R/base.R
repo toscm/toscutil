@@ -111,7 +111,7 @@ logf <- function(fmt,
                  sep1 = .Options$toscutil.logf.sep1 %||% " ",
                  sep2 = .Options$toscutil.logf.sep2 %||% "",
                  end = .Options$toscutil.logf.end %||% "\n") {
-    cat(prefix(), sep1, sprintf(fmt, ...), sep2, end, sep = "")
+    cat(prefix(), sep1, sprintf(fmt, ...), sep2, end, sep = "", file = file, append = append)
 }
 
 #' @export

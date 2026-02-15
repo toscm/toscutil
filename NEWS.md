@@ -1,3 +1,8 @@
+# toscutil v2.9.1
+
+- `Fixed`: `logf()` now correctly uses the `file` and `append` arguments
+  when writing output.
+
 # toscutil v2.9.0
 
 - `Added`: `stub()` now automatically looks up missing arguments (those without defaults) in `.GlobalEnv` if they exist there. This enables a common interactive development workflow: run example code that sets variables, call `stub(func)`, then work with the function body interactively. Explicit arguments still take precedence over GlobalEnv values.
