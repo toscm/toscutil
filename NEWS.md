@@ -1,3 +1,8 @@
+# toscutil v2.12.0
+
+- `Added`: function `update_reference_in_readme()` to automatically generate and update the function reference section in README.md based on _pkgdown.yml categories.
+- `Changed`: extended `get_pkg_docs()` to include a `keyword` column in the returned dataframe.
+
 # toscutil v2.11.0
 
 - `Refactor`: Removed `rlang` dependency. The package now implements its own minimal replacements for the `rlang` functions that were previously used (`rlang::call_name()`). This makes the package more lightweight and reduces installation dependencies. All existing functionality is preserved and fully tested.
