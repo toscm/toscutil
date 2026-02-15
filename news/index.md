@@ -1,5 +1,11 @@
 # Changelog
 
+## toscutil v2.9.1
+
+- `Fixed`:
+  [`logf()`](https://toscm.github.io/toscutil/reference/logf.md) now
+  correctly uses the `file` and `append` arguments when writing output.
+
 ## toscutil v2.9.0
 
 - `Added`:
