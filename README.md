@@ -26,6 +26,7 @@ To use any function or data object, first [install](#installation) the package a
 ## Function Reference
 
 - Extended versions of base R functions
+    - `capture.output2()`: Capture output from a command
     - `cat2()`: Concatenate and Print
     - `catf()`: Format and Print
     - `dput2()`: Return ASCII representation of an R object
@@ -36,11 +37,13 @@ To use any function or data object, first [install](#installation) the package a
 
 - Function for condition checking
     - `ifthen()`: Shortcut for multiple if else statements
+    - `is.none()`: Truth checking as in Python
 
 - Functions for writing functions
     - `caller()`: Get Name of Calling Function
     - `function_locals()`: Get Function Environment as List
     - `locals()`: Get specified Environment as List
+    - `sys.exit()`: Terminate a non-interactive R Session
 
 - Functions for reading, checking and writing documentation
     - `check_pkg_docs()`: Check Documented Functions in a Package
@@ -70,6 +73,9 @@ To use any function or data object, first [install](#installation) the package a
     - `home()`: Get USERPROFILE or HOME
     - `xdg_config_home()`: Get XDG_CONFIG_HOME
     - `xdg_data_home()`: Get XDG_DATA_HOME
+
+- S3 methods
+    - `predict.numeric()`: Predict Method for Numeric Vectors
 
 - Function returning datetime
     - `now()`: Get Current Date and Time as String
