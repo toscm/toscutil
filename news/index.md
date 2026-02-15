@@ -1,16 +1,16 @@
 # Changelog
 
-## toscutil v2.9.3
-
-- `Added`: testthat parallel config (multicore) via DESCRIPTION.
-
 ## toscutil v2.9.2
 
 - `Changed`:
-  [`stub()`](https://toscm.github.io/toscutil/reference/stub.md) now
-  returns invisibly, stubs `...` as `NULL` when present and prints a
-  compact summary of the stubbed arguments. Output can be silenced via
-  `options(toscutil.stub.silent = TRUE)`.
+  - [`stub()`](https://toscm.github.io/toscutil/reference/stub.md) now
+    returns invisibly
+  - [`stub()`](https://toscm.github.io/toscutil/reference/stub.md)
+    intializes `...` as `NULL` if present
+  - [`stub()`](https://toscm.github.io/toscutil/reference/stub.md)
+    prints a compact summary of the stubbed arguments if not silenced
+    via `options(toscutil.stub.silent = TRUE)`
+  - testthat now runs with multiple cores
 
 ## toscutil v2.9.1
 

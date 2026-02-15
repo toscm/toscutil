@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">toscutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.9.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.9.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,14 +33,18 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="2.9.3" id="toscutil-v293">toscutil v2.9.3<a class="anchor" aria-label="anchor" href="#toscutil-v293"></a></h2>
-<ul><li>
-<code>Added</code>: testthat parallel config (multicore) via DESCRIPTION.</li>
-</ul></div>
-    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.9.2" id="toscutil-v292">toscutil v2.9.2<a class="anchor" aria-label="anchor" href="#toscutil-v292"></a></h2>
 <ul><li>
-<code>Changed</code>: <code><a href="../reference/stub.html">stub()</a></code> now returns invisibly, stubs <code>...</code> as <code>NULL</code> when present and prints a compact summary of the stubbed arguments. Output can be silenced via <code>options(toscutil.stub.silent = TRUE)</code>.</li>
+<code>Changed</code>:
+<ul><li>
+<code><a href="../reference/stub.html">stub()</a></code> now returns invisibly</li>
+<li>
+<code><a href="../reference/stub.html">stub()</a></code> intializes <code>...</code> as <code>NULL</code> if present</li>
+<li>
+<code><a href="../reference/stub.html">stub()</a></code> prints a compact summary of the stubbed arguments if not silenced via <code>options(toscutil.stub.silent = TRUE)</code>
+</li>
+<li>testthat now runs with multiple cores</li>
+</ul></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.9.1" id="toscutil-v291">toscutil v2.9.1<a class="anchor" aria-label="anchor" href="#toscutil-v291"></a></h2>
