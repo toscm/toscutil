@@ -71,8 +71,6 @@ get_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
     }
     df
 }
-    df
-}
 
 #' @noRd
 #' @title Extract a Specific Section From a Documentation Database
