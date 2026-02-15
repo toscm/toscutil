@@ -1,3 +1,7 @@
+# toscutil v2.9.0
+
+- `Added`: `stub()` now automatically looks up missing arguments (those without defaults) in `.GlobalEnv` if they exist there. This enables a common interactive development workflow: run example code that sets variables, call `stub(func)`, then work with the function body interactively. Explicit arguments still take precedence over GlobalEnv values.
+
 # toscutil v2.8.1
 
 - `Fixed`: unloading of `devtools` in `get_pkg_docs()` (which caused `check_pkg_docs()` to fail if `devtools::load_all()` had been called before in the current session).
