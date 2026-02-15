@@ -65,7 +65,7 @@ get_pkg_docs <- function(pkg = NULL, unload = TRUE, reload = TRUE) {
     for (i in seq_along(rds)) {
         for (tag in tags) {
             result <- extract_help_section(db[[rds[i]]], tag)
-            # Collapse multiple values (e.g., multiple keywords) into a single string
+            # Collapse multiple values into a single string (some tags like keyword can have multiple values)
             df[i, tag] <- paste(result, collapse = ", ")
         }
     }
@@ -398,8 +398,8 @@ update_reference_in_readme <- function(readme_path = "README.md",
     # Parse _pkgdown.yml to extract categories
     categories <- parse_pkgdown_categories(pkgdown_content)
     
-    # Build the reference content
-    reference_lines <- "## Function Reference\n"
+    # Build the reference content as a character vector for better performance
+    reference_lines <- c("## Function Reference")
     
     for (category in categories) {
         # Skip deprecated functions
@@ -409,20 +409,23 @@ update_reference_in_readme <- function(readme_path = "README.md",
         funcs_in_category <- docs[grepl(category$keyword, docs$keyword), ]
         
         if (nrow(funcs_in_category) > 0) {
-            reference_lines <- paste0(reference_lines, "\n- ", category$desc, "\n")
+            reference_lines <- c(reference_lines, "", paste0("- ", category$desc))
             
             # Sort functions alphabetically
             funcs_in_category <- funcs_in_category[order(rownames(funcs_in_category)), ]
             
             for (func_name in rownames(funcs_in_category)) {
                 title <- funcs_in_category[func_name, "title"]
-                reference_lines <- paste0(
+                reference_lines <- c(
                     reference_lines,
-                    "    - `", func_name, "()`: ", title, "\n"
+                    paste0("    - `", func_name, "()`: ", title)
                 )
             }
         }
     }
+    
+    # Collapse into a single string
+    reference_text <- paste(reference_lines, collapse = "\n")
     
     # Read README.md
     if (!file.exists(readme_path)) {
@@ -444,7 +447,7 @@ update_reference_in_readme <- function(readme_path = "README.md",
     # Replace content between markers
     new_content <- c(
         readme_content[1:start_idx],
-        reference_lines,
+        reference_text,
         readme_content[end_idx:length(readme_content)]
     )
     
