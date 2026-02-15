@@ -1,6 +1,9 @@
 # toscutil v2.9.2
 
-- `Changed`: `stub()` now returns invisibly and calls `str(args, 1)` before returning to show a compact summary of stubbed arguments without polluting STDOUT.
+- `Changed`: `stub()` now returns invisibly,
+  stubs `...` as `NULL` when present and
+  prints a compact summary of the stubbed arguments.
+  Output can be silenced via `options(toscutil.stub.silent = TRUE)`.
 
 # toscutil v2.9.1
 
