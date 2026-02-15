@@ -18,3 +18,5 @@ tests/testthat_outputs
 tests/testthat/_snaps
 dist
 docs
+*.tar.gz
+toscutil.Rcheck
