@@ -61,7 +61,7 @@ is.none <- function(x) {
 #' @export
 #' @name op-null-default
 #' @title Return Default if None
-#' @description Like [rlang::%||%()] but also checks for empty lists and empty strings.
+#' @description Returns the second operand if the first operand is `NULL`, `FALSE`, `0`, `NA`, an empty list, or an empty string. Otherwise returns the first operand.
 #' @param x object to test
 #' @param y object to return if `is.none(x)`
 #' @return Returns `y` if `is.none(x)` else `x`
