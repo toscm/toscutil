@@ -1,6 +1,6 @@
 Package: toscutil
 Title: Utility Functions
-Version: 2.9.0
+Version: 2.11.0
 Authors@R:
     person(given = "Tobias",
            family = "Schmidt",
@@ -24,3 +24,5 @@ Suggests:
     languageserver,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Config/testthat/parallel: true
+Config/testthat/parallel_strategy: multicore

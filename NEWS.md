@@ -1,6 +1,30 @@
-# toscutil v2.9.0
+# toscutil v2.11.0
 
 - `Refactor`: Removed `rlang` dependency. The package now implements its own minimal replacements for the `rlang` functions that were previously used (`rlang::call_name()`). This makes the package more lightweight and reduces installation dependencies. All existing functionality is preserved and fully tested.
+
+# toscutil v2.10.0
+
+- `Added`: added functions `equal()` and operator `%==%` for more readable
+  equality testing, particularly useful for comparing objects with length
+  greater than one (vectors, lists, data frames, etc.). These provide a cleaner
+  alternative to `isTRUE(all.equal(x, y))`.
+
+# toscutil v2.9.2
+
+- `Changed`:
+  - `stub()` now returns invisibly
+  - `stub()` intializes `...` as `NULL` if present
+  - `stub()` prints a compact summary of the stubbed arguments if not silenced via `options(toscutil.stub.silent = TRUE)`
+  - testthat now runs with multiple cores
+
+# toscutil v2.9.1
+
+- `Fixed`: `logf()` now correctly uses the `file` and `append` arguments
+  when writing output.
+
+# toscutil v2.9.0
+
+- `Added`: `stub()` now automatically looks up missing arguments (those without defaults) in `.GlobalEnv` if they exist there. This enables a common interactive development workflow: run example code that sets variables, call `stub(func)`, then work with the function body interactively. Explicit arguments still take precedence over GlobalEnv values.
 
 # toscutil v2.8.1
 
