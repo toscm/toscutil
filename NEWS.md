@@ -1,3 +1,15 @@
+# toscutil v2.11.0
+
+- `Changed`: `stub()` now supports positional arguments. Unnamed arguments in
+  `...` are matched to the first unmatched formal arguments of the function,
+  similar to how R itself matches positional arguments. E.g.
+  `stub(f, 1, b = 2)` is equivalent to `stub(f, a = 1, b = 2)` for
+  `f <- function(a, b, ...) {}`.
+- `Changed`: `stub()` now accepts a function call expression as its first
+  argument. E.g. `stub(f(1, b = 2))` extracts both the function `f` and the
+  arguments `1` and `b = 2` from the call, producing the same result as
+  `stub(f, 1, b = 2)`.
+
 # toscutil v2.10.0
 
 - `Added`: added functions `equal()` and operator `%==%` for more readable
