@@ -375,6 +375,7 @@ DOCSTRING_TEMPLATE <- paste0(
 #' @param readme_path Path to the README.md file. Defaults to "README.md" in the current directory.
 #' @param pkgdown_path Path to the _pkgdown.yml file. Defaults to "_pkgdown.yml" in the current directory.
 #' @param pkg The package name. If NULL, the package name is inferred from the DESCRIPTION file.
+#' @inheritParams get_pkg_docs
 #' @return Invisibly returns TRUE if the update was successful.
 #' @examples
 #' \dontrun{
@@ -384,9 +385,11 @@ DOCSTRING_TEMPLATE <- paste0(
 #' @keywords internal
 update_reference_in_readme <- function(readme_path = "README.md",
                                       pkgdown_path = "_pkgdown.yml",
-                                      pkg = NULL) {
+                                      pkg = NULL,
+                                      unload = TRUE,
+                                      reload = TRUE) {
     # Read package documentation
-    docs <- get_pkg_docs(pkg = pkg, unload = TRUE, reload = TRUE)
+    docs <- get_pkg_docs(pkg = pkg, unload = unload, reload = reload)
     
     # Read _pkgdown.yml to get category structure
     if (!file.exists(pkgdown_path)) {

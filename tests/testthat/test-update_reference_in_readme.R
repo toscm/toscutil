@@ -52,7 +52,9 @@ test_that("update_reference_in_readme works", {
         toscutil:::update_reference_in_readme(
             readme_path = temp_readme,
             pkgdown_path = temp_pkgdown,
-            pkg = "tools"
+            pkg = "tools",
+            unload = FALSE,
+            reload = FALSE
         ),
         "Successfully updated"
     )
@@ -93,7 +95,9 @@ test_that("update_reference_in_readme fails without markers", {
         toscutil:::update_reference_in_readme(
             readme_path = temp_readme,
             pkgdown_path = temp_pkgdown,
-            pkg = "tools"
+            pkg = "tools",
+            unload = FALSE,
+            reload = FALSE
         ),
         "Could not find markers"
     )
