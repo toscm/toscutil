@@ -16,7 +16,7 @@ x \%none\% y
 Returns \code{y} if \code{is.none(x)} else \code{x}
 }
 \description{
-Like \code{\link[rlang:op-null-default]{rlang::\%||\%()}} but also checks for empty lists and empty strings.
+Returns the second operand if the first operand is \code{NULL}, \code{FALSE}, \code{0}, \code{NA}, an empty list, or an empty string. Otherwise returns the first operand.
 }
 \examples{
 FALSE \%none\% 2 # returns 2

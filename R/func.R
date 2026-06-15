@@ -30,7 +30,26 @@ caller <- function(n = 1) {
     if (frame <= 0) {
         return(NULL)
     } else {
-        return(rlang::call_name(calls[[frame]]))
+        # Extract function name from call object
+        # This replaces rlang::call_name()
+        call_obj <- calls[[frame]]
+        if (is.call(call_obj)) {
+            # Get the first element of the call, which is the function
+            func <- call_obj[[1]]
+            # For simple symbols, as.character returns a single string
+            # For namespaced calls (pkg::func), as.character returns a vector
+            # Use deparse to handle both cases consistently
+            func_char <- as.character(func)
+            if (length(func_char) == 1) {
+                return(func_char)
+            } else {
+                # For namespaced calls, return just the function name (last element)
+                # to match rlang::call_name() behavior
+                return(func_char[length(func_char)])
+            }
+        } else {
+            return(NULL)
+        }
     }
 }
 

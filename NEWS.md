@@ -1,3 +1,7 @@
+# toscutil v2.11.0
+
+- `Refactor`: Removed `rlang` dependency. The package now implements its own minimal replacements for the `rlang` functions that were previously used (`rlang::call_name()`). This makes the package more lightweight and reduces installation dependencies. All existing functionality is preserved and fully tested.
+
 # toscutil v2.10.0
 
 - `Added`: added functions `equal()` and operator `%==%` for more readable
