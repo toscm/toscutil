@@ -35,7 +35,7 @@ To use any function or data object, first [install](#installation) the package a
     - `named()`: Create automatically named List
     - `norm_path()`: Return Normalized Path
 
-- Function for condition checking
+- Functions for condition checking
     - `equal()`: Test Near Equality
     - `ifthen()`: Shortcut for multiple if else statements
     - `is.none()`: Truth checking as in Python

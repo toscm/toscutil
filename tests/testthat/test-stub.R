@@ -113,3 +113,118 @@ test_that("stub handles mix of GlobalEnv and explicit args", {
     # Clean up
     rm(x, envir = .GlobalEnv)
 })
+
+test_that("stub handles positional arguments", {
+    f <- function(a, b, x = 3) a + b + x
+
+    # Single positional arg
+    args <- stub(f, 1, b = 2)
+    expect_equal(a, 1)
+    expect_equal(b, 2)
+    expect_equal(x, 3)
+    expect_equal(args, list(a = 1, b = 2, x = 3))
+})
+
+test_that("stub handles multiple positional arguments", {
+    f <- function(a, b, x = 3) a + b + x
+
+    args <- stub(f, 1, 2)
+    expect_equal(a, 1)
+    expect_equal(b, 2)
+    expect_equal(x, 3)
+    expect_equal(args, list(a = 1, b = 2, x = 3))
+})
+
+test_that("stub positional args skip already-named formals", {
+    f <- function(a, b, c = 10) a + b + c
+
+    # b is provided by name, positional 1 should go to `a`, not `b`
+    args <- stub(f, 1, b = 20)
+    expect_equal(a, 1)
+    expect_equal(b, 20)
+    expect_equal(c, 10)
+    expect_equal(args, list(a = 1, b = 20, c = 10))
+})
+
+test_that("stub errors on too many positional arguments", {
+    f <- function(a, b) a + b
+    expect_error(
+        stub(f, 1, 2, 3),
+        "Too many positional arguments"
+    )
+})
+
+test_that("stub handles function call expression (all named)", {
+    f <- function(a, b, x = 3) a + b + x
+
+    args <- stub(f(a = 1, b = 2))
+    expect_equal(a, 1)
+    expect_equal(b, 2)
+    expect_equal(x, 3)
+    expect_equal(args, list(a = 1, b = 2, x = 3))
+})
+
+test_that("stub handles function call expression with positional args", {
+    f <- function(a, b, x = 3) a + b + x
+
+    # stub(f(1, b=2)) should produce same result as stub(f, a=1, b=2)
+    args <- stub(f(1, b = 2))
+    expect_equal(a, 1)
+    expect_equal(b, 2)
+    expect_equal(x, 3)
+    expect_equal(args, list(a = 1, b = 2, x = 3))
+})
+
+test_that("stub function call expression equals explicit form", {
+    f <- function(a, b, x = 3) a + b + x
+
+    e1 <- new.env(parent = emptyenv())
+    e2 <- new.env(parent = emptyenv())
+
+    stub(f, a = 1, b = 2, envir = e1)
+    stub(f(1, b = 2), envir = e2)
+
+    expect_equal(as.list(e1), as.list(e2))
+})
+
+test_that("stub handles function call with no extra args", {
+    f <- function(a = 1, b = 2) a + b
+
+    args <- stub(f())
+    expect_equal(a, 1)
+    expect_equal(b, 2)
+    expect_equal(args, list(a = 1, b = 2))
+})
+
+test_that("stub handles an inline (anonymous) function definition", {
+    # Exercises the `function`-keyword branch of the first-argument detection:
+    # an inline definition must be treated as a function value, not a call.
+    args <- stub(function(a, b = 2) a + b, 1)
+    expect_equal(a, 1)
+    expect_equal(b, 2)
+    expect_equal(args, list(a = 1, b = 2))
+})
+
+test_that("stub handles a namespaced function (pkg::f) as first argument", {
+    # A `::` accessor must be treated as a function lookup, not a call
+    # expression, so its arguments come from `...`.
+    args <- stub(tools::toTitleCase, "hello world")
+    expect_equal(text, "hello world")
+    expect_equal(args, list(text = "hello world"))
+})
+
+test_that("stub handles a namespaced function call expression pkg::f(...)", {
+    # Here the whole `pkg::f(...)` is a call expression: the function is the
+    # accessor head and the arguments are extracted from the call.
+    args <- stub(tools::toTitleCase("hello world"))
+    expect_equal(text, "hello world")
+    expect_equal(args, list(text = "hello world"))
+})
+
+test_that("stub stubs ... (dots) as NULL", {
+    f <- function(a, ...) a
+    args <- stub(f, a = 1)
+    expect_equal(a, 1)
+    expect_true("..." %in% names(args))
+    expect_null(args[["..."]])
+})
