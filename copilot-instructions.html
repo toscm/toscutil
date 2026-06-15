@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="index.html">toscutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.11.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.12.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,6 +66,26 @@
 <li>Follow existing code patterns in the repository</li>
 <li>Write clear documentation for functions</li>
 <li>Add tests for new features and bug fixes</li>
+</ul></div>
+<div class="section level2">
+<h2 id="updating-function-reference-in-readme">Updating Function Reference in README<a class="anchor" aria-label="anchor" href="#updating-function-reference-in-readme"></a></h2>
+<p>Whenever a new function is added to the package, or when function documentation (titles) are updated, the function reference in README.md should be updated.</p>
+<p>To update the function reference:</p>
+<ol style="list-style-type: decimal"><li><p>Make sure you have the latest version of the package loaded (e.g. via <code><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">devtools::load_all()</a></code> or by installing it)</p></li>
+<li>
+<p>Run the following R command from the package root directory (the function is an internal helper, so call it with <code>:::</code>):</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">toscutil</span><span class="fu">:::</span><span class="fu"><a href="reference/update_reference_in_readme.html">update_reference_in_readme</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</li>
+</ol><p>This will: - Read all documented functions from the package using <code><a href="reference/get_pkg_docs.html">get_pkg_docs()</a></code> - Categorize them according to the definitions in <code>_pkgdown.yml</code> - Update the section between <code>&lt;!-- BEGIN_FUNCTION_REFERENCE --&gt;</code> and <code>&lt;!-- END_FUNCTION_REFERENCE --&gt;</code> markers in README.md - Skip deprecated functions (those with keyword “depr”)</p>
+<p>The function reference will be automatically formatted with: - Categories from _pkgdown.yml as section headers - Functions listed alphabetically within each category - Each function shown as: <code>function_name()</code>: Function title</p>
+</div>
+<div class="section level2">
+<h2 id="important-notes">Important Notes<a class="anchor" aria-label="anchor" href="#important-notes"></a></h2>
+<ul><li>Never manually edit the content between the HTML comment markers in README.md</li>
+<li>Always use <code>toscutil:::update_reference_in_readme()</code> to update the function reference</li>
+<li>Make sure _pkgdown.yml is up to date with correct categories and keywords</li>
+<li>Ensure all new functions have appropriate <code>@keywords</code> tags in their roxygen documentation</li>
 </ul></div>
 </div>
 

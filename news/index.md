@@ -1,5 +1,14 @@
 # Changelog
 
+## toscutil v2.12.0
+
+- `Added`: the README now includes an automatically generated function
+  reference, organized by the categories defined in \_pkgdown.yml
+  (maintained via an internal helper).
+- `Changed`: extended
+  [`get_pkg_docs()`](https://toscm.github.io/toscutil/reference/get_pkg_docs.md)
+  to include a `keyword` column in the returned dataframe.
+
 ## toscutil v2.11.0
 
 - `Refactor`: Removed `rlang` dependency. The package now implements its

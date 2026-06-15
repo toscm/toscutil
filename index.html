@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">toscutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.11.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.12.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,6 +64,124 @@
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>To use any function or data object, first <a href="#installation">install</a> the package and then just enter any object’s fully qualified name into a running R session, e.g. <code><a href="reference/now.html">toscutil::now_ms()</a></code>. You can find a curated list of existing functions at <a href="https://toscm.github.io/toscutil/reference/index.html">toscm.github.io/toscutil/reference</a>. Alternatively, you can load the package first, using command <code><a href="https://github.com/toscm/toscutil/" class="external-link">library("toscutil")</a></code> and then access any symbol directly by its name, e.g. <code><a href="reference/now.html">now_ms()</a></code>.</p>
+<!-- BEGIN_FUNCTION_REFERENCE -->
+</div>
+<div class="section level2">
+<h2 id="function-reference">Function Reference<a class="anchor" aria-label="anchor" href="#function-reference"></a>
+</h2>
+<ul>
+<li>Extended versions of base R functions
+<ul>
+<li>
+<code><a href="reference/capture.output2.html">capture.output2()</a></code>: Capture output from a command</li>
+<li>
+<code><a href="reference/cat2.html">cat2()</a></code>: Concatenate and Print</li>
+<li>
+<code><a href="reference/catf.html">catf()</a></code>: Format and Print</li>
+<li>
+<code><a href="reference/dput2.html">dput2()</a></code>: Return ASCII representation of an R object</li>
+<li>
+<code><a href="reference/fg.html">fg()</a></code>: Foreground Color Codes</li>
+<li>
+<code><a href="reference/help2.html">help2()</a></code>: Return help for topic</li>
+<li>
+<code><a href="reference/named.html">named()</a></code>: Create automatically named List</li>
+<li>
+<code><a href="reference/norm_path.html">norm_path()</a></code>: Return Normalized Path</li>
+</ul>
+</li>
+<li>Function for condition checking
+<ul>
+<li>
+<code><a href="reference/equal.html">equal()</a></code>: Test Near Equality</li>
+<li>
+<code><a href="reference/ifthen.html">ifthen()</a></code>: Shortcut for multiple if else statements</li>
+<li>
+<code><a href="reference/is.none.html">is.none()</a></code>: Truth checking as in Python</li>
+</ul>
+</li>
+<li>Functions for writing functions
+<ul>
+<li>
+<code><a href="reference/caller.html">caller()</a></code>: Get Name of Calling Function</li>
+<li>
+<code><a href="reference/function_locals.html">function_locals()</a></code>: Get Function Environment as List</li>
+<li>
+<code><a href="reference/locals.html">locals()</a></code>: Get specified Environment as List</li>
+<li>
+<code><a href="reference/sys.exit.html">sys.exit()</a></code>: Terminate a non-interactive R Session</li>
+</ul>
+</li>
+<li>Functions for reading, checking and writing documentation
+<ul>
+<li>
+<code><a href="reference/check_pkg_docs.html">check_pkg_docs()</a></code>: Check Documented Functions in a Package</li>
+<li>
+<code><a href="reference/DOCSTRING_TEMPLATE.html">DOCSTRING_TEMPLATE()</a></code>: Docstring Template</li>
+<li>
+<code><a href="reference/find_description_file.html">find_description_file()</a></code>: Find DESCRIPTION File</li>
+<li>
+<code><a href="reference/get_docstring.html">get_docstring()</a></code>: Get docstring for a Function</li>
+<li>
+<code><a href="reference/get_formals.html">get_formals()</a></code>: Get formals of a Function</li>
+<li>
+<code><a href="reference/get_pkg_docs.html">get_pkg_docs()</a></code>: Get Documented Functions in a Package</li>
+<li>
+<code><a href="reference/read_description_file.html">read_description_file()</a></code>: Read DESCRIPTION File into a List</li>
+<li>
+<code><a href="reference/split_docstring.html">split_docstring()</a></code>: Split a docstring into a Head, Param and Tail Part</li>
+<li>
+<code><a href="reference/update_docstring.html">update_docstring()</a></code>: Update docstring for a Function</li>
+</ul>
+</li>
+<li>Functions for experimenting in interactive (live) R sessions
+<ul>
+<li>
+<code><a href="reference/corn.html">corn()</a></code>: Return Corners of Matrix like Objects</li>
+<li>
+<code><a href="reference/rm_all.html">rm_all()</a></code>: Remove all objects from global environment</li>
+<li>
+<code><a href="reference/stub.html">stub()</a></code>: Stub Function Arguments</li>
+<li>
+<code><a href="reference/trace_package.html">trace_package()</a></code>: Traces function calls from a package</li>
+<li>
+<code><a href="reference/untrace_package.html">untrace_package()</a></code>: Untraces function calls from a package</li>
+</ul>
+</li>
+<li>Functions returning important paths
+<ul>
+<li>
+<code><a href="reference/config_dir.html">config_dir()</a></code>: Get Normalized Configuration Directory Path of a Program</li>
+<li>
+<code><a href="reference/config_file.html">config_file()</a></code>: Get Normalized Configuration File Path of a Program</li>
+<li>
+<code><a href="reference/data_dir.html">data_dir()</a></code>: Get Normalized Data Directory Path of a Program</li>
+<li>
+<code><a href="reference/getfd.html">getfd()</a></code>: Get File Directory</li>
+<li>
+<code><a href="reference/getpd.html">getpd()</a></code>: Get Project Directory</li>
+<li>
+<code><a href="reference/home.html">home()</a></code>: Get USERPROFILE or HOME</li>
+<li>
+<code><a href="reference/xdg_config_home.html">xdg_config_home()</a></code>: Get XDG_CONFIG_HOME</li>
+<li>
+<code><a href="reference/xdg_data_home.html">xdg_data_home()</a></code>: Get XDG_DATA_HOME</li>
+</ul>
+</li>
+<li>S3 methods
+<ul>
+<li>
+<code><a href="reference/predict.numeric.html">predict.numeric()</a></code>: Predict Method for Numeric Vectors</li>
+</ul>
+</li>
+<li>Function returning datetime
+<ul>
+<li>
+<code><a href="reference/now.html">now()</a></code>: Get Current Date and Time as String <!-- END_FUNCTION_REFERENCE -->
+</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>

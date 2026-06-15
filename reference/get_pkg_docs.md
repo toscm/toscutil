@@ -21,7 +21,7 @@ get_pkg_docs(pkg = NULL, unload = TRUE, reload = TRUE)
 - unload:
 
   Whether to try to unload a potential currently developed package using
-  [`devtools::unload()`](https://devtools.r-lib.org/reference/reexports.html)
+  [`devtools::unload()`](https://pkgload.r-lib.org/reference/unload.html)
   before checking the documentation. Required when the package was
   loaded with
   [`devtools::load_all()`](https://devtools.r-lib.org/reference/load_all.html)
@@ -38,9 +38,9 @@ get_pkg_docs(pkg = NULL, unload = TRUE, reload = TRUE)
 
 ## Value
 
-Returns a dataframe with columns `title`, `description`, `value`,
-`examples` and rows corresponding to the documented functions in the
-package.
+Returns a dataframe with columns `class`, `title`, `description`,
+`value`, `format`, `examples`, `keyword` and rows corresponding to the
+documented functions in the package.
 
 ## Examples
 
@@ -48,12 +48,12 @@ package.
 df <- get_pkg_docs("tools")
 nchars <- as.data.frame(apply(df, 2, function(col) sapply(col, nchar)))
 head(nchars)
-#>                class title description value format examples
-#> HTMLheader         8    42          71   114      0       53
-#> R                  8    35          68   692      0      398
-#> Rcmd               8    15          33    30      0        0
-#> Rd2HTML            8    15         181   644      0      321
-#> Rd2txt_options     8    36          61   154      0      205
-#> RdTextFilter       8    25          87   128      0        0
+#>                class title description value format examples keyword
+#> HTMLheader         8    42          71   114      0       53      28
+#> R                  8    35          68   692      0      398       0
+#> Rcmd               8    15          33    30      0        0       9
+#> Rd2HTML            8    15         181   644      0      321      15
+#> Rd2txt_options     8    36          61   154      0      205      15
+#> RdTextFilter       8    25          87   128      0        0      28
 try(df <- check_pkg_docs())
 ```

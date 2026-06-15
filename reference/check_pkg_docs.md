@@ -30,7 +30,7 @@ check_pkg_docs(pkg = NULL, unload = TRUE, reload = TRUE)
 - unload:
 
   Whether to try to unload a potential currently developed package using
-  [`devtools::unload()`](https://devtools.r-lib.org/reference/reexports.html)
+  [`devtools::unload()`](https://pkgload.r-lib.org/reference/unload.html)
   before checking the documentation. Required when the package was
   loaded with
   [`devtools::load_all()`](https://devtools.r-lib.org/reference/load_all.html)
