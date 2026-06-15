@@ -29,7 +29,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Making Edits</h1>
-      <small class="dont-index">Source: <a href="https://github.com/toscm/toscutil/blob/v2.13.0/CONTRIBUTING.md" class="external-link"><code>CONTRIBUTING.md</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/toscm/toscutil/blob/master/CONTRIBUTING.md" class="external-link"><code>CONTRIBUTING.md</code></a></small>
     </div>
 
 
@@ -70,11 +70,27 @@
 <p>After doing these steps, you can push your changes to Github.</p>
 </div>
 <div class="section level1">
+<h1 id="tagging-and-github-releases">Tagging and GitHub Releases<a class="anchor" aria-label="anchor" href="#tagging-and-github-releases"></a></h1>
+<p>Every version bump (a change to the <code>Version</code> field in <a href="DESCRIPTION">DESCRIPTION</a>) should be marked with a git tag and an accompanying GitHub release. This is done manually after the version bump has been merged into <code>master</code> — there is <strong>no</strong> GitHub Action that creates tags or releases automatically (the workflows in <a href=".github/workflows">.github/workflows</a> only run R CMD check, test coverage and pkgdown).</p>
+<p>For a version <code>X.Y.Z</code>:</p>
+<ol style="list-style-type: decimal"><li>
+<p>Create an annotated tag on the <code>master</code> commit that bumped the version and push it (omit the commit to tag the current <code>HEAD</code>):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">git</span> tag <span class="at">-a</span> vX.Y.Z <span class="op">&lt;</span>commit<span class="op">&gt;</span> -m <span class="st">"vX.Y.Z"</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">git</span> push origin vX.Y.Z</span></code></pre></div>
+</li>
+<li>
+<p>Create a GitHub release from that tag, using the version’s section from <a href="NEWS.html">NEWS.md</a> as the release notes:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">gh</span> release create vX.Y.Z <span class="at">--title</span> <span class="st">"vX.Y.Z"</span> <span class="at">--notes-file</span> <span class="op">&lt;</span>news-section.md<span class="op">&gt;</span></span></code></pre></div>
+<p>The newest version (highest semantic version) is automatically marked as “Latest”.</p>
+</li>
+</ol><p>Tag and release names always use the <code>vX.Y.Z</code> form, matching the <code>Version</code> field in DESCRIPTION.</p>
+</div>
+<div class="section level1">
 <h1 id="releasing-to-cran">Releasing to CRAN<a class="anchor" aria-label="anchor" href="#releasing-to-cran"></a></h1>
 <p>Whenever a package maintainer wants to release a new version of the package to CRAN, they should:</p>
 <ol style="list-style-type: decimal"><li>Check whether the <a href="https://r-pkgs.org/release.html#sec-release-initial" class="external-link">release requirements</a> are fulfilled</li>
 <li>Use the following commands to do a final check of the package and release it to CRAN</li>
-</ol><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+</ol><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Check spelling and URLs. False positive findings of spell check should be</span></span>
 <span><span class="co"># added to inst/WORDLIST.</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/spell_check.html" class="external-link">spell_check</a></span><span class="op">(</span><span class="op">)</span></span>
