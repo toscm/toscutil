@@ -370,9 +370,8 @@ DOCSTRING_TEMPLATE <- paste0(
     "#' @description TODO (e.g. 'sum returns the sum of all the values present in its arguments.'\n"
 )
 
-#' @export
 #' @title Update Function Reference in README
-#' @description Updates the function reference section in README.md by categorizing all exported functions according to the categories defined in _pkgdown.yml. The function reference is placed between HTML comments `<!-- BEGIN_FUNCTION_REFERENCE -->` and `<!-- END_FUNCTION_REFERENCE -->`.
+#' @description Updates the function reference section in README.md by categorizing all exported functions according to the categories defined in _pkgdown.yml. The function reference is placed between HTML comments `<!-- BEGIN_FUNCTION_REFERENCE -->` and `<!-- END_FUNCTION_REFERENCE -->`. This is an internal maintenance helper specific to this package's repository and is not part of the public API.
 #' @param readme_path Path to the README.md file. Defaults to "README.md" in the current directory.
 #' @param pkgdown_path Path to the _pkgdown.yml file. Defaults to "_pkgdown.yml" in the current directory.
 #' @param pkg The package name. If NULL, the package name is inferred from the DESCRIPTION file.
@@ -380,9 +379,9 @@ DOCSTRING_TEMPLATE <- paste0(
 #' @examples
 #' \dontrun{
 #' # Update function reference in README.md
-#' update_reference_in_readme()
+#' toscutil:::update_reference_in_readme()
 #' }
-#' @keywords doc
+#' @keywords internal
 update_reference_in_readme <- function(readme_path = "README.md",
                                       pkgdown_path = "_pkgdown.yml",
                                       pkg = NULL) {

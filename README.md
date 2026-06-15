@@ -56,7 +56,6 @@ To use any function or data object, first [install](#installation) the package a
     - `read_description_file()`: Read DESCRIPTION File into a List
     - `split_docstring()`: Split a docstring into a Head, Param and Tail Part
     - `update_docstring()`: Update docstring for a Function
-    - `update_reference_in_readme()`: Update Function Reference in README
 
 - Functions for experimenting in interactive (live) R sessions
     - `corn()`: Return Corners of Matrix like Objects

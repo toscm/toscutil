@@ -49,7 +49,7 @@ test_that("update_reference_in_readme works", {
     
     # Test with tools package
     expect_message(
-        update_reference_in_readme(
+        toscutil:::update_reference_in_readme(
             readme_path = temp_readme,
             pkgdown_path = temp_pkgdown,
             pkg = "tools"
@@ -90,7 +90,7 @@ test_that("update_reference_in_readme fails without markers", {
     writeLines(pkgdown_content, temp_pkgdown)
     
     expect_error(
-        update_reference_in_readme(
+        toscutil:::update_reference_in_readme(
             readme_path = temp_readme,
             pkgdown_path = temp_pkgdown,
             pkg = "tools"

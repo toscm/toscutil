@@ -1,6 +1,6 @@
 # toscutil v2.12.0
 
-- `Added`: function `update_reference_in_readme()` to automatically generate and update the function reference section in README.md based on _pkgdown.yml categories.
+- `Added`: the README now includes an automatically generated function reference, organized by the categories defined in _pkgdown.yml (maintained via an internal helper).
 - `Changed`: extended `get_pkg_docs()` to include a `keyword` column in the returned dataframe.
 
 # toscutil v2.11.0

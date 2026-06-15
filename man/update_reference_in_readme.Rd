@@ -21,12 +21,12 @@ update_reference_in_readme(
 Invisibly returns TRUE if the update was successful.
 }
 \description{
-Updates the function reference section in README.md by categorizing all exported functions according to the categories defined in _pkgdown.yml. The function reference is placed between HTML comments \verb{<!-- BEGIN_FUNCTION_REFERENCE -->} and \verb{<!-- END_FUNCTION_REFERENCE -->}.
+Updates the function reference section in README.md by categorizing all exported functions according to the categories defined in _pkgdown.yml. The function reference is placed between HTML comments \verb{<!-- BEGIN_FUNCTION_REFERENCE -->} and \verb{<!-- END_FUNCTION_REFERENCE -->}. This is an internal maintenance helper specific to this package's repository and is not part of the public API.
 }
 \examples{
 \dontrun{
 # Update function reference in README.md
-update_reference_in_readme()
+toscutil:::update_reference_in_readme()
 }
 }
-\keyword{doc}
+\keyword{internal}
