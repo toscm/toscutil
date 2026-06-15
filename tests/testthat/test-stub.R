@@ -195,3 +195,36 @@ test_that("stub handles function call with no extra args", {
     expect_equal(b, 2)
     expect_equal(args, list(a = 1, b = 2))
 })
+
+test_that("stub handles an inline (anonymous) function definition", {
+    # Exercises the `function`-keyword branch of the first-argument detection:
+    # an inline definition must be treated as a function value, not a call.
+    args <- stub(function(a, b = 2) a + b, 1)
+    expect_equal(a, 1)
+    expect_equal(b, 2)
+    expect_equal(args, list(a = 1, b = 2))
+})
+
+test_that("stub handles a namespaced function (pkg::f) as first argument", {
+    # A `::` accessor must be treated as a function lookup, not a call
+    # expression, so its arguments come from `...`.
+    args <- stub(tools::toTitleCase, "hello world")
+    expect_equal(text, "hello world")
+    expect_equal(args, list(text = "hello world"))
+})
+
+test_that("stub handles a namespaced function call expression pkg::f(...)", {
+    # Here the whole `pkg::f(...)` is a call expression: the function is the
+    # accessor head and the arguments are extracted from the call.
+    args <- stub(tools::toTitleCase("hello world"))
+    expect_equal(text, "hello world")
+    expect_equal(args, list(text = "hello world"))
+})
+
+test_that("stub stubs ... (dots) as NULL", {
+    f <- function(a, ...) a
+    args <- stub(f, a = 1)
+    expect_equal(a, 1)
+    expect_true("..." %in% names(args))
+    expect_null(args[["..."]])
+})

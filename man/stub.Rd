@@ -7,9 +7,14 @@
 stub(func, ..., envir = parent.frame())
 }
 \arguments{
-\item{func}{function for which the arguments should be stubbed}
+\item{func}{function, function name, or function call expression (e.g.
+\code{f(a=1, b=2)}) for which the arguments should be stubbed. When a function
+call expression is provided, the function and its arguments are extracted
+from the call.}
 
-\item{...}{non-default arguments of \code{func}}
+\item{...}{non-default arguments of \code{func}. Positional (unnamed) arguments
+are matched to the first unmatched formal arguments of \code{func}, similar to
+how R itself matches positional arguments.}
 
 \item{envir}{environment to which symbols should be assigned}
 }
@@ -30,10 +35,24 @@ When a function has required arguments without defaults, \code{stub()} will firs
 check if those arguments exist in \code{.GlobalEnv} and use their values if found.
 This enables a common dev workflow: (1) Run example code that sets variables,
 (2) Call \code{stub(func)}, (3) Modify and execute parts of the function body.
+
+\code{stub()} can also accept a function call expression as its first argument,
+e.g. \code{stub(f(a=1, b=2))}. In this case, the function and its arguments are
+extracted from the call, equivalent to \code{stub(f, a=1, b=2)}.
+
+Positional (unnamed) arguments are matched to the first unmatched formal
+arguments of the function (those not already covered by named arguments),
+equivalent to how R itself matches arguments.
 }
 \examples{
 f <- function(x, y = 2, z = 3) x + y + z
 args <- stub(f, x = 1) # assigns x = 1, y = 2 and z = 3 to current env
+
+# Using positional arguments:
+args <- stub(f, 1) # same as stub(f, x = 1)
+
+# Using a function call expression:
+args <- stub(f(1, y = 2)) # same as stub(f, x = 1, y = 2)
 
 # stub() can also use values from GlobalEnv for missing args:
 g <- function(a, b = 10) a + b

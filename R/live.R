@@ -93,7 +93,7 @@ stub <- function(func, ..., envir = parent.frame()) {
     # keyword AND not a namespace accessor operator (:: or :::).
     is_fn_call_expr <- (
         is.call(func_expr) &&
-        !identical(func_expr[[1]], quote(function)) &&
+        !identical(func_expr[[1]], as.symbol("function")) &&
         !(is.symbol(func_expr[[1]]) &&
           as.character(func_expr[[1]]) %in% c("::", ":::"))
     )
@@ -134,7 +134,8 @@ stub <- function(func, ..., envir = parent.frame()) {
             length(remaining_formals)
         ))
     }
-    matched_pos <- setNames(pos_args, remaining_formals[seq_along(pos_args)])
+    matched_pos <- pos_args
+    names(matched_pos) <- remaining_formals[seq_along(pos_args)]
 
     # Combine named and positionally-matched args, then merge with defaults.
     user_args_named <- c(named_args, matched_pos)
