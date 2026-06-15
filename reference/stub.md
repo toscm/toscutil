@@ -15,11 +15,16 @@ stub(func, ..., envir = parent.frame())
 
 - func:
 
-  function for which the arguments should be stubbed
+  function, function name, or function call expression (e.g.
+  `f(a=1, b=2)`) for which the arguments should be stubbed. When a
+  function call expression is provided, the function and its arguments
+  are extracted from the call.
 
 - ...:
 
-  non-default arguments of `func`
+  non-default arguments of `func`. Positional (unnamed) arguments are
+  matched to the first unmatched formal arguments of `func`, similar to
+  how R itself matches positional arguments.
 
 - envir:
 
@@ -40,11 +45,34 @@ values if found. This enables a common dev workflow: (1) Run example
 code that sets variables, (2) Call `stub(func)`, (3) Modify and execute
 parts of the function body.
 
+`stub()` can also accept a function call expression as its first
+argument, e.g. `stub(f(a=1, b=2))`. In this case, the function and its
+arguments are extracted from the call, equivalent to
+`stub(f, a=1, b=2)`.
+
+Positional (unnamed) arguments are matched to the first unmatched formal
+arguments of the function (those not already covered by named
+arguments), equivalent to how R itself matches arguments.
+
 ## Examples
 
 ``` r
 f <- function(x, y = 2, z = 3) x + y + z
 args <- stub(f, x = 1) # assigns x = 1, y = 2 and z = 3 to current env
+#> Created 3 variables in anonymous environment:
+#>  $ x: num 1
+#>  $ y: num 2
+#>  $ z: num 3
+
+# Using positional arguments:
+args <- stub(f, 1) # same as stub(f, x = 1)
+#> Created 3 variables in anonymous environment:
+#>  $ x: num 1
+#>  $ y: num 2
+#>  $ z: num 3
+
+# Using a function call expression:
+args <- stub(f(1, y = 2)) # same as stub(f, x = 1, y = 2)
 #> Created 3 variables in anonymous environment:
 #>  $ x: num 1
 #>  $ y: num 2

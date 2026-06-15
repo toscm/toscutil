@@ -13,7 +13,7 @@ without default values, stub() will attempt to retrieve their values from
 
     <a class="navbar-brand me-2" href="../index.html">toscutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.12.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.13.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,11 +56,16 @@ without default values, <code>stub()</code> will attempt to retrieve their value
 
 
 <dl><dt id="arg-func">func<a class="anchor" aria-label="anchor" href="#arg-func"></a></dt>
-<dd><p>function for which the arguments should be stubbed</p></dd>
+<dd><p>function, function name, or function call expression (e.g.
+<code>f(a=1, b=2)</code>) for which the arguments should be stubbed. When a function
+call expression is provided, the function and its arguments are extracted
+from the call.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>non-default arguments of <code>func</code></p></dd>
+<dd><p>non-default arguments of <code>func</code>. Positional (unnamed) arguments
+are matched to the first unmatched formal arguments of <code>func</code>, similar to
+how R itself matches positional arguments.</p></dd>
 
 
 <dt id="arg-envir">envir<a class="anchor" aria-label="anchor" href="#arg-envir"></a></dt>
@@ -79,12 +84,32 @@ It does not work for primitive functions.</p>
 check if those arguments exist in <code>.GlobalEnv</code> and use their values if found.
 This enables a common dev workflow: (1) Run example code that sets variables,
 (2) Call <code>stub(func)</code>, (3) Modify and execute parts of the function body.</p>
+<p><code>stub()</code> can also accept a function call expression as its first argument,
+e.g. <code>stub(f(a=1, b=2))</code>. In this case, the function and its arguments are
+extracted from the call, equivalent to <code>stub(f, a=1, b=2)</code>.</p>
+<p>Positional (unnamed) arguments are matched to the first unmatched formal
+arguments of the function (those not already covered by named arguments),
+equivalent to how R itself matches arguments.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span> <span class="op">=</span> <span class="fl">2</span>, <span class="va">z</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span> <span class="op">+</span> <span class="va">z</span></span></span>
 <span class="r-in"><span><span class="va">args</span> <span class="op">&lt;-</span> <span class="fu">stub</span><span class="op">(</span><span class="va">f</span>, x <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># assigns x = 1, y = 2 and z = 3 to current env</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Created 3 variables in anonymous environment:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ x: num 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ y: num 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ z: num 3</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using positional arguments:</span></span></span>
+<span class="r-in"><span><span class="va">args</span> <span class="op">&lt;-</span> <span class="fu">stub</span><span class="op">(</span><span class="va">f</span>, <span class="fl">1</span><span class="op">)</span> <span class="co"># same as stub(f, x = 1)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Created 3 variables in anonymous environment:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ x: num 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ y: num 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ z: num 3</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using a function call expression:</span></span></span>
+<span class="r-in"><span><span class="va">args</span> <span class="op">&lt;-</span> <span class="fu">stub</span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="fl">1</span>, y <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># same as stub(f, x = 1, y = 2)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Created 3 variables in anonymous environment:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ x: num 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ y: num 2</span>
