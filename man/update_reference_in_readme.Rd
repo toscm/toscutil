@@ -19,7 +19,7 @@ update_reference_in_readme(
 
 \item{pkg}{The package name. If NULL, the package name is inferred from the DESCRIPTION file.}
 
-\item{unload}{Whether to try to unload a potential currently developed package using \code{\ink[devtools:unload]{devtools::unload()}} before checking the documentation. Required when the package was loaded with \code{\link[devtools:load_all]{devtools::load_all()}} as the documentation database only exists for installed packages. If the unloading fails, the function silently continues, as the unloading is only necessary for checking the documentation of currently developed packages.}
+\item{unload}{Whether to try to unload a potential currently developed package using \code{\link[devtools:unload]{devtools::unload()}} before checking the documentation. Required when the package was loaded with \code{\link[devtools:load_all]{devtools::load_all()}} as the documentation database only exists for installed packages. If the unloading fails, the function silently continues, as the unloading is only necessary for checking the documentation of currently developed packages.}
 
 \item{reload}{Whether to reload the package using \code{\link[devtools:load_all]{devtools::load_all()}} after checking the documentation.}
 }
