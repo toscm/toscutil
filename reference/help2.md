@@ -95,8 +95,8 @@ cat2(txt)
 #> 
 #> _R_e_f_e_r_e_n_c_e_s:
 #> 
-#>      Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
-#>      Language_.  Wadsworth & Brooks/Cole.
+#>      Becker RA, Chambers JM, Wilks AR (1988). _The New S Language_.
+#>      Chapman and Hall/CRC, London. ISBN 053409192X.
 #> 
 #> _S_e_e _A_l_s_o:
 #> 

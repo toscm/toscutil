@@ -31,5 +31,5 @@ local({
      owd <- setwd(base_pkg_R_dir); on.exit(setwd(owd))
      getpd()
 })
-#> [1] "/opt/R/4.5.2/lib/R/library/base"
+#> [1] "/opt/R/4.6.0/lib/R/library/base"
 ```

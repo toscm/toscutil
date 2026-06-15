@@ -28,7 +28,7 @@ stops with an error message.
 # Start search from a specific directory
 graphics_pkg_dir <- system.file(package = "graphics")
 find_description_file(graphics_pkg_dir)
-#> [1] "/opt/R/4.5.2/lib/R/library/graphics/DESCRIPTION"
+#> [1] "/opt/R/4.6.0/lib/R/library/graphics/DESCRIPTION"
 
 if (FALSE) { # \dontrun{
 # Below example will only work if executed from a package directory

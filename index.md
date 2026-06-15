@@ -5,6 +5,7 @@ Useful functions for everyday programming.
 # Installation
 
 ``` r
+
 # From CRAN (stable version)
 install.packages("toscutil")
 # From Github (development version)

@@ -29,9 +29,9 @@ graphics_pkg_dir <- system.file(package = "graphics")
 graphics_pkg_descfile <- find_description_file(graphics_pkg_dir)
 desc_list <- read_description_file(graphics_pkg_descfile)
 str(desc_list)
-#> List of 13
+#> List of 14
 #>  $ Package         : chr "graphics"
-#>  $ Version         : chr "4.5.2"
+#>  $ Version         : chr "4.6.0"
 #>  $ Priority        : chr "base"
 #>  $ Title           : chr "The R Graphics Package"
 #>  $ Author          : chr "R Core Team and contributors worldwide"
@@ -39,10 +39,11 @@ str(desc_list)
 #>  $ Contact         : chr "R-help mailing list <r-help@r-project.org>"
 #>  $ Description     : chr "R functions for base graphics."
 #>  $ Imports         : chr "grDevices"
-#>  $ License         : chr "Part of R 4.5.2"
+#>  $ License         : chr "Part of R 4.6.0"
 #>  $ NeedsCompilation: chr "yes"
 #>  $ Enhances        : chr "vcd"
-#>  $ Built           : chr "R 4.5.2; x86_64-pc-linux-gnu; 2025-10-31 10:19:25 UTC; unix"
+#>  $ Encoding        : chr "UTF-8"
+#>  $ Built           : chr "R 4.6.0; x86_64-pc-linux-gnu; 2026-04-24 08:56:16 UTC; unix"
 
 if (FALSE) { # \dontrun{
 # Below example will only work if executed from a package directory
