@@ -32,6 +32,38 @@ pkgdown::build_site() # Build website in docs folder
 
 After doing these steps, you can push your changes to Github.
 
+# Tagging and GitHub Releases
+
+Every version bump (a change to the `Version` field in [DESCRIPTION](DESCRIPTION))
+should be marked with a git tag and an accompanying GitHub release. This is done
+manually after the version bump has been merged into `master` — there is **no**
+GitHub Action that creates tags or releases automatically (the workflows in
+[.github/workflows](.github/workflows) only run R CMD check, test coverage and
+pkgdown).
+
+For a version `X.Y.Z`:
+
+1.  Create an annotated tag on the `master` commit that bumped the version and
+    push it (omit the commit to tag the current `HEAD`):
+
+    ```sh
+    git tag -a vX.Y.Z <commit> -m "vX.Y.Z"
+    git push origin vX.Y.Z
+    ```
+
+2.  Create a GitHub release from that tag, using the version's section from
+    [NEWS.md](NEWS.md) as the release notes:
+
+    ```sh
+    gh release create vX.Y.Z --title "vX.Y.Z" --notes-file <news-section.md>
+    ```
+
+    The newest version (highest semantic version) is automatically marked as
+    "Latest".
+
+Tag and release names always use the `vX.Y.Z` form, matching the `Version` field
+in DESCRIPTION.
+
 # Releasing to CRAN
 
 Whenever a package maintainer wants to release a new version of the package to CRAN, they should:
