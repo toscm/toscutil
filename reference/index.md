@@ -23,8 +23,11 @@ Extended versions of base R functions
 
 ## Condition Checking
 
-Function for condition checking
+Functions for condition checking
 
+- [`equal()`](https://toscm.github.io/toscutil/reference/equal.md)
+  [`` `%==%` ``](https://toscm.github.io/toscutil/reference/equal.md) :
+  Test Near Equality
 - [`ifthen()`](https://toscm.github.io/toscutil/reference/ifthen.md) :
   Shortcut for multiple if else statements
 - [`is.none()`](https://toscm.github.io/toscutil/reference/is.none.md) :

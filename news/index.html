@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">toscutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.8.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.13.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,9 +29,57 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/toscm/toscutil/blob/v2.8.1/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/toscm/toscutil/blob/v2.13.0/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.13.0" id="toscutil-v2130">toscutil v2.13.0<a class="anchor" aria-label="anchor" href="#toscutil-v2130"></a></h2>
+<ul><li>
+<code>Changed</code>: <code><a href="../reference/stub.html">stub()</a></code> now supports positional arguments. Unnamed arguments in <code>...</code> are matched to the first unmatched formal arguments of the function, similar to how R itself matches positional arguments. E.g. <code>stub(f, 1, b = 2)</code> is equivalent to <code>stub(f, a = 1, b = 2)</code> for <code>f &lt;- function(a, b, ...) {}</code>.</li>
+<li>
+<code>Changed</code>: <code><a href="../reference/stub.html">stub()</a></code> now accepts a function call expression as its first argument. E.g. <code>stub(f(1, b = 2))</code> extracts both the function <code>f</code> and the arguments <code>1</code> and <code>b = 2</code> from the call, producing the same result as <code>stub(f, 1, b = 2)</code>.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.12.0" id="toscutil-v2120">toscutil v2.12.0<a class="anchor" aria-label="anchor" href="#toscutil-v2120"></a></h2>
+<ul><li>
+<code>Added</code>: the README now includes an automatically generated function reference, organized by the categories defined in _pkgdown.yml (maintained via an internal helper).</li>
+<li>
+<code>Changed</code>: extended <code><a href="../reference/get_pkg_docs.html">get_pkg_docs()</a></code> to include a <code>keyword</code> column in the returned dataframe.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.11.0" id="toscutil-v2110">toscutil v2.11.0<a class="anchor" aria-label="anchor" href="#toscutil-v2110"></a></h2>
+<ul><li>
+<code>Refactor</code>: Removed <code>rlang</code> dependency. The package now implements its own minimal replacements for the <code>rlang</code> functions that were previously used (<code><a href="https://rlang.r-lib.org/reference/call_name.html" class="external-link">rlang::call_name()</a></code>). This makes the package more lightweight and reduces installation dependencies. All existing functionality is preserved and fully tested.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.10.0" id="toscutil-v2100">toscutil v2.10.0<a class="anchor" aria-label="anchor" href="#toscutil-v2100"></a></h2>
+<ul><li>
+<code>Added</code>: added functions <code><a href="../reference/equal.html">equal()</a></code> and operator <code>%==%</code> for more readable equality testing, particularly useful for comparing objects with length greater than one (vectors, lists, data frames, etc.). These provide a cleaner alternative to <code>isTRUE(all.equal(x, y))</code>.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.9.2" id="toscutil-v292">toscutil v2.9.2<a class="anchor" aria-label="anchor" href="#toscutil-v292"></a></h2>
+<ul><li>
+<code>Changed</code>:
+<ul><li>
+<code><a href="../reference/stub.html">stub()</a></code> now returns invisibly</li>
+<li>
+<code><a href="../reference/stub.html">stub()</a></code> intializes <code>...</code> as <code>NULL</code> if present</li>
+<li>
+<code><a href="../reference/stub.html">stub()</a></code> prints a compact summary of the stubbed arguments if not silenced via <code>options(toscutil.stub.silent = TRUE)</code>
+</li>
+<li>testthat now runs with multiple cores</li>
+</ul></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.9.1" id="toscutil-v291">toscutil v2.9.1<a class="anchor" aria-label="anchor" href="#toscutil-v291"></a></h2>
+<ul><li>
+<code>Fixed</code>: <code><a href="../reference/logf.html">logf()</a></code> now correctly uses the <code>file</code> and <code>append</code> arguments when writing output.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.9.0" id="toscutil-v290">toscutil v2.9.0<a class="anchor" aria-label="anchor" href="#toscutil-v290"></a></h2>
+<ul><li>
+<code>Added</code>: <code><a href="../reference/stub.html">stub()</a></code> now automatically looks up missing arguments (those without defaults) in <code>.GlobalEnv</code> if they exist there. This enables a common interactive development workflow: run example code that sets variables, call <code>stub(func)</code>, then work with the function body interactively. Explicit arguments still take precedence over GlobalEnv values.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.8.1" id="toscutil-v281">toscutil v2.8.1<a class="anchor" aria-label="anchor" href="#toscutil-v281"></a></h2>
 <ul><li>
