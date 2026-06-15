@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">toscutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.13.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.8.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Get Documented Functions in a Package</h1>
-      <small class="dont-index">Source: <a href="https://github.com/toscm/toscutil/blob/master/R/doc.R" class="external-link"><code>R/doc.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/toscm/toscutil/blob/v2.8.1/R/doc.R" class="external-link"><code>R/doc.R</code></a></small>
       <div class="d-none name"><code>get_pkg_docs.Rd</code></div>
     </div>
 
@@ -51,7 +51,7 @@
 
 
 <dt id="arg-unload">unload<a class="anchor" aria-label="anchor" href="#arg-unload"></a></dt>
-<dd><p>Whether to try to unload a potential currently developed package using <code><a href="https://pkgload.r-lib.org/reference/unload.html" class="external-link">devtools::unload()</a></code> before checking the documentation. Required when the package was loaded with <code><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">devtools::load_all()</a></code> as the documentation database only exists for installed packages. If the unloading fails, the function silently continues, as the unloading is only necessary for checking the documentation of currently developed packages.</p></dd>
+<dd><p>Whether to try to unload a potential currently developed package using <code><a href="https://devtools.r-lib.org/reference/reexports.html" class="external-link">devtools::unload()</a></code> before checking the documentation. Required when the package was loaded with <code><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">devtools::load_all()</a></code> as the documentation database only exists for installed packages. If the unloading fails, the function silently continues, as the unloading is only necessary for checking the documentation of currently developed packages.</p></dd>
 
 
 <dt id="arg-reload">reload<a class="anchor" aria-label="anchor" href="#arg-reload"></a></dt>
@@ -60,7 +60,7 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Returns a dataframe with columns <code>class</code>, <code>title</code>, <code>description</code>, <code>value</code>, <code>format</code>, <code>examples</code>, <code>keyword</code> and rows corresponding to the documented functions in the package.</p>
+    <p>Returns a dataframe with columns <code>title</code>, <code>description</code>, <code>value</code>, <code>examples</code> and rows corresponding to the documented functions in the package.</p>
     </div>
 
     <div class="section level2">
@@ -68,13 +68,13 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">get_pkg_docs</span><span class="op">(</span><span class="st">"tools"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">nchars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">col</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">col</span>, <span class="va">nchar</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">nchars</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                class title description value format examples keyword</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> HTMLheader         8    42          71   114      0       53      28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R                  8    35          68   692      0      398       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rcmd               8    15          33    30      0        0       9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rd2HTML            8    15         181   644      0      321      15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rd2txt_options     8    36          61   154      0      205      15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RdTextFilter       8    25          87   128      0        0      28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                class title description value format examples</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HTMLheader         8    42          71   114      0       53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R                  8    35          68   692      0      398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rcmd               8    15          33    30      0        0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rd2HTML            8    15         181   644      0      321</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rd2txt_options     8    36          61   154      0      205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RdTextFilter       8    25          87   128      0        0</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="check_pkg_docs.html">check_pkg_docs</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>

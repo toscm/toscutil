@@ -1,8 +1,8 @@
 # Return Default if None
 
-Returns the second operand if the first operand is `NULL`, `FALSE`, `0`,
-`NA`, an empty list, or an empty string. Otherwise returns the first
-operand.
+Like
+[`rlang::%||%()`](https://rlang.r-lib.org/reference/op-null-default.html)
+but also checks for empty lists and empty strings.
 
 ## Usage
 
