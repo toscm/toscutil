@@ -6,7 +6,7 @@ reference:
     desc:  Extended versions of base R functions
     contents: [has_keyword("base")]
   - title: Condition Checking
-    desc:  Function for condition checking
+    desc:  Functions for condition checking
     contents: [has_keyword("check")]
   - title: Function Writing
     desc:  Functions for writing functions
