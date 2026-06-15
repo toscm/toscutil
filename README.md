@@ -36,6 +36,7 @@ To use any function or data object, first [install](#installation) the package a
     - `norm_path()`: Return Normalized Path
 
 - Function for condition checking
+    - `equal()`: Test Near Equality
     - `ifthen()`: Shortcut for multiple if else statements
     - `is.none()`: Truth checking as in Python
 
@@ -79,7 +80,6 @@ To use any function or data object, first [install](#installation) the package a
 
 - Function returning datetime
     - `now()`: Get Current Date and Time as String
-
 <!-- END_FUNCTION_REFERENCE -->
 
 ## Contribute
